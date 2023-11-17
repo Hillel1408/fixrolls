@@ -57,31 +57,54 @@ const Footer = () => {
             Зоны доставки
           </button>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 mb-[82px]">
             <div className="flex flex-col">
               <span className="text-[#969696] text-[24px] font-medium">
                 Заказать
               </span>
-              <a
+              <Link
                 className="text-[#21201F] text-[26px] font-semibold"
-                href="tel:+7(800)777-98-65"
+                to="tel:+7(800)777-98-65"
               >
                 +7 (800) 777-98-65
-              </a>
+              </Link>
             </div>
 
             <div className="flex flex-col">
               <span className="text-[#969696] text-[24px] font-medium">
                 Для отзывов
               </span>
-              <a
+              <Link
                 className="text-[#21201F] text-[26px] font-semibold"
-                href="mailto:reviews@rollsfix.ru"
+                to="mailto:reviews@rollsfix.ru"
               >
                 reviews@rollsfix.ru
-              </a>
+              </Link>
             </div>
           </div>
+
+          <ul className="flex gap-2">
+            <li>
+              <Link
+                to="#"
+                className="w-[66px] h-[66px] bg-white flex justify-center items-center rounded-[20px]"
+              >
+                <svg className="w-5 h-5" aria-hidden="true">
+                  <use xlinkHref="/sprites/sprite.svg#telegram"></use>
+                </svg>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="#"
+                className="w-[66px] h-[66px] bg-white flex justify-center items-center rounded-[20px]"
+              >
+                <svg className="w-5 h-5" aria-hidden="true">
+                  <use xlinkHref="/sprites/sprite.svg#vk"></use>
+                </svg>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
