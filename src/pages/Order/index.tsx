@@ -99,11 +99,54 @@ const Order = () => {
             </div>
 
             <div className="mt-[23px] bg-white rounded-[30px] py-[32px] pl-[36px] pr-[17px] flex flex-col gap-6">
-              <div>
+              <div className="flex justify-between items-center">
                 <h2 className="text-[#000] text-[26px] font-medium">
                   Ваш заказ
                 </h2>
+                <button className="flex items-center gap-[6px]">
+                  <svg className="w-[14px] h-4" aria-hidden="true">
+                    <use xlinkHref="/sprites/sprite.svg#trash"></use>
+                  </svg>
+                  Очистить корзину
+                </button>
               </div>
+
+              {new Array(4).fill("").map((item, index) => (
+                <div className="grid grid-cols-[1fr_122px_77px] items-center">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-[94px]">
+                      <img
+                        className="h-[94px] object-cover w-full"
+                        src="/images/img-2.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1 text-[#000] text-[16px] leading-[113%]">
+                      <span>Пицца 4 сыра</span>
+                      <span>280 г</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <button>
+                      <svg className="w-10 h-10" aria-hidden="true">
+                        <use xlinkHref="/sprites/sprite.svg#-"></use>
+                      </svg>
+                    </button>
+                    <span className="text-[#21201F] text-[16px]">1</span>
+                    <button>
+                      <svg className="w-10 h-10" aria-hidden="true">
+                        <use xlinkHref="/sprites/sprite.svg#+"></use>
+                      </svg>
+                    </button>
+                  </div>
+
+                  <span className="text-[#000] text-[18px] ml-auto mr-2">
+                    199₽
+                  </span>
+                </div>
+              ))}
+
               <input
                 type="text"
                 className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
@@ -128,6 +171,17 @@ const Order = () => {
                   <span>200 ₽</span>
                 </div>
               </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-[#21201F] text-[20px] font-medium flex gap-[10px]">
+                <input type="checkbox" />
+                Промокод
+              </label>
+              <label className="text-[#21201F] text-[20px] font-medium flex gap-[10px]">
+                <input type="checkbox" />
+                Списать бонусы
+              </label>
             </div>
 
             <div className="flex justify-between items-center">
