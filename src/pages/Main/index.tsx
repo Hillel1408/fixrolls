@@ -23,7 +23,6 @@ const Main = () => {
   ];
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    loop: true,
     mode: "free",
 
     slides: {
