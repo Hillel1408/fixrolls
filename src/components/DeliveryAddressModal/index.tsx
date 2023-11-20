@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 
 const DeliveryAddressModal = () => {
-    const activeLoginModal = true;
+    const activeLoginModal = false;
 
     activeLoginModal && document.body.classList.add("lock");
 
