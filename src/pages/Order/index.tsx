@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Delivery } from "components";
+import { Delivery, Button } from "components";
 
 const Order = () => {
     return (
@@ -77,7 +77,7 @@ const Order = () => {
                         </div>
                     </div>
 
-                    <div className="bg-white py-[35px] px-[30px] rounded-[32px] flex flex-col gap-6">
+                    <div className="bg-white py-[35px] px-[30px] rounded-[32px] flex flex-col gap-6 sticky top-0">
                         <div>
                             <h2 className="text-[#000] text-[26px] font-medium mb-5">Итого</h2>
 
@@ -105,9 +105,7 @@ const Order = () => {
                         </div>
 
                         <div className="flex justify-between items-center">
-                            <button className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] items-center justify-center gap-[10px] w-[256px]">
-                                Оплатить
-                            </button>
+                            <Button text="Оплатить" className="h-[48px]" />
 
                             <span className="text-[#000] text-[26px] font-medium">2759 ₽</span>
                         </div>
