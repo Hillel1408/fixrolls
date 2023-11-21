@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr]">
                 <div className="sm:hidden"></div>
 
-                <div className="w-full gap-5 mx-auto px-[10px] pt-[34px] pb-[121px] grid grid-cols-[641px_255px] justify-between 2xl:grid-cols-[1fr_255px] 2xl:gap-10 sm:grid-cols-[1fr] sm:pb-[24px]">
+                <div className="w-full gap-5 mx-auto px-[10px] pt-[34px] pb-[121px] grid grid-cols-[641px_255px] justify-between 2xl:grid-cols-[1fr_255px] 2xl:gap-10 sm:grid-cols-[1fr] sm:pb-[24px] sm:px-0">
                     <div>
                         <div className="flex gap-[26px] items-center mb-10">
                             <img src="/images/logo-2.png" alt="" />

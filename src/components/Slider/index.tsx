@@ -26,7 +26,7 @@ const Slider = () => {
     });
 
     return (
-        <div className="mb-[37px] px-[10px] py-2 bg-white rounded-[30px]">
+        <div className="mb-[37px] px-[10px] py-2 bg-white rounded-[30px] sm:rounded-none sm:mb-0">
             <div ref={sliderRef} className="keen-slider max-w-[1126px] rounded-[30px]">
                 {new Array(8).fill("").map((item, index) => (
                     <div className="keen-slider__slide !min-w-[285px] sm:!min-w-[207px]">
