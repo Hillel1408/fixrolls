@@ -5,7 +5,7 @@ const LayoutModal = ({ children, closeModal, active, className }: LayoutModalPro
     return (
         <div
             className={classNames(
-                "fixed top-0 w-full h-full bg-[rgba(0,0,0,0.40)] overflow-auto duration-200 min-w-[375px] z-20",
+                "fixed top-0 w-full h-full bg-[rgba(0,0,0,0.40)] overflow-auto duration-200 z-20",
                 active ? "visible opacity-100" : "invisible opacity-0",
             )}
             onClick={() => {
@@ -13,9 +13,12 @@ const LayoutModal = ({ children, closeModal, active, className }: LayoutModalPro
                 document.body.classList.remove("lock");
             }}
         >
-            <div className="py-5 flex items-center justify-center min-h-full sm:px-4">
+            <div className="py-5 flex items-center justify-center min-h-full sm:px-0 sm:pb-0 sm:items-end">
                 <div
-                    className={classNames("bg-white rounded-[44px] relative", className)}
+                    className={classNames(
+                        "bg-white rounded-[44px] relative sm:rounded-b-none overflow-hidden",
+                        className,
+                    )}
                     onClick={(e) => e.stopPropagation()}
                 >
                     {children}

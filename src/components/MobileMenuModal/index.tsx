@@ -21,11 +21,7 @@ const MobileMenuModal = () => {
     ];
 
     return createPortal(
-        <LayoutModal
-            className="w-[360px] rounded-none"
-            closeModal={() => {}}
-            active={activeLoginModal}
-        >
+        <LayoutModal className="sm:w-full " closeModal={() => {}} active={activeLoginModal}>
             <>
                 <div className="p-[18px] bg-[#F9F7F7]">
                     <img className="w-[123px]" src="/images/logo-2.png" alt="" />

@@ -20,12 +20,12 @@ const CityModal = () => {
 
     return createPortal(
         <LayoutModal
-            className="px-[56px] pt-[47px] pb-[74px] w-[478px]"
+            className="px-[56px] pt-[47px] pb-[74px] w-[478px] sm:p-5 sm:pt-7 sm:w-full"
             closeModal={() => {}}
             active={activeLoginModal}
         >
             <>
-                <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-8 max-w-[325px] sm:text-[25px]">
+                <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-8 max-w-[325px] sm:text-[22px]">
                     Города в которых мы работаем
                 </h3>
 
