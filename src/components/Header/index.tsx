@@ -1,4 +1,4 @@
-import { CityModal, DeliveryAddressModal } from "components";
+import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
 
 const Header = () => {
     return (
@@ -53,6 +53,8 @@ const Header = () => {
             <CityModal />
 
             <DeliveryAddressModal />
+
+            <MobileMenuModal />
         </>
     );
 };

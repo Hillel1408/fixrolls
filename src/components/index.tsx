@@ -10,6 +10,8 @@ import Delivery from "components/Delivery";
 import CityModal from "components/CityModal";
 import DeliveryAddressModal from "components/DeliveryAddressModal";
 import Button from "components/UI/Button";
+import CardModal from "components/CardModal";
+import MobileMenuModal from "components/MobileMenuModal";
 
 export {
     Layout,
@@ -24,4 +26,6 @@ export {
     CityModal,
     DeliveryAddressModal,
     Button,
+    CardModal,
+    MobileMenuModal,
 };

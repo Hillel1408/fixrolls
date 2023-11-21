@@ -50,13 +50,15 @@ const Order = () => {
                                     </div>
 
                                     <div className="flex items-center justify-between">
-                                        <button>
+                                        <button className="bg-[#EEEEEE] rounded-[10px]">
                                             <svg className="w-10 h-10" aria-hidden="true">
                                                 <use xlinkHref="/sprites/sprite.svg#-"></use>
                                             </svg>
                                         </button>
+
                                         <span className="text-[#21201F] text-[16px]">1</span>
-                                        <button>
+
+                                        <button className="bg-[#EEEEEE] rounded-[10px]">
                                             <svg className="w-10 h-10" aria-hidden="true">
                                                 <use xlinkHref="/sprites/sprite.svg#+"></use>
                                             </svg>
