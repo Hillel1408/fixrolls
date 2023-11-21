@@ -1,11 +1,14 @@
 import { Sidebar, Cart, Slider, Card, CardModal } from "components";
+import { useMatchMedia } from "hooks";
 
 const Main = () => {
+    const { isMobile, isTablet, isDesktop } = useMatchMedia();
+
     return (
         <>
-            {/* <div className="container">
-                <div className="grid grid-cols-[232px_1fr_334px] pt-4 rounded-2xl items-start gap-[26px]">
-                    <Sidebar />
+            <div className="container">
+                <div className="grid grid-cols-[232px_1fr_334px] pt-4 rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr]">
+                    {(isDesktop || isTablet) && <Sidebar />}
 
                     <div className="overflow-hidden">
                         <Slider />
@@ -26,11 +29,11 @@ const Main = () => {
                         </div>
                     </div>
 
-                    <Cart />
+                    {isDesktop && <Cart />}
                 </div>
             </div>
 
-            <CardModal /> */}
+            <CardModal />
         </>
     );
 };

@@ -11,7 +11,7 @@ const Slider = () => {
 
         slides: {
             spacing: 8,
-            perView: 3.7,
+            perView: "auto",
         },
 
         breakpoints: {},
@@ -29,9 +29,9 @@ const Slider = () => {
         <div className="mb-[37px] px-[10px] py-2 bg-white rounded-[30px]">
             <div ref={sliderRef} className="keen-slider max-w-[1126px] rounded-[30px]">
                 {new Array(8).fill("").map((item, index) => (
-                    <div className="keen-slider__slide">
+                    <div className="keen-slider__slide !min-w-[285px] sm:!min-w-[207px]">
                         <img
-                            className="h-[285px] object-cover w-full rounded-[20px]"
+                            className="h-[285px] object-cover w-full rounded-[20px] sm:h-[207px]"
                             src="/images/slide-1.jpg"
                             alt=""
                         />

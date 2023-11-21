@@ -66,4 +66,10 @@
     <symbol xmlns="http://www.w3.org/2000/svg" id="phone" viewBox="0 0 31 31" fill="none">
         <path d="M24.8388 19.7109L21.558 19.3363C20.7701 19.2459 19.9951 19.5171 19.4396 20.0725L17.063 22.4492C13.4076 20.5892 10.4109 17.6054 8.55089 13.9371L10.9405 11.5475C11.4959 10.9921 11.7671 10.2171 11.6767 9.42919L11.3021 6.17419C11.1471 4.86961 10.0492 3.88794 8.73172 3.88794H6.49714C5.03755 3.88794 3.82339 5.10211 3.9138 6.56169C4.59839 17.5925 13.4205 26.4017 24.4384 27.0863C25.898 27.1767 27.1121 25.9625 27.1121 24.5029V22.2684C27.1251 20.9638 26.1434 19.8659 24.8388 19.7109Z" fill="black"/>
     </symbol>
+
+    <symbol xmlns="http://www.w3.org/2000/svg" id="menu-btn" viewBox="0 0 19 14" fill="none">
+        <path d="M1 13H18" stroke="#21201F" stroke-width="1.8575" stroke-linecap="round"/>
+        <path d="M1 7H18" stroke="#21201F" stroke-width="1.8575" stroke-linecap="round"/>
+        <path d="M1 1H18" stroke="#21201F" stroke-width="1.8575" stroke-linecap="round"/>
+    </symbol>
 </svg>

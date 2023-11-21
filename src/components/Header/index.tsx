@@ -3,14 +3,16 @@ import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
 const Header = () => {
     return (
         <>
-            <header className="bg-[#F2F2F2] xl:min-w-[1365px]">
-                <div className="container">
-                    <div className="bg-white rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_234px]">
-                        <div className="py-4 px-[30px]">
+            <header className="bg-[#F2F2F2] xl:min-w-[1365px] sm:min-w-[auto]">
+                <div className="container sm:px-0">
+                    <div className="bg-white rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_234px] sm:grid-cols-[auto_1fr_auto] sm:gap-[18px] sm:px-[10px] sm:py-2 sm:rounded-t-[16px] sm:rounded-b-none">
+                        <div className="py-4 px-[30px] sm:hidden">
                             <img src="/images/logo.svg" alt="" />
                         </div>
 
-                        <div className="grid grid-cols-[1fr_auto] gap-[54px] items-center xl:gap-5">
+                        <img className="hidden sm:block" src="/images/logo-3.svg" alt="" />
+
+                        <div className="grid grid-cols-[1fr_auto] gap-[54px] items-center xl:gap-5 sm:hidden">
                             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-[21px]">
                                 <button className="flex items-center text-left">
                                     <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
@@ -40,11 +42,24 @@ const Header = () => {
                             </a>
                         </div>
 
-                        <button className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] mx-4 items-center justify-center gap-[10px]">
+                        <button className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] mx-4 items-center justify-center gap-[10px] sm:hidden">
                             <svg className="w-5 h-5" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#person"></use>
                             </svg>
                             Войти
+                        </button>
+
+                        <button className="hidden sm:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center">
+                            Выбрать адрес
+                            <svg className="w-[18px] h-[18px] -rotate-90" aria-hidden="true">
+                                <use xlinkHref="/sprites/sprite.svg#arrow"></use>
+                            </svg>
+                        </button>
+
+                        <button className="hidden sm:block">
+                            <svg className="w-[17px] h-3" aria-hidden="true">
+                                <use xlinkHref="/sprites/sprite.svg#menu-btn"></use>
+                            </svg>
                         </button>
                     </div>
                 </div>
