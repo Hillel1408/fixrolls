@@ -3,7 +3,7 @@ import { LayoutModal, Button } from "components";
 import { Link } from "react-router-dom";
 
 const MobileMenuModal = () => {
-    const activeLoginModal = true;
+    const activeLoginModal = false;
 
     activeLoginModal && document.body.classList.add("lock");
 

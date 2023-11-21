@@ -3,14 +3,14 @@ import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
 const Header = () => {
     return (
         <>
-            <header className="bg-[#F2F2F2]">
+            <header className="bg-[#F2F2F2] xl:min-w-[1365px]">
                 <div className="container">
-                    <div className="bg-white rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px]">
+                    <div className="bg-white rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_234px]">
                         <div className="py-4 px-[30px]">
                             <img src="/images/logo.svg" alt="" />
                         </div>
 
-                        <div className="grid grid-cols-[1fr_auto] gap-[54px] items-center">
+                        <div className="grid grid-cols-[1fr_auto] gap-[54px] items-center xl:gap-5">
                             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-[21px]">
                                 <button className="flex items-center text-left">
                                     <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
@@ -27,14 +27,14 @@ const Header = () => {
                                     className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] placeholder:text-[16px] placeholder:text-[#21201F]"
                                 />
 
-                                <button className="text-[#21201F] text-[16px] border-b border-[#21201F]">
+                                <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap">
                                     Зоны доставки
                                 </button>
                             </div>
 
                             <a
                                 href="tel:+7(800)777-98-65"
-                                className="text-[#21201F] text-[20px] font-medium"
+                                className="text-[#21201F] text-[20px] font-medium whitespace-nowrap"
                             >
                                 +7 (800) 777-98-65
                             </a>

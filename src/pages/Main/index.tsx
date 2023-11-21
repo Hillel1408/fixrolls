@@ -3,7 +3,7 @@ import { Sidebar, Cart, Slider, Card, CardModal } from "components";
 const Main = () => {
     return (
         <>
-            <div className="container">
+            {/* <div className="container">
                 <div className="grid grid-cols-[232px_1fr_334px] pt-4 rounded-2xl items-start gap-[26px]">
                     <Sidebar />
 
@@ -30,7 +30,7 @@ const Main = () => {
                 </div>
             </div>
 
-            <CardModal />
+            <CardModal /> */}
         </>
     );
 };

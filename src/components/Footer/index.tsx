@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="bg-[#F2F2F2]">
-            <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px]">
+        <footer className="bg-[#F2F2F2] xl:min-w-[1365px]">
+            <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] xl:grid-cols-[232px_1fr]">
                 <div></div>
 
-                <div className="w-full gap-5 mx-auto px-[10px] pt-[34px] pb-[121px] grid grid-cols-[641px_255px] justify-between ">
+                <div className="w-full gap-5 mx-auto px-[10px] pt-[34px] pb-[121px] grid grid-cols-[641px_255px] justify-between 2xl:grid-cols-[1fr_255px] 2xl:gap-10 sm:pb-[24px]">
                     <div>
                         <div className="flex gap-[26px] items-center mb-10">
                             <img src="/images/logo-2.png" alt="" />
@@ -16,7 +16,7 @@ const Footer = () => {
                             </p>
                         </div>
 
-                        <div className="flex justify-between mb-11 text-[rgba(33,32,31,0.82)] text-[16px] font-medium">
+                        <div className="flex justify-between mb-11 text-[rgba(33,32,31,0.82)] text-[16px] font-medium gap-5 sm:flex-col sm:mb-0">
                             <ul className="max-w-[290px] flex flex-col gap-[14px]">
                                 <li>
                                     <Link to="/">
@@ -44,14 +44,17 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                        <p className="text-[#21201F] text-[16px] font-medium mb-14">
-                            FixRolls - это ресторан доставки роллов и суши с нестандартным подходом
-                            к своему делу. Мы предлагаем нереальные скидки и любим дарить подарки.
-                        </p>
+                        <div className="sm:hidden">
+                            <p className="text-[#21201F] text-[16px] font-medium mb-14">
+                                FixRolls - это ресторан доставки роллов и суши с нестандартным
+                                подходом к своему делу. Мы предлагаем нереальные скидки и любим
+                                дарить подарки.
+                            </p>
 
-                        <p className="text-[#21201F] text-[16px] font-medium">
-                            © 2023 Все права защищены
-                        </p>
+                            <p className="text-[#21201F] text-[16px] font-medium">
+                                © 2023 Все права защищены
+                            </p>
+                        </div>
                     </div>
 
                     <div>
@@ -59,7 +62,7 @@ const Footer = () => {
                             Зоны доставки
                         </button>
 
-                        <div className="flex flex-col gap-6 mb-[82px]">
+                        <div className="flex flex-col gap-6 mb-[82px] sm:mb-[54px]">
                             <div className="flex flex-col">
                                 <span className="text-[#969696] text-[24px] font-medium">
                                     Заказать
@@ -108,9 +111,20 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
+
+                    <div className="hidden sm:block">
+                        <p className="text-[#21201F] text-[16px] font-medium mb-14">
+                            FixRolls - это ресторан доставки роллов и суши с нестандартным подходом
+                            к своему делу. Мы предлагаем нереальные скидки и любим дарить подарки.
+                        </p>
+
+                        <p className="text-[#21201F] text-[16px] font-medium">
+                            © 2023 Все права защищены
+                        </p>
+                    </div>
                 </div>
 
-                <div></div>
+                <div className="xl:hidden"></div>
             </div>
         </footer>
     );
