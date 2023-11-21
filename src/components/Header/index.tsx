@@ -3,7 +3,7 @@ import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
 const Header = () => {
     return (
         <>
-            <header className="bg-[#F2F2F2] xl:min-w-[1365px] sm:min-w-[auto]">
+            <header className="bg-[#F2F2F2]">
                 <div className="container sm:px-0">
                     <div className="bg-white rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_234px] sm:grid-cols-[auto_1fr_auto] sm:gap-[18px] sm:px-[10px] sm:py-2 sm:rounded-t-[16px] sm:rounded-b-none">
                         <div className="py-4 px-[30px] sm:hidden">
