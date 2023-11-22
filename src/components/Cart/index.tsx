@@ -3,7 +3,7 @@ import { useMatchMedia } from "hooks";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "constants/";
 import { useAppDispatch } from "hook";
-import { setActiveDeliveryTotalModal } from "store";
+import { setActiveDeliveryTotalModal, setActiveCartModal } from "store";
 
 const Cart = () => {
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
@@ -37,6 +37,7 @@ const Cart = () => {
                             if (isTablet || isDesktop) navigate(ROUTES.ORDER);
                             else {
                                 if (isMobile) {
+                                    dispatch(setActiveCartModal(false));
                                     dispatch(setActiveDeliveryTotalModal(true));
                                 }
                             }
