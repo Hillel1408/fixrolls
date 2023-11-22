@@ -1,4 +1,9 @@
+import { useAppDispatch } from "hook";
+import { setActiveCardModal } from "store";
+
 const Card = () => {
+    const dispatch = useAppDispatch();
+
     return (
         <div className="px-2 pt-[6px] pb-[15px] bg-white rounded-[21px] flex flex-col sm:p-[6px]">
             <img
@@ -22,7 +27,12 @@ const Card = () => {
                 </div>
             </div>
 
-            <button className="h-12 w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium mt-[10px] sm:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]">
+            <button
+                className="h-12 w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium mt-[10px] sm:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]"
+                onClick={() => {
+                    dispatch(setActiveCardModal(true));
+                }}
+            >
                 <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
                     <use xlinkHref="/sprites/sprite.svg#+"></use>
                 </svg>

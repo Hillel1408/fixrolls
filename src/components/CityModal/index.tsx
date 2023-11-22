@@ -1,8 +1,11 @@
 import { createPortal } from "react-dom";
 import { LayoutModal } from "components";
+import { useAppSelector, useAppDispatch } from "hook";
+import { setActiveCityModal } from "store";
 
 const CityModal = () => {
-    const activeLoginModal = false;
+    const activeLoginModal = useAppSelector((state) => state.main.activeCityModal);
+    const dispatch = useAppDispatch();
 
     const city = [
         "Ковров",
@@ -21,7 +24,9 @@ const CityModal = () => {
     return createPortal(
         <LayoutModal
             className="px-[56px] pt-[47px] pb-[74px] w-[478px] sm:p-5 sm:pt-7 sm:w-full"
-            closeModal={() => {}}
+            closeModal={() => {
+                dispatch(setActiveCityModal(false));
+            }}
             active={activeLoginModal}
         >
             <>

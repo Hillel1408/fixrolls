@@ -1,7 +1,12 @@
-import { Sidebar, Cart, Slider, Card, CardModal } from "components";
+import { Sidebar, Cart, Slider, Card, CardModal, CartModal } from "components";
 import { useMatchMedia } from "hooks";
+import { useAppSelector, useAppDispatch } from "hook";
+import { setActiveCartModal } from "store";
 
 const Main = () => {
+    const activeCartModal = useAppSelector((state) => state.main.activeCartModal);
+    const dispatch = useAppDispatch();
+
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
     return (
@@ -33,10 +38,36 @@ const Main = () => {
                     </div>
 
                     {isDesktop && <Cart />}
+
+                    {(isMobile || isTablet) && <CartModal />}
                 </div>
             </div>
 
             <CardModal />
+
+            {!activeCartModal && (
+                <div className="hidden xl:flex py-3 px-7 bg-[#F9F7F7] fixed bottom-0 left-0 right-0 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.82)] rounded-t-[16px] justify-center gap-[6px]">
+                    <p className="p-[10px] text-[14px] text-[#000] border border-[#6C6C6C] rounded-2xl max-w-[190px]">
+                        <span className="font-semibold">500 ₽</span> до минимальной суммы заказа
+                    </p>
+
+                    <button
+                        className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px]"
+                        onClick={() => {
+                            dispatch(setActiveCartModal(true));
+                        }}
+                    >
+                        <span className="flex items-center">
+                            <svg className="h-[20px] w-[22px] fill-none" aria-hidden="true">
+                                <use xlinkHref="/sprites/sprite.svg#cart"></use>
+                            </svg>
+                            <span className="text-[#21201F] text-[12px] ml-4">1 товар</span>
+                        </span>
+
+                        <span className="text-[#21201F] text-[24px] font-medium">1390 ₽</span>
+                    </button>
+                </div>
+            )}
         </>
     );
 };

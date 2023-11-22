@@ -1,34 +1,45 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
+import { useAppSelector, useAppDispatch } from "hook";
+import { setActiveCardModal } from "store";
 
 const CardModal = () => {
-    const activeLoginModal = false;
+    const activeCardModal = useAppSelector((state) => state.main.activeCardModal);
+    const dispatch = useAppDispatch();
 
-    activeLoginModal && document.body.classList.add("lock");
+    activeCardModal && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
-            className="p-[15px] w-[1000px]"
-            closeModal={() => {}}
-            active={activeLoginModal}
+            className="p-[15px] w-[1000px] sm:p-0"
+            closeModal={() => {
+                dispatch(setActiveCardModal(false));
+            }}
+            active={activeCardModal}
         >
-            <div className="grid grid-cols-[1fr_1fr] gap-[25px]">
-                <div className="bg-[#f2f2f2] rounded-[44px]">
-                    <img className="h-full object-cover w-full" src="/images/img-3.png" alt="" />
+            <div className="grid grid-cols-[1fr_1fr] gap-[25px] sm:grid-cols-[1fr] sm:gap-0">
+                <div className="bg-[#f2f2f2] rounded-[44px] sm:rounded-none">
+                    <img
+                        className="h-full object-cover w-full sm:h-[317px]"
+                        src="/images/img-3.png"
+                        alt=""
+                    />
                 </div>
 
-                <div>
-                    <div className="py-[18px] flex flex-col gap-5">
+                <div className="p-5">
+                    <div className="py-[18px] flex flex-col gap-5 sm:py-0 sm:gap-4">
                         <div>
-                            <h2 className="text-[36px] font-medium leading-[111%]">SET Радужный</h2>
+                            <h2 className="text-[36px] font-medium leading-[111%] sm:text-[32px]">
+                                SET Радужный
+                            </h2>
                             <p className="text-[12px] font-medium text-[#6C6C6C]">670 г / 56 шт</p>
                         </div>
 
                         <div>
-                            <p className="text-[#21201F] text-[16px] font-medium mb-1">
+                            <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
                                 Состав 7 микс роллов:
                             </p>
-                            <ol className="list-decimal pl-5 text-[#21201F] text-[15px]">
+                            <ol className="list-decimal pl-5 text-[#21201F] text-[15px] sm:text-[14px]">
                                 {new Array(7).fill("").map((item, index) => (
                                     <li>Ролл «Бонитомания» 8 шт.</li>
                                 ))}

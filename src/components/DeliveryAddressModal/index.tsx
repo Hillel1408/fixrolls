@@ -1,16 +1,23 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
+import { useAppSelector, useAppDispatch } from "hook";
+import { setActiveDeliveryAddressModal } from "store";
 
 const DeliveryAddressModal = () => {
-    const activeLoginModal = false;
+    const activeDeliveryAddressModal = useAppSelector(
+        (state) => state.main.activeDeliveryAddressModal,
+    );
+    const dispatch = useAppDispatch();
 
-    activeLoginModal && document.body.classList.add("lock");
+    activeDeliveryAddressModal && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="px-[22px] pt-[26px] pb-[22px] w-[817px] sm:p-0 sm:w-full"
-            closeModal={() => {}}
-            active={activeLoginModal}
+            closeModal={() => {
+                dispatch(setActiveDeliveryAddressModal(false));
+            }}
+            active={activeDeliveryAddressModal}
         >
             <>
                 <div className="flex items-center pr-[110px] justify-between mb-[78px] sm:pr-0 sm:mb-0 sm:absolute sm:top-[78px] sm:left-1/2 sm:-translate-x-1/2">

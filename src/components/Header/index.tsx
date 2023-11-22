@@ -1,6 +1,10 @@
 import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
+import { useAppDispatch } from "hook";
+import { setActiveCityModal, setActiveDeliveryAddressModal, setActiveMobileMenuModal } from "store";
 
 const Header = () => {
+    const dispatch = useAppDispatch();
+
     return (
         <>
             <header className="bg-[#F2F2F2]">
@@ -14,7 +18,12 @@ const Header = () => {
 
                         <div className="grid grid-cols-[1fr_auto] gap-[54px] items-center xl:gap-5 sm:hidden">
                             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-[21px]">
-                                <button className="flex items-center text-left">
+                                <button
+                                    className="flex items-center text-left"
+                                    onClick={() => {
+                                        dispatch(setActiveCityModal(true));
+                                    }}
+                                >
                                     <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
                                         Нижний Новгород
                                     </span>
@@ -27,6 +36,9 @@ const Header = () => {
                                     type="text"
                                     placeholder="Нижний Новгород, пл. Минина, 1"
                                     className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] placeholder:text-[16px] placeholder:text-[#21201F]"
+                                    onClick={() => {
+                                        dispatch(setActiveDeliveryAddressModal(true));
+                                    }}
                                 />
 
                                 <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap">
@@ -56,7 +68,12 @@ const Header = () => {
                             </svg>
                         </button>
 
-                        <button className="hidden sm:block">
+                        <button
+                            className="hidden sm:block"
+                            onClick={() => {
+                                dispatch(setActiveMobileMenuModal(true));
+                            }}
+                        >
                             <svg className="w-[17px] h-3" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#menu-btn"></use>
                             </svg>

@@ -1,11 +1,14 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { Link } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "hook";
+import { setActiveMobileMenuModal } from "store";
 
 const MobileMenuModal = () => {
-    const activeLoginModal = false;
+    const activeMobileMenuModal = useAppSelector((state) => state.main.activeMobileMenuModal);
+    const dispatch = useAppDispatch();
 
-    activeLoginModal && document.body.classList.add("lock");
+    activeMobileMenuModal && document.body.classList.add("lock");
 
     const navItems = [
         { text: "Зона доставки", href: "/" },
@@ -21,7 +24,13 @@ const MobileMenuModal = () => {
     ];
 
     return createPortal(
-        <LayoutModal className="sm:w-full " closeModal={() => {}} active={activeLoginModal}>
+        <LayoutModal
+            className="sm:w-full "
+            closeModal={() => {
+                dispatch(setActiveMobileMenuModal(false));
+            }}
+            active={activeMobileMenuModal}
+        >
             <>
                 <div className="p-[18px] bg-[#F9F7F7]">
                     <img className="w-[123px]" src="/images/logo-2.png" alt="" />
