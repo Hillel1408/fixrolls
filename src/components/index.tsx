@@ -14,6 +14,7 @@ import CardModal from "components/CardModal";
 import MobileMenuModal from "components/MobileMenuModal";
 import CartModal from "components/CartModal";
 import Total from "components/Total";
+import DeliveryTotalModal from "components/DeliveryTotalModal";
 
 export {
     Layout,
@@ -32,4 +33,5 @@ export {
     MobileMenuModal,
     CartModal,
     Total,
+    DeliveryTotalModal,
 };

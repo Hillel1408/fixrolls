@@ -6,6 +6,7 @@ const initialState = {
     activeMobileMenuModal: false,
     activeCardModal: false,
     activeCartModal: false,
+    activeDeliveryTotalModal: false,
 };
 
 const mainSlice = createSlice({
@@ -27,6 +28,9 @@ const mainSlice = createSlice({
         setActiveCartModal(state, action) {
             state.activeCartModal = action.payload;
         },
+        setActiveDeliveryTotalModal(state, action) {
+            state.activeDeliveryTotalModal = action.payload;
+        },
     },
 });
 
@@ -36,6 +40,7 @@ export const {
     setActiveMobileMenuModal,
     setActiveCardModal,
     setActiveCartModal,
+    setActiveDeliveryTotalModal,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

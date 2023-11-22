@@ -61,7 +61,12 @@ const Header = () => {
                             Войти
                         </button>
 
-                        <button className="hidden sm:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center">
+                        <button
+                            className="hidden sm:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center"
+                            onClick={() => {
+                                dispatch(setActiveCityModal(true));
+                            }}
+                        >
                             Выбрать адрес
                             <svg className="w-[18px] h-[18px] -rotate-90" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#arrow"></use>

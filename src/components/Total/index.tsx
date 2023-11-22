@@ -2,7 +2,7 @@ import { Button } from "components";
 
 const Total = () => {
     return (
-        <div className="bg-white py-[35px] px-[30px] rounded-[32px] flex flex-col gap-6 sticky top-0">
+        <div className="bg-white py-[35px] px-[30px] rounded-[32px] flex flex-col gap-6 sticky top-0 sm:px-3 sm:pt-0 sm:pb-6">
             <div>
                 <h2 className="text-[#000] text-[26px] font-medium mb-5">Итого</h2>
 

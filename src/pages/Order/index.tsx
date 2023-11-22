@@ -6,7 +6,7 @@ const Order = () => {
             <div className="xl:hidden"></div>
 
             <div>
-                <div className="mb-8 flex items-center justify-between text-[#21201F] text-[16px] font-medium">
+                <div className="mb-8 flex items-center justify-between text-[#21201F] text-[16px] font-medium sm:flex-col sm:items-start sm:gap-4">
                     <h1 className="text-[#21201F] text-[30px] font-medium">Оформление заказа</h1>
 
                     <button className="py-[13px] px-[21px] rounded-2xl border border-[#000] flex gap-[5px] items-center">
@@ -17,11 +17,11 @@ const Order = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-[1.14fr_1fr] gap-5 items-start 2xl:grid-cols-[1fr] xl:grid-cols-[1.14fr_1fr]">
+                <div className="grid grid-cols-[1.14fr_1fr] gap-5 items-start 2xl:grid-cols-[1fr] xl:grid-cols-[1.14fr_1fr] sm:grid-cols-[1fr]">
                     <div>
                         <Delivery />
 
-                        <div className="mt-[23px] bg-white rounded-[30px] py-[32px] pl-[36px] pr-[17px] flex flex-col gap-6">
+                        <div className="mt-[23px] bg-white rounded-[30px] py-[32px] pl-[36px] pr-[17px] flex flex-col gap-6 sm:hidden">
                             <div className="flex justify-between items-center">
                                 <h2 className="text-[#000] text-[26px] font-medium">Ваш заказ</h2>
                                 <button className="flex items-center gap-[6px]">
