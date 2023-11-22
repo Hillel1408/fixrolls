@@ -5,7 +5,7 @@ import { ROUTES } from "constants/";
 
 function App() {
     return (
-        <Router>
+        <Router basename="react/build">
             <Layout>
                 <Routes>
                     <Route path={`${ROUTES.HOME}`} element={<Main />} />
