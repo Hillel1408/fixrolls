@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-import { Delivery, Button } from "components";
+import { Delivery, Total } from "components";
 
 const Order = () => {
     return (
-        <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] pt-[42px] pb-[100px]">
-            <div></div>
+        <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] pt-[42px] pb-[100px] xl:grid-cols-[1fr]">
+            <div className="xl:hidden"></div>
 
             <div>
                 <div className="mb-8 flex items-center justify-between text-[#21201F] text-[16px] font-medium">
@@ -18,7 +17,7 @@ const Order = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-[1.14fr_1fr] gap-5 items-start">
+                <div className="grid grid-cols-[1.14fr_1fr] gap-5 items-start 2xl:grid-cols-[1fr] xl:grid-cols-[1.14fr_1fr]">
                     <div>
                         <Delivery />
 
@@ -34,7 +33,10 @@ const Order = () => {
                             </div>
 
                             {new Array(4).fill("").map((item, index) => (
-                                <div className="grid grid-cols-[1fr_122px_77px] items-center">
+                                <div
+                                    key={index}
+                                    className="grid grid-cols-[1fr_122px_77px] items-center"
+                                >
                                     <div className="flex gap-2 items-center">
                                         <div className="w-[94px]">
                                             <img
@@ -79,43 +81,11 @@ const Order = () => {
                         </div>
                     </div>
 
-                    <div className="bg-white py-[35px] px-[30px] rounded-[32px] flex flex-col gap-6 sticky top-0">
-                        <div>
-                            <h2 className="text-[#000] text-[26px] font-medium mb-5">Итого</h2>
-
-                            <div className="flex flex-col gap-2 text-[#000] text-[20px]">
-                                <div className="flex justify-between">
-                                    <span>Стоимость товаров</span>
-                                    <span>2559 ₽</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <span>Доставка</span>
-                                    <span>200 ₽</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col gap-2">
-                            <label className="text-[#21201F] text-[20px] font-medium flex gap-[10px]">
-                                <input type="checkbox" />
-                                Промокод
-                            </label>
-                            <label className="text-[#21201F] text-[20px] font-medium flex gap-[10px]">
-                                <input type="checkbox" />
-                                Списать бонусы
-                            </label>
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <Button text="Оплатить" className="h-[48px]" />
-
-                            <span className="text-[#000] text-[26px] font-medium">2759 ₽</span>
-                        </div>
-                    </div>
+                    <Total />
                 </div>
             </div>
 
-            <div></div>
+            <div className="xl:hidden"></div>
         </div>
     );
 };

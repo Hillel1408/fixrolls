@@ -13,6 +13,7 @@ import Button from "components/UI/Button";
 import CardModal from "components/CardModal";
 import MobileMenuModal from "components/MobileMenuModal";
 import CartModal from "components/CartModal";
+import Total from "components/Total";
 
 export {
     Layout,
@@ -30,4 +31,5 @@ export {
     CardModal,
     MobileMenuModal,
     CartModal,
+    Total,
 };

@@ -1,9 +1,19 @@
-import { Link } from "react-router-dom";
+import classNames from "classnames";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+    const location = useLocation();
+
     return (
         <footer className="bg-[#F2F2F2]">
-            <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr]">
+            <div
+                className={classNames(
+                    "container grid grid-cols-[232px_1fr_334px] gap-[26px]",
+                    location.pathname === "/order"
+                        ? "xl:grid-cols-[1fr]"
+                        : "xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr]",
+                )}
+            >
                 <div className="sm:hidden"></div>
 
                 <div className="w-full gap-5 mx-auto px-[10px] pt-[34px] pb-[121px] grid grid-cols-[641px_255px] justify-between 2xl:grid-cols-[1fr_255px] 2xl:gap-10 sm:grid-cols-[1fr] sm:pb-[24px] sm:px-0">
