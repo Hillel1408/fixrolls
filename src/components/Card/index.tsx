@@ -8,7 +8,7 @@ const Card = () => {
         <div className="px-2 pt-[6px] pb-[15px] bg-white rounded-[21px] flex flex-col sm:p-[6px]">
             <img
                 className="h-[195px] object-cover w-full sm:h-[144px]"
-                src="/images/img-2.jpg"
+                src="http://89.248.201.151/mobile/images/articles/749173041892370476"
                 alt=""
             />
 

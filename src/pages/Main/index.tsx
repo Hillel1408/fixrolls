@@ -12,10 +12,10 @@ const Main = () => {
     return (
         <>
             <div className="container sm:px-0">
-                <div className="grid grid-cols-[232px_1fr_334px] pt-4 rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
+                <div className="grid grid-cols-[232px_1fr_334px] rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
                     {(isDesktop || isTablet) && <Sidebar />}
 
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden pt-[100px]">
                         <Slider />
 
                         {isMobile && <Sidebar />}
