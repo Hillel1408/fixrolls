@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fixrolls/static/css/main.c1a3c2e4.css",
+    "main.js": "/fixrolls/static/js/main.e20e982b.js",
+    "index.html": "/fixrolls/index.html",
+    "main.c1a3c2e4.css.map": "/fixrolls/static/css/main.c1a3c2e4.css.map",
+    "main.e20e982b.js.map": "/fixrolls/static/js/main.e20e982b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1a3c2e4.css",
+    "static/js/main.e20e982b.js"
+  ]
+}
