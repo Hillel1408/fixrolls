@@ -15,7 +15,7 @@ const Main = () => {
                 <div className="grid grid-cols-[232px_1fr_334px] rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
                     {(isDesktop || isTablet) && <Sidebar />}
 
-                    <div className="overflow-hidden pt-[100px]">
+                    <div className="overflow-hidden pt-[100px] sm:pt-[57.5px]">
                         <Slider />
 
                         {isMobile && <Sidebar />}
@@ -27,7 +27,7 @@ const Main = () => {
                                         Сеты по 599₽
                                     </h2>
 
-                                    <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-x-2 gap-y-4 sm:grid-cols-[1fr_1fr] sm:gap-y-2">
+                                    <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-x-2 gap-y-4 2xl:grid-cols-[1fr_1fr_1fr_1fr] sm:grid-cols-[1fr_1fr] sm:gap-y-2">
                                         {new Array(7).fill("").map((item, index) => (
                                             <Card key={index} />
                                         ))}

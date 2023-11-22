@@ -7,7 +7,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="fixed left-0 right-0 h-[81px] z-10">
+            <header className="fixed left-0 right-0 z-10">
                 <div className="container sm:px-0">
                     <div className="bg-white shadow-[0px_3px_70px_-20px_rgba(34,60,80,0.2)] rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_234px] sm:grid-cols-[auto_1fr_auto] sm:gap-[18px] sm:px-[10px] sm:py-2 sm:rounded-t-[16px] sm:rounded-b-none">
                         <div className="py-4 px-[30px] sm:hidden">
