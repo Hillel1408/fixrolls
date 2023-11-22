@@ -1,18 +1,3 @@
 {
-    "images": {
-        "sizes": [256, 640, 1080, 2048, 3840],
-        "remotePatterns": [
-            {
-                "protocol": "https",
-                "hostname": "https://89.248.201.151",
-                "port": "",
-                "pathname": "/mobile/images/articles/**"
-            }
-        ],
-        "minimumCacheTTL": 60,
-        "formats": ["image/webp"],
-        "dangerouslyAllowSVG": false,
-        "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
-        "contentDispositionType": "inline"
-    }
+    "rewrites": [{}]
 }
