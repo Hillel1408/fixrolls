@@ -34,10 +34,10 @@ const Cart = () => {
                         className="h-[56px] w-full"
                         clickHandler={() => {
                             document.body.classList.remove("lock");
+                            dispatch(setActiveCartModal(false));
                             if (isTablet || isDesktop) navigate(ROUTES.ORDER);
                             else {
                                 if (isMobile) {
-                                    dispatch(setActiveCartModal(false));
                                     dispatch(setActiveDeliveryTotalModal(true));
                                 }
                             }
