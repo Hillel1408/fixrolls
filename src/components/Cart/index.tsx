@@ -13,7 +13,7 @@ const Cart = () => {
     const dispatch = useAppDispatch();
 
     return (
-        <div className="pt-[100px] sticky top-0">
+        <div className="pt-[100px] sticky top-0 xl:pt-0">
             <div className="bg-white pt-6 px-6 pb-2 rounded-2xl flex flex-col gap-[200px] xl:p-0">
                 <h2 className="text-[#21201F] text-[26px] font-medium mb-[13px]">Корзина</h2>
 

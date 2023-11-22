@@ -46,7 +46,7 @@ const Main = () => {
             <CardModal />
 
             {!activeCartModal && (
-                <div className="hidden xl:flex py-3 px-7 bg-[#F9F7F7] fixed bottom-0 left-0 right-0 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.82)] rounded-t-[16px] justify-center gap-[6px]">
+                <div className="hidden xl:flex py-3 px-7 bg-white fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[6px]">
                     <p className="p-[10px] text-[14px] text-[#000] border border-[#6C6C6C] rounded-2xl max-w-[190px]">
                         <span className="font-semibold">500 ₽</span> до минимальной суммы заказа
                     </p>
