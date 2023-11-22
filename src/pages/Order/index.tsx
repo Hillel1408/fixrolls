@@ -1,6 +1,10 @@
 import { Delivery, Total } from "components";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "constants/";
 
 const Order = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] pt-[42px] pb-[100px] xl:grid-cols-[1fr]">
             <div className="xl:hidden"></div>
@@ -9,7 +13,12 @@ const Order = () => {
                 <div className="mb-8 flex items-center justify-between text-[#21201F] text-[16px] font-medium sm:flex-col sm:items-start sm:gap-4">
                     <h1 className="text-[#21201F] text-[30px] font-medium">Оформление заказа</h1>
 
-                    <button className="py-[13px] px-[21px] rounded-2xl border border-[#000] flex gap-[5px] items-center">
+                    <button
+                        className="py-[13px] px-[21px] rounded-2xl border border-[#000] flex gap-[5px] items-center"
+                        onClick={() => {
+                            navigate(ROUTES.HOME);
+                        }}
+                    >
                         <svg className="w-6 h-6 rotate-90" aria-hidden="true">
                             <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                         </svg>
