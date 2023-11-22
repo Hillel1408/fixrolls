@@ -1,3 +1,0 @@
-{
-    "rewrites": [{ "source": "http://89.248.201.151/", "destination": "https://89.248.201.151/" }]
-}
