@@ -1,14 +1,13 @@
 import { useAppDispatch, useAppSelector } from "hook";
-import { useEffect, useState } from "react";
 import { setActiveCardModal, addCard, deleteCard } from "store";
 
 const Card = ({ item }: { item: any }) => {
     const { name, image, floatprice } = item;
 
-    const [showButtons, setShowButtons] = useState(false);
-    const [count, setCount] = useState(1);
-
     const dispatch = useAppDispatch();
+    const cards = useAppSelector((state) => state.orders.cards);
+
+    const count = cards[cards.findIndex((card: any) => card.product.id === item.id)]?.count || 0;
 
     return (
         <div
@@ -19,10 +18,10 @@ const Card = ({ item }: { item: any }) => {
         >
             <img className="h-[195px] object-cover w-full sm:h-[144px]" src={image} alt="" />
 
-            <div className="px-4 flex-auto sm:px-[6px] mb-[10px]">
+            <div className="px-2 sm:px-[6px] mb-[10px] flex flex-col flex-auto">
                 <h3 className="text-[#21201F] text-[18px] font-medium sm:text-[14px]">{name}</h3>
-                <p className="text-[#797979] text-[12px] font-medium">5 микс ролов / 40 шт</p>
-                <div className="flex gap-2 items-center mt-6 sm:mt-4 sm:gap-1">
+                <p className="text-[#797979] text-[12px] font-medium mb-6">5 микс ролов / 40 шт</p>
+                <div className="flex gap-2 items-center sm:mt-4 sm:gap-1 mt-auto">
                     <span className="text-[#21201F] text-[22px] font-medium sm:text-[16px]">
                         {floatprice.split(".")[0]}₽
                     </span>
@@ -35,14 +34,12 @@ const Card = ({ item }: { item: any }) => {
                 </div>
             </div>
 
-            {showButtons ? (
+            {count > 0 ? (
                 <div className="flex justify-between items-center border border-[#F2F2F2] p-1 rounded-2xl">
                     <button
                         className="w-10 h-10 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
                         onClick={(e) => {
                             e.stopPropagation();
-                            if (count === 1) setShowButtons(false);
-                            else setCount((prev) => prev - 1);
                             dispatch(deleteCard(item));
                         }}
                     >
@@ -57,7 +54,6 @@ const Card = ({ item }: { item: any }) => {
                         className="w-10 h-10 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
                         onClick={(e) => {
                             e.stopPropagation();
-                            setCount((prev) => prev + 1);
                             dispatch(addCard(item));
                         }}
                     >
@@ -68,10 +64,9 @@ const Card = ({ item }: { item: any }) => {
                 </div>
             ) : (
                 <button
-                    className="h-12 w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium sm:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]"
+                    className="h-[50px] w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium sm:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]"
                     onClick={(e) => {
                         e.stopPropagation();
-                        setShowButtons(true);
                         dispatch(addCard(item));
                     }}
                 >

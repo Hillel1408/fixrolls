@@ -33,7 +33,9 @@ const orderSlice = createSlice({
             }
         },
 
-        resetCart(state, action) {},
+        resetCart(state, action) {
+            state.cards = [];
+        },
     },
 });
 
