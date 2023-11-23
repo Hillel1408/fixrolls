@@ -7,13 +7,3 @@
 body.lock {
     overflow: hidden;
 }
-
-@viewport {
-    width: 1365;
-}
-
-@media (max-width: 479px) {
-    @viewport {
-        width: device-width;
-    }
-}
