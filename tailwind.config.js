@@ -36,6 +36,31 @@ module.exports = {
                     margin: "0 auto",
                     padding: "0 10px",
                 },
+                ".scroll-bar": { overflowY: "auto" },
+                ".scroll-bar::-webkit-scrollbar": {
+                    backgroundColor: "rgba(208,213,221,0.18)",
+                    width: "5px",
+                },
+                ".scroll-bar::-webkit-scrollbar-button": {
+                    display: "none",
+                },
+                ".scroll-bar::-webkit-scrollbar-thumb": {
+                    backgroundColor: "#7E909F",
+                },
+                ".scroll-bar::-webkit-scrollbar-track": {
+                    backgroundColor: "rgba(208,213,221,0.18)",
+                },
+                ".scroll-bar::-webkit-scrollbar-thumb:hover": {
+                    backgroundColor: "#7E909F",
+                },
+                ".scrollbar-hide::-webkit-scrollbar": {
+                    display: "none",
+                },
+                "@media (max-width: 1365px)": {
+                    ".scroll-bar::-webkit-scrollbar": {
+                        width: "3px",
+                    },
+                },
                 "@media (max-width: 1365px)": {
                     body: {
                         minWidth: "1365px",
