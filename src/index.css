@@ -9,7 +9,7 @@ body.lock {
 }
 
 @viewport {
-    width: 1365px;
+    width: 1365;
 }
 
 @media (max-width: 479px) {
