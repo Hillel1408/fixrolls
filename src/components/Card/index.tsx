@@ -20,7 +20,9 @@ const Card = ({ item }: { item: any }) => {
 
             <div className="px-2 sm:px-[6px] mb-[10px] flex flex-col flex-auto">
                 <h3 className="text-[#21201F] text-[18px] font-medium sm:text-[14px]">{name}</h3>
+
                 <p className="text-[#797979] text-[12px] font-medium mb-6">5 микс ролов / 40 шт</p>
+
                 <div className="flex gap-2 items-center sm:mt-4 sm:gap-1 mt-auto">
                     <span className="text-[#21201F] text-[22px] font-medium sm:text-[16px]">
                         {floatprice.split(".")[0]}₽

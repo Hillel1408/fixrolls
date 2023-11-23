@@ -14,7 +14,7 @@ const Main = () => {
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        (async function fetchData() {
+        (async function () {
             try {
                 const { data } = await axios.get(
                     "/getMenu.php?restaurantID=1591345972412718352&wid=1591345972413847051",
