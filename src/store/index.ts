@@ -1,2 +1,2 @@
-export * from "store/mainSlice";
+export * from "store/modalsSlice";
 export * from "store/store";
