@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveCartModal } from "store";
 
 const CartModal = () => {
-    const activeCartModal = useAppSelector((state) => state.main.activeCartModal);
+    const activeCartModal = useAppSelector((state) => state.modals.activeCartModal);
     const dispatch = useAppDispatch();
 
     activeCartModal && document.body.classList.add("lock");

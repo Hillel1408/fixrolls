@@ -5,7 +5,7 @@ import { setActiveDeliveryAddressModal } from "store";
 
 const DeliveryAddressModal = () => {
     const activeDeliveryAddressModal = useAppSelector(
-        (state) => state.main.activeDeliveryAddressModal,
+        (state) => state.modals.activeDeliveryAddressModal,
     );
     const dispatch = useAppDispatch();
 

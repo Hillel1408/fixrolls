@@ -9,8 +9,8 @@ const initialState = {
     activeDeliveryTotalModal: false,
 };
 
-const mainSlice = createSlice({
-    name: "main",
+const modalsSlice = createSlice({
+    name: "modals",
     initialState,
     reducers: {
         setActiveCityModal(state, action) {
@@ -41,6 +41,6 @@ export const {
     setActiveCardModal,
     setActiveCartModal,
     setActiveDeliveryTotalModal,
-} = mainSlice.actions;
+} = modalsSlice.actions;
 
-export default mainSlice.reducer;
+export default modalsSlice.reducer;

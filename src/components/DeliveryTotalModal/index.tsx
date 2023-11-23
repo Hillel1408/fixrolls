@@ -4,7 +4,9 @@ import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveDeliveryTotalModal } from "store";
 
 const DeliveryTotalModal = () => {
-    const activeDeliveryTotalModal = useAppSelector((state) => state.main.activeDeliveryTotalModal);
+    const activeDeliveryTotalModal = useAppSelector(
+        (state) => state.modals.activeDeliveryTotalModal,
+    );
     const dispatch = useAppDispatch();
 
     activeDeliveryTotalModal && document.body.classList.add("lock");

@@ -5,7 +5,7 @@ import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveMobileMenuModal } from "store";
 
 const MobileMenuModal = () => {
-    const activeMobileMenuModal = useAppSelector((state) => state.main.activeMobileMenuModal);
+    const activeMobileMenuModal = useAppSelector((state) => state.modals.activeMobileMenuModal);
     const dispatch = useAppDispatch();
 
     activeMobileMenuModal && document.body.classList.add("lock");

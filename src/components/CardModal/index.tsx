@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveCardModal } from "store";
 
 const CardModal = () => {
-    const activeCardModal = useAppSelector((state) => state.main.activeCardModal);
+    const activeCardModal = useAppSelector((state) => state.modals.activeCardModal);
     const dispatch = useAppDispatch();
 
     activeCardModal && document.body.classList.add("lock");

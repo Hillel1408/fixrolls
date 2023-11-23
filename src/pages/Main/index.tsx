@@ -6,7 +6,7 @@ import { setActiveCartModal } from "store";
 import axios from "http/axios";
 
 const Main = () => {
-    const activeCartModal = useAppSelector((state) => state.main.activeCartModal);
+    const activeCartModal = useAppSelector((state) => state.modals.activeCartModal);
     const dispatch = useAppDispatch();
 
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
@@ -20,7 +20,6 @@ const Main = () => {
                     "/getMenu.php?restaurantID=1591345972412718352&wid=1591345972413847051",
                 );
                 setCards(data);
-                console.log(data);
             } catch (error) {
                 console.log(error);
             }
@@ -39,15 +38,18 @@ const Main = () => {
                         {isMobile && <Sidebar cards={cards} />}
 
                         <div className="flex flex-col gap-[50px] sm:px-[10px] sm:mt-6">
-                            {cards.map((item: any, index) => (
-                                <div key={index}>
+                            {cards.map((item: any) => (
+                                <div key={item.description.id}>
                                     <h2 className="text-[#21201F] text-[30px] font-medium mb-4 sm:text-[24px]">
                                         {item.description.name}
                                     </h2>
 
                                     <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-x-2 gap-y-4 2xl:grid-cols-[1fr_1fr_1fr_1fr] sm:grid-cols-[1fr_1fr] sm:gap-y-2">
-                                        {item.childrens.map((item: any, index: number) => (
-                                            <Card key={index} item={item.description} />
+                                        {item.childrens.map((item: any) => (
+                                            <Card
+                                                key={item.description.id}
+                                                item={item.description}
+                                            />
                                         ))}
                                     </div>
                                 </div>

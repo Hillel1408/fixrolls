@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveCityModal } from "store";
 
 const CityModal = () => {
-    const activeLoginModal = useAppSelector((state) => state.main.activeCityModal);
+    const activeLoginModal = useAppSelector((state) => state.modals.activeCityModal);
     const dispatch = useAppDispatch();
 
     const city = [

@@ -1,16 +1,25 @@
-import { useAppDispatch } from "hook";
-import { setActiveCardModal } from "store";
+import { useAppDispatch, useAppSelector } from "hook";
+import { useEffect, useState } from "react";
+import { setActiveCardModal, addCard, deleteCard } from "store";
 
 const Card = ({ item }: { item: any }) => {
     const { name, image, floatprice } = item;
 
+    const [showButtons, setShowButtons] = useState(false);
+    const [count, setCount] = useState(1);
+
     const dispatch = useAppDispatch();
 
     return (
-        <div className="px-2 pt-[6px] pb-[15px] bg-white rounded-[21px] flex flex-col sm:p-[6px]">
+        <div
+            className="px-2 pt-[6px] pb-[15px] bg-white rounded-[21px] flex flex-col sm:p-[6px] cursor-pointer"
+            onClick={() => {
+                dispatch(setActiveCardModal(true));
+            }}
+        >
             <img className="h-[195px] object-cover w-full sm:h-[144px]" src={image} alt="" />
 
-            <div className="px-4 flex-auto sm:px-[6px]">
+            <div className="px-4 flex-auto sm:px-[6px] mb-[10px]">
                 <h3 className="text-[#21201F] text-[18px] font-medium sm:text-[14px]">{name}</h3>
                 <p className="text-[#797979] text-[12px] font-medium">5 микс ролов / 40 шт</p>
                 <div className="flex gap-2 items-center mt-6 sm:mt-4 sm:gap-1">
@@ -26,17 +35,52 @@ const Card = ({ item }: { item: any }) => {
                 </div>
             </div>
 
-            <button
-                className="h-12 w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium mt-[10px] sm:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]"
-                onClick={() => {
-                    dispatch(setActiveCardModal(true));
-                }}
-            >
-                <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
-                    <use xlinkHref="/sprites/sprite.svg#+"></use>
-                </svg>
-                Добавить
-            </button>
+            {showButtons ? (
+                <div className="flex justify-between items-center border border-[#F2F2F2] p-1 rounded-2xl">
+                    <button
+                        className="w-10 h-10 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (count === 1) setShowButtons(false);
+                            else setCount((prev) => prev - 1);
+                            dispatch(deleteCard(item));
+                        }}
+                    >
+                        <svg className="h-7 w-7 fill-none" aria-hidden="true">
+                            <use xlinkHref="/sprites/sprite.svg#-"></use>
+                        </svg>
+                    </button>
+
+                    <span className="text-[#21201F] text-[22px] font-medium">{count}</span>
+
+                    <button
+                        className="w-10 h-10 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setCount((prev) => prev + 1);
+                            dispatch(addCard(item));
+                        }}
+                    >
+                        <svg className="h-7 w-7 fill-none" aria-hidden="true">
+                            <use xlinkHref="/sprites/sprite.svg#+"></use>
+                        </svg>
+                    </button>
+                </div>
+            ) : (
+                <button
+                    className="h-12 w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium sm:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setShowButtons(true);
+                        dispatch(addCard(item));
+                    }}
+                >
+                    <svg className="h-7 w-7 fill-none" aria-hidden="true">
+                        <use xlinkHref="/sprites/sprite.svg#+"></use>
+                    </svg>
+                    Добавить
+                </button>
+            )}
         </div>
     );
 };
