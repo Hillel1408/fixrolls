@@ -41,11 +41,11 @@ module.exports = {
                         minWidth: "1365px",
                     },
                 },
-                "@media (max-width: 479px)": {
-                    body: {
-                        minWidth: "360px",
-                    },
-                },
+                // "@media (max-width: 479px)": {
+                //     body: {
+                //         minWidth: "360px",
+                //     },
+                // },
             });
         }),
     ],
