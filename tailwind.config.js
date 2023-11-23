@@ -25,7 +25,6 @@ module.exports = {
                 },
                 body: {
                     fontFamily: '"Inter", sans-serif',
-                    minWidth: "360px",
                     lineHeight: "normal",
                 },
                 main: {
@@ -36,16 +35,6 @@ module.exports = {
                     margin: "0 auto",
                     padding: "0 10px",
                 },
-                "@media (max-width: 1365px)": {
-                    body: {
-                        minWidth: "1365px",
-                    },
-                },
-                // "@media (max-width: 479px)": {
-                //     body: {
-                //         minWidth: "360px",
-                //     },
-                // },
             });
         }),
     ],
