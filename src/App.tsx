@@ -11,12 +11,11 @@ function App() {
     useEffect(() => {
         const a = document.querySelector("meta[name=viewport]");
 
-        isTablet &&
-            a?.setAttribute(
-                "content",
-                isTablet ? "width=1365, initial-scale=1" : "width=device-width, initial-scale=1",
-            );
-    }, []);
+        a?.setAttribute(
+            "content",
+            isTablet ? "width=1365, initial-scale=1" : "width=device-width, initial-scale=1",
+        );
+    });
 
     return (
         <Router>
