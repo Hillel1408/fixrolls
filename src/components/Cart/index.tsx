@@ -25,7 +25,7 @@ const Cart = () => {
         <div className="pt-[100px] sticky top-0 xl:pt-0">
             <div
                 className={classNames(
-                    "bg-white pt-6 px-6 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative",
+                    "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative",
                     cards.length > 0 ? "pb-[150px]" : "justify-between pb-6",
                 )}
             >
@@ -56,7 +56,7 @@ const Cart = () => {
                 )}
 
                 {cards.length > 0 && (
-                    <div className="flex flex-col gap-[9px] overflow-auto">
+                    <div className="scroll-bar flex flex-col gap-[9px] overflow-auto pr-3">
                         {cards.map((item: any) => (
                             <div
                                 key={item.product.id}
@@ -129,11 +129,7 @@ const Cart = () => {
                                 document.body.classList.remove("lock");
                                 dispatch(setActiveCartModal(false));
                                 if (isTablet || isDesktop) navigate(ROUTES.ORDER);
-                                else {
-                                    if (isMobile) {
-                                        dispatch(setActiveDeliveryTotalModal(true));
-                                    }
-                                }
+                                else if (isMobile) dispatch(setActiveDeliveryTotalModal(true));
                             }}
                         />
                     </div>

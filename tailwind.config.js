@@ -39,31 +39,29 @@ module.exports = {
                 ".scroll-bar": { overflowY: "auto" },
                 ".scroll-bar::-webkit-scrollbar": {
                     backgroundColor: "rgba(208,213,221,0.18)",
-                    width: "5px",
+                    width: "3px",
                 },
                 ".scroll-bar::-webkit-scrollbar-button": {
                     display: "none",
                 },
                 ".scroll-bar::-webkit-scrollbar-thumb": {
-                    backgroundColor: "#7E909F",
+                    backgroundColor: "#FFCD36",
                 },
                 ".scroll-bar::-webkit-scrollbar-track": {
                     backgroundColor: "rgba(208,213,221,0.18)",
                 },
                 ".scroll-bar::-webkit-scrollbar-thumb:hover": {
-                    backgroundColor: "#7E909F",
+                    backgroundColor: "#FFCD36",
                 },
                 ".scrollbar-hide::-webkit-scrollbar": {
                     display: "none",
                 },
                 "@media (max-width: 1365px)": {
-                    ".scroll-bar::-webkit-scrollbar": {
-                        width: "3px",
-                    },
-                },
-                "@media (max-width: 1365px)": {
                     body: {
                         minWidth: "1365px",
+                    },
+                    ".scroll-bar::-webkit-scrollbar": {
+                        width: "2px",
                     },
                 },
                 "@media (max-width: 479px)": {
