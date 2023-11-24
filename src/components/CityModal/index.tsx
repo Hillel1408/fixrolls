@@ -10,6 +10,7 @@ const CityModal = () => {
     const dispatch = useAppDispatch();
 
     const city = [
+        "Нижний Новгород",
         "Ковров",
         "Владимир",
         "Рязань",

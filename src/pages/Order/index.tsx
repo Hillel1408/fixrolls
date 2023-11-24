@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useMatchMedia } from "hooks";
 
 const Order = () => {
+    window.scrollTo(0, 0);
+
     const navigate = useNavigate();
 
     const { isMobile } = useMatchMedia();

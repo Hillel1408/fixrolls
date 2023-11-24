@@ -33,7 +33,7 @@ const Slider = () => {
                 {images.map((item, index) => (
                     <div
                         key={index}
-                        className="keen-slider__slide !min-w-[285px] sm:!min-w-[207px]"
+                        className="keen-slider__slide !min-w-[285px] sm:!min-w-[207px] cursor-pointer"
                     >
                         <img
                             className="h-[285px] object-cover w-full rounded-[20px] sm:h-[207px]"

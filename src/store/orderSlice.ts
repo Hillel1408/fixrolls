@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: { cards: any; city: string; totalCart: number; delivery: any } = {
     cards: [],
-    city: "",
+    city: "Нижний Новгород",
     totalCart: 0,
     delivery: {},
 };

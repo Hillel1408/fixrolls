@@ -1,14 +1,42 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import modalsReducer from "store/modalsSlice";
 import orderReducer from "store/orderSlice";
 
-const store = configureStore({
-    reducer: {
-        modals: modalsReducer,
-        orders: orderReducer,
-    },
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+const rootReducer = combineReducers({
+    modals: modalsReducer,
+    orders: orderReducer,
 });
 
+const persistConfig = {
+    key: "root",
+    storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
+});
+
+export const persistor = persistStore(store);
 export default store;
 
 export type RootState = ReturnType<typeof store.getState>;
