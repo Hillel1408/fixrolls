@@ -1,4 +1,10 @@
+import { useAppDispatch, useAppSelector } from "hook";
+import { addDelivery } from "store";
+
 const Delivery = () => {
+    const dispatch = useAppDispatch();
+    const delivery = useAppSelector((state) => state.orders.delivery);
+
     return (
         <div className="pt-[21px] pr-[35px] pb-[30px] pl-[18px] bg-white rounded-[32px] flex flex-col gap-[26px] sm:px-3 sm:pt-[17px] sm:pb-6">
             <ul className="flex gap-[14px] sm:gap-[5px] sm:grid sm:grid-cols-[1fr_1fr]">
@@ -35,21 +41,29 @@ const Delivery = () => {
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Кв./Офис"
+                        value={delivery.apartment}
+                        onChange={(e) => dispatch(addDelivery({ apartment: e.target.value }))}
                     />
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Домофон"
+                        value={delivery.intercom}
+                        onChange={(e) => dispatch(addDelivery({ intercom: e.target.value }))}
                     />
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Подъезд"
+                        value={delivery.entrance}
+                        onChange={(e) => dispatch(addDelivery({ entrance: e.target.value }))}
                     />
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Этаж"
+                        value={delivery.storey}
+                        onChange={(e) => dispatch(addDelivery({ storey: e.target.value }))}
                     />
                 </div>
 
@@ -57,6 +71,8 @@ const Delivery = () => {
                     type="text"
                     className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                     placeholder="Комментарий курьеру"
+                    value={delivery.commentCourier}
+                    onChange={(e) => dispatch(addDelivery({ commentCourier: e.target.value }))}
                 />
             </div>
 

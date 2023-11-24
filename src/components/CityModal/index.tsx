@@ -1,10 +1,12 @@
 import { createPortal } from "react-dom";
 import { LayoutModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveCityModal } from "store";
+import { setActiveCityModal, addCity } from "store";
+import classNames from "classnames";
 
 const CityModal = () => {
     const activeLoginModal = useAppSelector((state) => state.modals.activeCityModal);
+    const activeCity = useAppSelector((state) => state.orders.city);
     const dispatch = useAppDispatch();
 
     const city = [
@@ -38,7 +40,15 @@ const CityModal = () => {
                     {city.map((item, index) => (
                         <li
                             key={index}
-                            className="py-[17px] pl-[29px] pr-[19px] bg-[#F9F7F7] rounded-[13px] text-[16px] text-[#000] flex justify-between"
+                            className={classNames(
+                                "py-[17px] pl-[29px] pr-[19px]  rounded-[13px] text-[16px] text-[#000] flex justify-between cursor-pointer",
+                                item === activeCity ? "bg-[#FFCD36]" : "bg-[#F9F7F7]",
+                            )}
+                            onClick={() => {
+                                dispatch(addCity(item));
+                                dispatch(setActiveCityModal(false));
+                                document.body.classList.remove("lock");
+                            }}
                         >
                             {item}
                             <svg

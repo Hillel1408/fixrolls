@@ -18,21 +18,22 @@ const Cart = () => {
     const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
+    const orders = useAppSelector((state) => state.orders);
 
-    const cards = useAppSelector((state) => state.orders.cards);
+    const minSumOrder = 500 - orders.totalCart;
 
     return (
-        <div className="pt-[100px] sticky top-0 xl:pt-0">
+        <div className="sticky pt-[100px] top-0 xl:pt-0">
             <div
                 className={classNames(
                     "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative",
-                    cards.length > 0 ? "pb-[150px]" : "justify-between pb-6",
+                    orders.cards.length > 0 ? "pb-[150px]" : "justify-between pb-6",
                 )}
             >
                 <div className="flex justify-between items-center mb-[13px]">
                     <h2 className="text-[#21201F] text-[26px] font-medium">Корзина</h2>
 
-                    {cards.length > 0 && (
+                    {orders.cards.length > 0 && (
                         <button
                             className="text-[#21201F] text-[15px]"
                             onClick={() => {
@@ -44,7 +45,7 @@ const Cart = () => {
                     )}
                 </div>
 
-                {cards.length > 0 ? (
+                {orders.cards.length > 0 ? (
                     ""
                 ) : (
                     <div>
@@ -55,9 +56,9 @@ const Cart = () => {
                     </div>
                 )}
 
-                {cards.length > 0 && (
+                {orders.cards.length > 0 && (
                     <div className="scroll-bar flex flex-col gap-[9px] overflow-auto pr-3">
-                        {cards.map((item: any) => (
+                        {orders.cards.map((item: any) => (
                             <div
                                 key={item.product.id}
                                 className="grid grid-cols-[68px_1fr_86px] gap-1 items-center"
@@ -112,15 +113,26 @@ const Cart = () => {
                     </div>
                 )}
 
-                {cards.length > 0 ? (
-                    <div className="flex flex-col gap-3 items-center absolute bottom-6 left-6 right-6">
+                {orders.cards.length > 0 ? (
+                    <div className="flex flex-col gap-2 items-center absolute bottom-6 left-6 right-6">
                         <div className="flex gap-[10px] items-center">
                             <span className="text-[rgba(0,0,0,0.70)] text-[14px] font-medium">
                                 Итого:
                             </span>
 
-                            <span className="text-[#21201F] text-[30px] font-medium">1595₽</span>
+                            <span className="text-[#21201F] text-[30px] font-medium">
+                                {orders.totalCart}₽
+                            </span>
                         </div>
+                        {minSumOrder > 0 ? (
+                            <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center">
+                                {minSumOrder}₽ до бесплатной доставки
+                            </p>
+                        ) : (
+                            <p className="text-[#000] text-[12px] font-medium">
+                                Бесплатная доставка
+                            </p>
+                        )}
 
                         <Button
                             text="Продолжить"

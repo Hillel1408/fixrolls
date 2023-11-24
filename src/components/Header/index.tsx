@@ -1,9 +1,10 @@
 import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
-import { useAppDispatch } from "hook";
+import { useAppDispatch, useAppSelector } from "hook";
 import { setActiveCityModal, setActiveDeliveryAddressModal, setActiveMobileMenuModal } from "store";
 
 const Header = () => {
     const dispatch = useAppDispatch();
+    const city = useAppSelector((state) => state.orders.city);
 
     return (
         <>
@@ -25,21 +26,21 @@ const Header = () => {
                                     }}
                                 >
                                     <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
-                                        Нижний Новгород
+                                        {city ? city : "Нижний Новгород"}
                                     </span>
                                     <svg className="w-5 h-5" aria-hidden="true">
                                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                                     </svg>
                                 </button>
 
-                                <input
-                                    type="text"
-                                    placeholder="Нижний Новгород, пл. Минина, 1"
-                                    className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] placeholder:text-[16px] placeholder:text-[#21201F]"
+                                <button
+                                    className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] text-left"
                                     onClick={() => {
                                         dispatch(setActiveDeliveryAddressModal(true));
                                     }}
-                                />
+                                >
+                                    {city ? city : "Нижний Новгород"}
+                                </button>
 
                                 <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap">
                                     Зоны доставки
