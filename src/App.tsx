@@ -6,12 +6,10 @@ import { ROUTES } from "constants/";
 function App() {
     return (
         <Router>
-            <Layout>
-                <Routes>
-                    <Route path={`${ROUTES.HOME}`} element={<Main />} />
-                    <Route path={`${ROUTES.ORDER}`} element={<Order />} />
-                </Routes>
-            </Layout>
+            <Routes>
+                <Route path={`${ROUTES.HOME}`} element={<Main />} />
+                <Route path={`${ROUTES.ORDER}`} element={<Order />} />
+            </Routes>
         </Router>
     );
 }
