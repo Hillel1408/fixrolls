@@ -106,8 +106,6 @@ const Main = () => {
                 </Layout>
             ) : (
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                    <img src="/images/logo.svg" alt="" />
-
                     <ThreeDots height="40" width="40" radius="9" color="#000000" />
                 </div>
             )}
