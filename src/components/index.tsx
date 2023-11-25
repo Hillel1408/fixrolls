@@ -15,6 +15,7 @@ import MobileMenuModal from "components/MobileMenuModal";
 import CartModal from "components/CartModal";
 import Total from "components/Total";
 import DeliveryTotalModal from "components/DeliveryTotalModal";
+import OrderCart from "components/OrderCart";
 
 export {
     Layout,
@@ -34,4 +35,5 @@ export {
     CartModal,
     Total,
     DeliveryTotalModal,
+    OrderCart,
 };

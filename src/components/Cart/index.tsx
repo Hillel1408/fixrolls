@@ -73,7 +73,7 @@ const Cart = () => {
                                     <span className="text-[15px]">{item.product.name}</span>
                                     <div>
                                         <span className="text-[16px] font-medium">
-                                            {item.total}
+                                            {item.total}₽
                                         </span>
                                         <span className="text-[12px] font-medium ml-3">280 г</span>
                                     </div>

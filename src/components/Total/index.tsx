@@ -1,5 +1,5 @@
 import { Button } from "components";
-import { useAppDispatch, useAppSelector } from "hook";
+import { useAppSelector } from "hook";
 
 const Total = () => {
     const orders = useAppSelector((state) => state.orders);

@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Sidebar, Cart, Slider, Card, CardModal, CartModal, Layout } from "components";
 import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveCartModal } from "store";
-import axios from "http/axios";
+import { setActiveCartModal, getCards } from "store";
 import { ThreeDots } from "react-loader-spinner";
 
 const Main = () => {
@@ -15,24 +14,15 @@ const Main = () => {
 
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
-    const [cards, setCards] = useState([]);
+    const { cards, status } = useAppSelector((state) => state.cards);
 
     useEffect(() => {
-        (async function () {
-            try {
-                const { data } = await axios.get(
-                    "/getMenu.php?restaurantID=1591345972412718352&wid=1591345972413847051",
-                );
-                setCards(data);
-            } catch (error) {
-                console.log(error);
-            }
-        })();
+        if (cards && !(cards.length > 0)) dispatch(getCards());
     }, []);
 
     return (
         <>
-            {cards.length > 0 ? (
+            {cards && cards.length > 0 && (
                 <Layout>
                     <div className="container sm:px-0">
                         <div className="grid grid-cols-[232px_1fr_334px] rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
@@ -104,10 +94,18 @@ const Main = () => {
                         </div>
                     )}
                 </Layout>
-            ) : (
+            )}
+
+            {status === "loading" && (
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                    <ThreeDots height="40" width="40" radius="9" color="#000000" />
+                    <ThreeDots height="50" width="50" radius="9" color="#000000" />
                 </div>
+            )}
+
+            {cards === null && (
+                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                    Ошибка загрузки данных
+                </p>
             )}
         </>
     );
