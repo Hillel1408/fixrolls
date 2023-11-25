@@ -7,6 +7,8 @@ const initialState = {
     activeCardModal: false,
     activeCartModal: false,
     activeDeliveryTotalModal: false,
+
+    itemCardModal: { image: "", name: "", description: "", id: "", floatprice: "" },
 };
 
 const modalsSlice = createSlice({
@@ -31,6 +33,10 @@ const modalsSlice = createSlice({
         setActiveDeliveryTotalModal(state, action) {
             state.activeDeliveryTotalModal = action.payload;
         },
+
+        setItemCardModal(state, action) {
+            state.itemCardModal = action.payload;
+        },
     },
 });
 
@@ -41,6 +47,7 @@ export const {
     setActiveCardModal,
     setActiveCartModal,
     setActiveDeliveryTotalModal,
+    setItemCardModal,
 } = modalsSlice.actions;
 
 export default modalsSlice.reducer;

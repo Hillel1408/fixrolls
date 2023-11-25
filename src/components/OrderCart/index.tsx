@@ -2,12 +2,20 @@ import { useAppDispatch, useAppSelector } from "hook";
 import { resetCart, addCard, deleteCard } from "store";
 import { ROUTES } from "constants/";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useMatchMedia } from "hooks";
 
 const OrderCart = () => {
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
 
     const navigate = useNavigate();
+
+    const { isMobile } = useMatchMedia();
+
+    useEffect(() => {
+        (orders.cards.length === 0 || isMobile) && navigate(ROUTES.HOME);
+    }, [orders, navigate, isMobile]);
 
     return (
         <div className="mt-[23px] bg-white rounded-[30px] py-[32px] pl-[36px] pr-[17px] flex flex-col gap-6 sm:hidden">
