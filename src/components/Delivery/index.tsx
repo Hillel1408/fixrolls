@@ -12,6 +12,7 @@ const Delivery = () => {
                     <span className="text-[#21201F] text-[20px] font-medium sm:text-[16px]">
                         Доставка{" "}
                     </span>
+
                     <span className="text-[#767676] text-[16px] sm:hidden">≈ 60 мин</span>
                 </li>
 
@@ -19,6 +20,7 @@ const Delivery = () => {
                     <span className="text-[#21201F] text-[20px] font-medium sm:text-[16px]">
                         С собой
                     </span>
+
                     <span className="px-1 py-[10px] rounded-[11px] bg-[#6f6e6d] text-white sm:text-[14px]">
                         15%
                     </span>
@@ -44,6 +46,7 @@ const Delivery = () => {
                         value={delivery.apartment}
                         onChange={(e) => dispatch(addDelivery({ apartment: e.target.value }))}
                     />
+
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
@@ -51,6 +54,7 @@ const Delivery = () => {
                         value={delivery.intercom}
                         onChange={(e) => dispatch(addDelivery({ intercom: e.target.value }))}
                     />
+
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
@@ -58,6 +62,7 @@ const Delivery = () => {
                         value={delivery.entrance}
                         onChange={(e) => dispatch(addDelivery({ entrance: e.target.value }))}
                     />
+
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"

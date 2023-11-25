@@ -45,9 +45,7 @@ const Cart = () => {
                     )}
                 </div>
 
-                {orders.cards.length > 0 ? (
-                    ""
-                ) : (
+                {!(orders.cards.length > 0) && (
                     <div>
                         <img className="mx-auto" src="/images/img-1.png" alt="" />
                         <p className="text-[#21201F] opacity-50 text-center mt-3">
@@ -124,6 +122,7 @@ const Cart = () => {
                                 {orders.totalCart}₽
                             </span>
                         </div>
+
                         {minSumOrder > 0 ? (
                             <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center">
                                 {minSumOrder}₽ до бесплатной доставки

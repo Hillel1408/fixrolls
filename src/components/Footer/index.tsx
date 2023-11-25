@@ -4,6 +4,24 @@ import { Link, useLocation } from "react-router-dom";
 const Footer = () => {
     const location = useLocation();
 
+    const navLinks = [
+        [
+            { text: "Пользовательское соглашение об условиях доставки", link: "/" },
+            { text: "Состав и калорийность", link: "/" },
+            { text: "Политика конфиденциальности", link: "/" },
+        ],
+        [
+            { text: "Правила бонусной системы", link: "/" },
+            { text: "Франшиза", link: "/" },
+            { text: "Контакты", link: "/" },
+        ],
+    ];
+
+    const socialItems = [
+        { icon: "telegram", href: "#" },
+        { icon: "vk", href: "#" },
+    ];
+
     return (
         <footer className="bg-[#F2F2F2]">
             <div
@@ -27,31 +45,15 @@ const Footer = () => {
                         </div>
 
                         <div className="flex justify-between mb-11 text-[rgba(33,32,31,0.82)] text-[16px] font-medium gap-5 sm:flex-col sm:mb-0">
-                            <ul className="max-w-[290px] flex flex-col gap-[14px]">
-                                <li>
-                                    <Link to="/">
-                                        Пользовательское соглашение об условиях доставки
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Состав и калорийность</Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Политика конфиденциальности</Link>
-                                </li>
-                            </ul>
-
-                            <ul className="max-w-[290px] flex flex-col gap-[14px]">
-                                <li>
-                                    <Link to="/">Правила бонусной системы</Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Франшиза</Link>
-                                </li>
-                                <li>
-                                    <Link to="/">Контакты</Link>
-                                </li>
-                            </ul>
+                            {navLinks.map((ul, index) => (
+                                <ul key={index} className="max-w-[290px] flex flex-col gap-[14px]">
+                                    {ul.map((li, index) => (
+                                        <li key={index}>
+                                            <Link to={li.link}>{li.text}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ))}
                         </div>
 
                         <div className="sm:hidden">
@@ -99,26 +101,20 @@ const Footer = () => {
                         </div>
 
                         <ul className="flex gap-2">
-                            <li>
-                                <Link
-                                    to="#"
-                                    className="w-[66px] h-[66px] bg-white flex justify-center items-center rounded-[20px]"
-                                >
-                                    <svg className="w-5 h-5" aria-hidden="true">
-                                        <use xlinkHref="/sprites/sprite.svg#telegram"></use>
-                                    </svg>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="#"
-                                    className="w-[66px] h-[66px] bg-white flex justify-center items-center rounded-[20px]"
-                                >
-                                    <svg className="w-5 h-5" aria-hidden="true">
-                                        <use xlinkHref="/sprites/sprite.svg#vk"></use>
-                                    </svg>
-                                </Link>
-                            </li>
+                            {socialItems.map((item, index) => (
+                                <li key={index}>
+                                    <Link
+                                        to={item.href}
+                                        className="w-[66px] h-[66px] bg-white flex justify-center items-center rounded-[20px]"
+                                    >
+                                        <svg className="w-5 h-5" aria-hidden="true">
+                                            <use
+                                                xlinkHref={`/sprites/sprite.svg#${item.icon}`}
+                                            ></use>
+                                        </svg>
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 

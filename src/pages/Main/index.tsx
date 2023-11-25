@@ -82,6 +82,7 @@ const Main = () => {
                                     <svg className="h-[20px] w-[22px] fill-none" aria-hidden="true">
                                         <use xlinkHref="/sprites/sprite.svg#cart"></use>
                                     </svg>
+
                                     <span className="text-[#21201F] text-[12px] ml-4">
                                         {orders.cards.length} товар
                                     </span>
