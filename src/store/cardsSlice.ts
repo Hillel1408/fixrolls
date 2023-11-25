@@ -11,7 +11,7 @@ export const getCards = createAsyncThunk(
 
             return data;
         } catch (error: any) {
-            console.log(error);
+            console.log(error.message);
             return rejectWithValue(error.message);
         }
     },
@@ -38,6 +38,11 @@ const cardsSlice = createSlice({
         [getCards.fulfilled]: (state, action) => {
             state.status = "resolved";
             state.cards = action.payload;
+        },
+        //@ts-ignore
+        [getCards.rejected]: (state, action) => {
+            state.status = "rejected";
+            state.error = action.payload;
         },
     },
 });

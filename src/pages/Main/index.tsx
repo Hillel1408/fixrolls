@@ -14,15 +14,15 @@ const Main = () => {
 
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
-    const { cards, status } = useAppSelector((state) => state.cards);
+    const { cards, error } = useAppSelector((state) => state.cards);
 
     useEffect(() => {
-        if (cards && !(cards.length > 0)) dispatch(getCards());
+        dispatch(getCards());
     }, []);
 
     return (
         <>
-            {cards && cards.length > 0 && (
+            {cards.length > 0 ? (
                 <Layout>
                     <div className="container sm:px-0">
                         <div className="grid grid-cols-[232px_1fr_334px] rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
@@ -94,18 +94,14 @@ const Main = () => {
                         </div>
                     )}
                 </Layout>
-            )}
-
-            {status === "loading" && (
+            ) : error ? (
+                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                    {error}
+                </p>
+            ) : (
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
                     <ThreeDots height="50" width="50" radius="9" color="#000000" />
                 </div>
-            )}
-
-            {cards === null && (
-                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                    Ошибка загрузки данных
-                </p>
             )}
         </>
     );
