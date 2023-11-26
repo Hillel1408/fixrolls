@@ -1,13 +1,75 @@
+// @ts-nocheck
+import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveModal } from "store";
+import { GeolocationControl, Map, ZoomControl } from "@pbe/react-yandex-maps";
 
 const DeliveryAddressModal = () => {
     const activeModal = useAppSelector((state) => state.modals.activeModal);
+    const city = useAppSelector((state) => state.orders.city);
     const dispatch = useAppDispatch();
 
     activeModal === "delivery-address" && document.body.classList.add("lock");
+
+    const mapOptions = {
+        modules: ["geocode", "SuggestView"],
+        defaultOptions: { suppressMapOpenBlock: true },
+    };
+
+    const initialState = {
+        title: "",
+        center: [55.749451, 37.542824],
+        zoom: 12,
+    };
+
+    const geolocationOptions = {
+        defaultOptions: { maxWidth: 128 },
+        defaultData: { content: "Determine" },
+    };
+
+    const [state, setState] = useState({ ...initialState });
+    const [mapConstructor, setMapConstructor] = useState(null);
+    const mapRef = useRef(null);
+    const searchRef = useRef(null);
+
+    useEffect(() => {
+        if (mapConstructor) {
+            new mapConstructor.SuggestView(searchRef.current).events.add("select", function (e) {
+                const selectedName = e.get("item").value;
+                mapConstructor.geocode(selectedName).then((result) => {
+                    const newCoords = result.geoObjects.get(0).geometry.getCoordinates();
+                    setState((prevState) => ({ ...prevState, center: newCoords }));
+                });
+            });
+        }
+    }, [mapConstructor]);
+
+    const handleSubmit = () => {
+        console.log({ title: state.title, center: mapRef.current.getCenter() });
+    };
+
+    const handleReset = () => {
+        setState({ ...initialState });
+        searchRef.current.value = "";
+        mapRef.current.setCenter(initialState.center);
+        mapRef.current.setZoom(initialState.zoom);
+    };
+
+    const handleBoundsChange = (e) => {
+        const newCoords = mapRef.current.getCenter();
+        mapConstructor.geocode(newCoords).then((res) => {
+            const nearest = res.geoObjects.get(0);
+            const foundAddress = nearest.properties.get("text");
+            const [centerX, centerY] = nearest.geometry.getCoordinates();
+            const [initialCenterX, initialCenterY] = initialState.center;
+            if (centerX !== initialCenterX && centerY !== initialCenterY) {
+                setState((prevState) => ({ ...prevState, title: foundAddress }));
+                searchRef.current.value = foundAddress;
+            }
+        });
+    };
 
     return createPortal(
         <LayoutModal
@@ -38,28 +100,41 @@ const DeliveryAddressModal = () => {
                             <svg className="w-4 h-4 absolute left-[18px]" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#location"></use>
                             </svg>
-
                             <input
+                                ref={searchRef}
                                 type="text"
                                 className="h-14 bg-[#F9F7F7] rounded-[13px] w-full px-12 text-[#000] text-[16px]"
                             />
 
-                            <button className="absolute right-[18px]">
+                            <button className="absolute right-[18px]" onClick={handleReset}>
                                 <svg className="w-[14px] h-[14px]" aria-hidden="true">
                                     <use xlinkHref="/sprites/sprite.svg#close"></use>
                                 </svg>
                             </button>
                         </div>
 
-                        <Button text="Выбрать адрес" className="h-[56px] w-full" />
+                        <Button
+                            text="Выбрать адрес"
+                            className="h-[56px] w-full"
+                            clickHandler={() => {
+                                handleSubmit();
+                            }}
+                        />
                     </div>
 
                     <div className="mt-[13px] sm:mt-0">
-                        <img
-                            className="w-full h-[350px] object-cover sm:h-[550px]"
-                            src="/images/map.jpg"
-                            alt=""
-                        />
+                        <Map
+                            {...mapOptions}
+                            state={state}
+                            onLoad={setMapConstructor}
+                            onBoundsChange={handleBoundsChange}
+                            instanceRef={mapRef}
+                            className="w-full h-[350px] sm:h-[550px] relative"
+                        >
+                            <p className="absolute top-1/2 left-1/2 z-10">123</p>
+                            <GeolocationControl {...geolocationOptions} />
+                            <ZoomControl />
+                        </Map>
                     </div>
                 </div>
             </>
