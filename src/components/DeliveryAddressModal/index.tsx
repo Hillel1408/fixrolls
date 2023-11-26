@@ -1,23 +1,21 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveDeliveryAddressModal } from "store";
+import { setActiveModal } from "store";
 
 const DeliveryAddressModal = () => {
-    const activeDeliveryAddressModal = useAppSelector(
-        (state) => state.modals.activeDeliveryAddressModal,
-    );
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
     const dispatch = useAppDispatch();
 
-    activeDeliveryAddressModal && document.body.classList.add("lock");
+    activeModal === "delivery-address" && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="px-[22px] pt-[26px] pb-[22px] w-[817px] sm:p-0 sm:w-full"
             closeModal={() => {
-                dispatch(setActiveDeliveryAddressModal(false));
+                dispatch(setActiveModal(""));
             }}
-            active={activeDeliveryAddressModal}
+            active={activeModal === "delivery-address"}
         >
             <>
                 <div className="flex items-center pr-[110px] justify-between mb-[78px] sm:pr-0 sm:mb-0 sm:absolute sm:top-[78px] sm:left-1/2 sm:-translate-x-1/2">

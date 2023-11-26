@@ -1,4 +1,4 @@
-import { Header, Footer } from "components";
+import { Header, Footer, Modal404 } from "components";
 
 const Layout = ({ children }: { children: any }) => {
     return (
@@ -6,6 +6,8 @@ const Layout = ({ children }: { children: any }) => {
             <Header />
             <main className="bg-[#F2F2F2]">{children}</main>
             <Footer />
+
+            <Modal404 />
         </>
     );
 };

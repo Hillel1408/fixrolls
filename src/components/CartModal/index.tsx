@@ -1,21 +1,21 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Cart } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveCartModal } from "store";
+import { setActiveModal } from "store";
 
 const CartModal = () => {
-    const activeCartModal = useAppSelector((state) => state.modals.activeCartModal);
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
     const dispatch = useAppDispatch();
 
-    activeCartModal && document.body.classList.add("lock");
+    activeModal === "cart" && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="p-[25px] pt-[29px] w-[478px] sm:p-5 sm:pt-7 sm:w-full"
             closeModal={() => {
-                dispatch(setActiveCartModal(false));
+                dispatch(setActiveModal(""));
             }}
-            active={activeCartModal}
+            active={activeModal === "cart"}
         >
             <Cart />
         </LayoutModal>,

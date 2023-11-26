@@ -1,8 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: { cards: any; city: string; totalCart: number; delivery: any } = {
+const initialState: {
+    cards: any;
+    city: { name: string; restaurantID: string; wid: string };
+    totalCart: number;
+    delivery: any;
+} = {
     cards: [],
-    city: "Нижний Новгород",
+    city: { name: "Владимир", restaurantID: "1642154196437770364", wid: "1642154196451843135" },
     totalCart: 0,
     delivery: {},
 };

@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { Sidebar, Cart, Slider, Card, CardModal, CartModal, Layout } from "components";
 import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveCartModal, getCards } from "store";
+import { setActiveModal, getCards } from "store";
 import { ThreeDots } from "react-loader-spinner";
 
 const Main = () => {
-    const activeCartModal = useAppSelector((state) => state.modals.activeCartModal);
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
     const orders = useAppSelector((state) => state.orders);
     const dispatch = useAppDispatch();
 
@@ -17,12 +17,12 @@ const Main = () => {
     const { cards, error } = useAppSelector((state) => state.cards);
 
     useEffect(() => {
-        dispatch(getCards());
-    }, []);
+        dispatch(getCards(orders.city));
+    }, [orders.city, dispatch]);
 
     return (
         <>
-            {cards.length > 0 ? (
+            {cards?.length > 0 ? (
                 <Layout>
                     <div className="container sm:px-0">
                         <div className="grid grid-cols-[232px_1fr_334px] rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
@@ -61,39 +61,44 @@ const Main = () => {
 
                     <CardModal />
 
-                    {(isMobile || isTablet) && !activeCartModal && orders.cards.length > 0 && (
-                        <div className="flex py-3 px-7 bg-white items-center fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[14px]">
-                            {minSumOrder > 0 ? (
-                                <p className="p-[10px] text-[14px] text-[#000] border border-[#6C6C6C] rounded-2xl max-w-[190px]">
-                                    <span className="font-semibold">{minSumOrder}₽</span> до
-                                    бесплатной доставки
-                                </p>
-                            ) : (
-                                <p className="text-[14px] text-[#000]">Бесплатная доставка</p>
-                            )}
+                    {(isMobile || isTablet) &&
+                        !(activeModal === "cart") &&
+                        orders.cards.length > 0 && (
+                            <div className="flex py-3 px-7 bg-white items-center fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[14px]">
+                                {minSumOrder > 0 ? (
+                                    <p className="p-[10px] text-[14px] text-[#000] border border-[#6C6C6C] rounded-2xl max-w-[190px]">
+                                        <span className="font-semibold">{minSumOrder}₽</span> до
+                                        бесплатной доставки
+                                    </p>
+                                ) : (
+                                    <p className="text-[14px] text-[#000]">Бесплатная доставка</p>
+                                )}
 
-                            <button
-                                className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14"
-                                onClick={() => {
-                                    dispatch(setActiveCartModal(true));
-                                }}
-                            >
-                                <span className="flex items-center">
-                                    <svg className="h-[20px] w-[22px] fill-none" aria-hidden="true">
-                                        <use xlinkHref="/sprites/sprite.svg#cart"></use>
-                                    </svg>
+                                <button
+                                    className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14"
+                                    onClick={() => {
+                                        dispatch(setActiveModal("cart"));
+                                    }}
+                                >
+                                    <span className="flex items-center">
+                                        <svg
+                                            className="h-[20px] w-[22px] fill-none"
+                                            aria-hidden="true"
+                                        >
+                                            <use xlinkHref="/sprites/sprite.svg#cart"></use>
+                                        </svg>
 
-                                    <span className="text-[#21201F] text-[12px] ml-4">
-                                        {orders.cards.length} товар
+                                        <span className="text-[#21201F] text-[12px] ml-4">
+                                            {orders.cards.length} товар
+                                        </span>
                                     </span>
-                                </span>
 
-                                <span className="text-[#21201F] text-[24px] font-medium">
-                                    {orders.totalCart}₽
-                                </span>
-                            </button>
-                        </div>
-                    )}
+                                    <span className="text-[#21201F] text-[24px] font-medium">
+                                        {orders.totalCart}₽
+                                    </span>
+                                </button>
+                            </div>
+                        )}
                 </Layout>
             ) : error ? (
                 <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">

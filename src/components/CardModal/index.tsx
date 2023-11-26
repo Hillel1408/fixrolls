@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveCardModal, addCard, deleteCard } from "store";
+import { setActiveModal, addCard, deleteCard } from "store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "constants/";
 import classNames from "classnames";
@@ -15,7 +15,7 @@ const CardModal = () => {
     const card =
         cards[cards.findIndex((card: any) => card.product.id === modals.itemCardModal.id)] || 0;
 
-    modals.activeCardModal && document.body.classList.add("lock");
+    modals.activeModal === "card" && document.body.classList.add("lock");
 
     const navigate = useNavigate();
 
@@ -23,9 +23,9 @@ const CardModal = () => {
         <LayoutModal
             className="p-[15px] w-[1000px] sm:p-0"
             closeModal={() => {
-                dispatch(setActiveCardModal(false));
+                dispatch(setActiveModal(""));
             }}
-            active={modals.activeCardModal}
+            active={modals.activeModal === "card"}
         >
             <div className="grid grid-cols-[1fr_1fr] gap-[25px] sm:grid-cols-[1fr] sm:gap-0">
                 <div className="bg-[#f2f2f2] h-[473px] rounded-[44px] sm:rounded-none sm:h-[350px]">
@@ -51,7 +51,7 @@ const CardModal = () => {
                             </p>
                             <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
                                 {modals.itemCardModal.description.split(";").map((item, index) => (
-                                    <li>{item}</li>
+                                    <li key={index}>{item}</li>
                                 ))}
                             </ol>
                         </div>
@@ -62,7 +62,10 @@ const CardModal = () => {
                             </p>
                             <div className="grid grid-cols-[1fr_1fr_1fr_1fr]">
                                 {new Array(4).fill("").map((item, index) => (
-                                    <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
+                                    <div
+                                        key={index}
+                                        className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium"
+                                    >
                                         <span>Белки</span>
                                         <span>53 г</span>
                                     </div>
@@ -121,7 +124,7 @@ const CardModal = () => {
                             clickHandler={() => {
                                 if (card.count > 0) {
                                     document.body.classList.remove("lock");
-                                    dispatch(setActiveCardModal(false));
+                                    dispatch(setActiveModal(""));
                                     navigate(ROUTES.ORDER);
                                 } else dispatch(addCard(modals.itemCardModal));
                             }}

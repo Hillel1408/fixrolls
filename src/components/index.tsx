@@ -16,6 +16,8 @@ import CartModal from "components/CartModal";
 import Total from "components/Total";
 import DeliveryTotalModal from "components/DeliveryTotalModal";
 import OrderCart from "components/OrderCart";
+import PromotionModal from "components/PromotionModal";
+import Modal404 from "components/Modal404";
 
 export {
     Layout,
@@ -36,4 +38,6 @@ export {
     Total,
     DeliveryTotalModal,
     OrderCart,
+    PromotionModal,
+    Modal404,
 };

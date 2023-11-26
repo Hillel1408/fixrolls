@@ -1,23 +1,21 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Delivery, Total } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveDeliveryTotalModal } from "store";
+import { setActiveModal } from "store";
 
 const DeliveryTotalModal = () => {
-    const activeDeliveryTotalModal = useAppSelector(
-        (state) => state.modals.activeDeliveryTotalModal,
-    );
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
     const dispatch = useAppDispatch();
 
-    activeDeliveryTotalModal && document.body.classList.add("lock");
+    activeModal === "delivery-total" && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="pt-[59px] w-[478px] sm:w-full"
             closeModal={() => {
-                dispatch(setActiveDeliveryTotalModal(false));
+                dispatch(setActiveModal(""));
             }}
-            active={activeDeliveryTotalModal}
+            active={activeModal === "delivery-total"}
         >
             <>
                 <Delivery />

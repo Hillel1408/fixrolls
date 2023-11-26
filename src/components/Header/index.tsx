@@ -1,6 +1,6 @@
 import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
 import { useAppDispatch, useAppSelector } from "hook";
-import { setActiveCityModal, setActiveDeliveryAddressModal, setActiveMobileMenuModal } from "store";
+import { setActiveModal } from "store";
 
 const Header = () => {
     const dispatch = useAppDispatch();
@@ -22,11 +22,11 @@ const Header = () => {
                                 <button
                                     className="flex items-center text-left"
                                     onClick={() => {
-                                        dispatch(setActiveCityModal(true));
+                                        dispatch(setActiveModal("city"));
                                     }}
                                 >
                                     <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
-                                        {city ? city : "Нижний Новгород"}
+                                        {city.name}
                                     </span>
                                     <svg className="w-5 h-5" aria-hidden="true">
                                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
@@ -36,10 +36,10 @@ const Header = () => {
                                 <button
                                     className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] text-left"
                                     onClick={() => {
-                                        dispatch(setActiveDeliveryAddressModal(true));
+                                        dispatch(setActiveModal("delivery-address"));
                                     }}
                                 >
-                                    {city ? city : "Нижний Новгород"}
+                                    {city.name}
                                 </button>
 
                                 <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap">
@@ -55,7 +55,12 @@ const Header = () => {
                             </a>
                         </div>
 
-                        <button className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] mx-4 items-center justify-center gap-[10px] sm:hidden">
+                        <button
+                            className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] mx-4 items-center justify-center gap-[10px] sm:hidden"
+                            onClick={() => {
+                                dispatch(setActiveModal("404"));
+                            }}
+                        >
                             <svg className="w-5 h-5" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#person"></use>
                             </svg>
@@ -65,7 +70,7 @@ const Header = () => {
                         <button
                             className="hidden sm:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center"
                             onClick={() => {
-                                dispatch(setActiveCityModal(true));
+                                dispatch(setActiveModal("city"));
                             }}
                         >
                             Выбрать адрес
@@ -77,7 +82,7 @@ const Header = () => {
                         <button
                             className="hidden sm:block"
                             onClick={() => {
-                                dispatch(setActiveMobileMenuModal(true));
+                                dispatch(setActiveModal("mobile-menu"));
                             }}
                         >
                             <svg className="w-[17px] h-3" aria-hidden="true">

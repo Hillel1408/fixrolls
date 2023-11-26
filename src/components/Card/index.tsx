@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "hook";
-import { setActiveCardModal, addCard, deleteCard, setItemCardModal } from "store";
+import { setActiveModal, addCard, deleteCard, setItemCardModal } from "store";
 
 const Card = ({ item }: { item: any }) => {
     const { name, image, floatprice } = item;
@@ -13,7 +13,7 @@ const Card = ({ item }: { item: any }) => {
         <div
             className="px-2 pt-[6px] pb-[15px] bg-white rounded-[21px] flex flex-col sm:p-[6px] cursor-pointer"
             onClick={() => {
-                dispatch(setActiveCardModal(true));
+                dispatch(setActiveModal("card"));
                 dispatch(setItemCardModal(item));
             }}
         >

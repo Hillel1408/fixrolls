@@ -3,13 +3,7 @@ import { useMatchMedia } from "hooks";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "constants/";
 import { useAppDispatch, useAppSelector } from "hook";
-import {
-    setActiveDeliveryTotalModal,
-    setActiveCartModal,
-    resetCart,
-    addCard,
-    deleteCard,
-} from "store";
+import { setActiveModal, resetCart, addCard, deleteCard } from "store";
 import classNames from "classnames";
 
 const Cart = () => {
@@ -138,9 +132,8 @@ const Cart = () => {
                             className="h-[56px] w-full"
                             clickHandler={() => {
                                 document.body.classList.remove("lock");
-                                dispatch(setActiveCartModal(false));
                                 if (isTablet || isDesktop) navigate(ROUTES.ORDER);
-                                else if (isMobile) dispatch(setActiveDeliveryTotalModal(true));
+                                else if (isMobile) dispatch(setActiveModal("delivery-total"));
                             }}
                         />
                     </div>

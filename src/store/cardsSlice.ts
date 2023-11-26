@@ -3,10 +3,10 @@ import axios from "http/axios";
 
 export const getCards = createAsyncThunk(
     "cards/fetchCards",
-    async function (_, { rejectWithValue }) {
+    async function (params: { restaurantID: string; wid: string }, { rejectWithValue }) {
         try {
             const { data } = await axios.get(
-                "/getMenu.php?restaurantID=1591345972412718352&wid=1591345972413847051",
+                `/getMenu.php?restaurantID=${params.restaurantID}&wid=${params.wid}`,
             );
 
             return data;
