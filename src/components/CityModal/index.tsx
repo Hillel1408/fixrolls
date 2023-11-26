@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { LayoutModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveModal, addCity, resetCart } from "store";
+import { setActiveModal, addCity, resetStore } from "store";
 import classNames from "classnames";
 
 const CityModal = () => {
@@ -14,13 +14,15 @@ const CityModal = () => {
             name: "Алатырь",
             restaurantID: "1656087162764067438",
             wid: "1656087162769125139",
-            center: [54.84052599999494, 46.59194899999997],
+            center: [54.84072414519224, 46.59023238623043],
+            title: "Чувашская Республика, Алатырь",
         },
         {
             name: "Владимир",
             restaurantID: "1642154196437770364",
             wid: "1642154196451843135",
             center: [56.129056999993274, 40.40663499999998],
+            title: "Владимир, Большая Московская улица",
         },
         { name: "Вологда", restaurantID: "1642154196591368568", wid: "1642154196597661641" },
         { name: "Димитровград", restaurantID: "1639902905223745909", wid: "1639902905220073019" },
@@ -63,7 +65,7 @@ const CityModal = () => {
                             )}
                             onClick={() => {
                                 dispatch(addCity(item));
-                                dispatch(resetCart(""));
+                                dispatch(resetStore());
                                 dispatch(setActiveModal(""));
                                 document.body.classList.remove("lock");
                             }}

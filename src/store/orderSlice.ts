@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: {
     cards: any;
-    city: { name: string; restaurantID: string; wid: string; center: number[] };
+    city: { name: string; restaurantID: string; wid: string; center: number[]; title: string };
     totalCart: number;
     delivery: any;
 } = {
@@ -12,6 +12,7 @@ const initialState: {
         restaurantID: "1642154196437770364",
         wid: "1642154196451843135",
         center: [56.129056999993274, 40.40663499999998],
+        title: "Владимир, Большая Московская улица",
     },
     totalCart: 0,
     delivery: {},
@@ -62,9 +63,16 @@ const orderSlice = createSlice({
         addDelivery(state, action) {
             state.delivery = { ...state.delivery, ...action.payload };
         },
+
+        resetStore: (state) => {
+            state.cards = [];
+            state.totalCart = 0;
+            state.delivery = {};
+        },
     },
 });
 
-export const { addCard, deleteCard, resetCart, addCity, addDelivery } = orderSlice.actions;
+export const { addCard, deleteCard, resetCart, addCity, addDelivery, resetStore } =
+    orderSlice.actions;
 
 export default orderSlice.reducer;

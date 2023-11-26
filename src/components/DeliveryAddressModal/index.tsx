@@ -3,12 +3,12 @@ import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveModal } from "store";
+import { setActiveModal, addDelivery } from "store";
 import { GeolocationControl, Map, ZoomControl } from "@pbe/react-yandex-maps";
 
 const DeliveryAddressModal = () => {
     const activeModal = useAppSelector((state) => state.modals.activeModal);
-    const city = useAppSelector((state) => state.orders.city);
+    const orders = useAppSelector((state) => state.orders);
     const dispatch = useAppDispatch();
 
     activeModal === "delivery-address" && document.body.classList.add("lock");
@@ -19,8 +19,8 @@ const DeliveryAddressModal = () => {
     };
 
     const initialState = {
-        title: "",
-        center: [55.749451, 37.542824],
+        title: orders.delivery.adresse?.title || orders.city.title,
+        center: orders.delivery.adresse?.center || orders.city.center,
         zoom: 12,
     };
 
@@ -34,6 +34,38 @@ const DeliveryAddressModal = () => {
     const mapRef = useRef(null);
     const searchRef = useRef(null);
 
+    const handleSubmit = () => {
+        dispatch(
+            addDelivery({ adresse: { title: state.title, center: mapRef.current.getCenter() } }),
+        );
+    };
+
+    const handleReset = () => {
+        mapRef.current.setCenter(orders.city.center);
+        mapRef.current.setZoom(12);
+    };
+
+    const handleBoundsChange = (e) => {
+        const newCoords = mapRef.current.getCenter();
+
+        mapConstructor.geocode(newCoords).then((res) => {
+            const nearest = res.geoObjects.get(0);
+            const foundAddress = nearest.properties.get("text");
+            const [centerX, centerY] = nearest.geometry.getCoordinates();
+            const [initialCenterX, initialCenterY] = initialState.center;
+
+            if (centerX !== initialCenterX && centerY !== initialCenterY) {
+                setState((prevState) => ({ ...prevState, title: foundAddress }));
+                searchRef.current.value = foundAddress;
+            }
+        });
+    };
+
+    useEffect(() => {
+        if (searchRef.current)
+            searchRef.current.value = orders.delivery.adresse?.title || orders.city.title;
+    }, [searchRef]);
+
     useEffect(() => {
         if (mapConstructor) {
             new mapConstructor.SuggestView(searchRef.current).events.add("select", function (e) {
@@ -45,31 +77,6 @@ const DeliveryAddressModal = () => {
             });
         }
     }, [mapConstructor]);
-
-    const handleSubmit = () => {
-        console.log({ title: state.title, center: mapRef.current.getCenter() });
-    };
-
-    const handleReset = () => {
-        setState({ ...initialState });
-        searchRef.current.value = "";
-        mapRef.current.setCenter(initialState.center);
-        mapRef.current.setZoom(initialState.zoom);
-    };
-
-    const handleBoundsChange = (e) => {
-        const newCoords = mapRef.current.getCenter();
-        mapConstructor.geocode(newCoords).then((res) => {
-            const nearest = res.geoObjects.get(0);
-            const foundAddress = nearest.properties.get("text");
-            const [centerX, centerY] = nearest.geometry.getCoordinates();
-            const [initialCenterX, initialCenterY] = initialState.center;
-            if (centerX !== initialCenterX && centerY !== initialCenterY) {
-                setState((prevState) => ({ ...prevState, title: foundAddress }));
-                searchRef.current.value = foundAddress;
-            }
-        });
-    };
 
     return createPortal(
         <LayoutModal
@@ -100,6 +107,7 @@ const DeliveryAddressModal = () => {
                             <svg className="w-4 h-4 absolute left-[18px]" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#location"></use>
                             </svg>
+
                             <input
                                 ref={searchRef}
                                 type="text"
@@ -118,6 +126,8 @@ const DeliveryAddressModal = () => {
                             className="h-[56px] w-full"
                             clickHandler={() => {
                                 handleSubmit();
+                                dispatch(setActiveModal(""));
+                                document.body.classList.remove("lock");
                             }}
                         />
                     </div>
@@ -132,7 +142,9 @@ const DeliveryAddressModal = () => {
                             className="w-full h-[350px] sm:h-[550px] relative"
                         >
                             <p className="absolute top-1/2 left-1/2 z-10">123</p>
+
                             <GeolocationControl {...geolocationOptions} />
+
                             <ZoomControl />
                         </Map>
                     </div>

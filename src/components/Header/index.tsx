@@ -4,7 +4,8 @@ import { setActiveModal } from "store";
 
 const Header = () => {
     const dispatch = useAppDispatch();
-    const city = useAppSelector((state) => state.orders.city);
+    const orders = useAppSelector((state) => state.orders);
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
 
     return (
         <>
@@ -26,7 +27,7 @@ const Header = () => {
                                     }}
                                 >
                                     <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
-                                        {city.name}
+                                        {orders.city.name}
                                     </span>
                                     <svg className="w-5 h-5" aria-hidden="true">
                                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
@@ -39,7 +40,7 @@ const Header = () => {
                                         dispatch(setActiveModal("delivery-address"));
                                     }}
                                 >
-                                    {city.name}
+                                    {orders.delivery.adresse?.title || "Выберите адресс доставки"}
                                 </button>
 
                                 <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap">
@@ -95,7 +96,7 @@ const Header = () => {
 
             <CityModal />
 
-            <DeliveryAddressModal />
+            {activeModal === "delivery-address" && <DeliveryAddressModal />}
 
             <MobileMenuModal />
         </>
