@@ -18,7 +18,7 @@ const Main = () => {
 
     useEffect(() => {
         dispatch(getCards(orders.city));
-    }, [orders.city, dispatch]);
+    }, [orders.city]);
 
     return (
         <>
