@@ -17,7 +17,11 @@ const Card = ({ item }: { item: any }) => {
                 dispatch(setItemCardModal(item));
             }}
         >
-            <img className="h-[195px] object-cover w-full sm:h-[144px]" src={image} alt="" />
+            <img
+                className="h-[195px] object-cover w-full sm:h-[144px]"
+                src={image.replace("http://89.248.201.151", "https://fiksroll.ru")}
+                alt=""
+            />
 
             <div className="px-2 sm:px-[6px] mb-[10px] flex flex-col flex-auto">
                 <h3 className="text-[#21201F] text-[18px] font-medium sm:text-[14px]">{name}</h3>
