@@ -55,11 +55,11 @@ const Main = () => {
 
                             {isDesktop && <Cart />}
 
-                            {(isMobile || isTablet) && <CartModal />}
+                            {(isMobile || isTablet) && activeModal === "cart" && <CartModal />}
                         </div>
                     </div>
 
-                    <CardModal />
+                    {activeModal === "card" && <CardModal />}
 
                     {(isMobile || isTablet) &&
                         !(activeModal === "cart") &&

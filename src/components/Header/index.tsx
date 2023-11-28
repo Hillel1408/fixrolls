@@ -94,11 +94,11 @@ const Header = () => {
                 </div>
             </header>
 
-            <CityModal />
+            {activeModal === "city" && <CityModal />}
 
             {activeModal === "delivery-address" && <DeliveryAddressModal />}
 
-            <MobileMenuModal />
+            {activeModal === "mobile-menu" && <MobileMenuModal />}
         </>
     );
 };

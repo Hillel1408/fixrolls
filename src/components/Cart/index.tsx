@@ -13,6 +13,7 @@ const Cart = () => {
 
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
 
     const minSumOrder = 500 - orders.totalCart;
 
@@ -144,7 +145,7 @@ const Cart = () => {
                 )}
             </div>
 
-            {isMobile && <DeliveryTotalModal />}
+            {isMobile && activeModal === "delivery-total" && <DeliveryTotalModal />}
         </div>
     );
 };
