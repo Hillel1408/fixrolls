@@ -62,14 +62,10 @@ const DeliveryAddressModal = () => {
     };
 
     useEffect(() => {
-        if (searchRef.current)
-            searchRef.current.value = orders.delivery.adresse?.title || orders.city.title;
-    }, [searchRef]);
-
-    useEffect(() => {
         if (mapConstructor) {
             new mapConstructor.SuggestView(searchRef.current).events.add("select", function (e) {
                 const selectedName = e.get("item").value;
+
                 mapConstructor.geocode(selectedName).then((result) => {
                     const newCoords = result.geoObjects.get(0).geometry.getCoordinates();
                     setState((prevState) => ({ ...prevState, center: newCoords }));
@@ -110,6 +106,7 @@ const DeliveryAddressModal = () => {
 
                             <input
                                 ref={searchRef}
+                                defaultValue={orders.delivery.adresse?.title || orders.city.title}
                                 type="text"
                                 className="h-14 bg-[#F9F7F7] rounded-[13px] w-full px-12 text-[#000] text-[16px]"
                             />
@@ -132,7 +129,7 @@ const DeliveryAddressModal = () => {
                         />
                     </div>
 
-                    <div className="mt-[13px] sm:mt-0">
+                    <div className="mt-[13px] min-h-[350px] sm:mt-0">
                         <Map
                             {...mapOptions}
                             state={state}
@@ -141,7 +138,9 @@ const DeliveryAddressModal = () => {
                             instanceRef={mapRef}
                             className="w-full h-[350px] sm:h-[550px] relative"
                         >
-                            <p className="absolute top-1/2 left-1/2 z-10">123</p>
+                            <p className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+                                +
+                            </p>
 
                             <GeolocationControl {...geolocationOptions} />
 
