@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Sidebar, Cart, Slider, Card, CardModal, CartModal, Layout } from "components";
+import { useEffect, createRef, useState } from "react";
+import { Sidebar, Cart, Slider, CardModal, CartModal, Layout, CardsBlock } from "components";
 import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveModal, getCards } from "store";
@@ -18,37 +18,49 @@ const Main = () => {
 
     useEffect(() => {
         dispatch(getCards(orders.city));
-    }, [orders.city]);
+    }, [orders.city, dispatch]);
+
+    const refs = cards.reduce((refsObj, character) => {
+        //@ts-ignore
+        refsObj[character.description.id] = createRef();
+        return refsObj;
+    }, {});
+
+    const [pageHeight, setPageHeight] = useState(0);
+
+    useEffect(() => {
+        setPageHeight(window.innerHeight);
+        window.addEventListener("resize", (e) => {
+            setTimeout(() => {
+                setPageHeight(window.innerHeight);
+            }, 300);
+        });
+    }, []);
+
+    useEffect(() => {
+        console.log(refs);
+    }, [refs]);
 
     return (
         <>
-            {cards?.length > 0 ? (
+            {cards?.length > 0 && pageHeight ? (
                 <Layout>
                     <div className="container sm:px-0">
                         <div className="grid grid-cols-[232px_1fr_334px] rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
-                            {(isDesktop || isTablet) && <Sidebar cards={cards} />}
+                            {(isDesktop || isTablet) && <Sidebar cards={cards} refs={refs} />}
 
                             <div className="overflow-hidden pt-[100px] sm:pt-[57.5px]">
                                 <Slider />
 
-                                {isMobile && <Sidebar cards={cards} />}
+                                {isMobile && <Sidebar cards={cards} refs={refs} />}
 
-                                <div className="flex flex-col gap-[50px] sm:px-[10px] sm:mt-6">
+                                <div className="flex flex-col sm:px-[10px] sm:mt-6">
                                     {cards.map((item: any) => (
-                                        <div key={item.description.id}>
-                                            <h2 className="text-[#21201F] text-[30px] font-medium mb-4 sm:text-[24px]">
-                                                {item.description.name}
-                                            </h2>
-
-                                            <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-x-2 gap-y-4 2xl:grid-cols-[1fr_1fr_1fr_1fr] sm:grid-cols-[1fr_1fr] sm:gap-y-2">
-                                                {item.childrens.map((item: any) => (
-                                                    <Card
-                                                        key={item.description.id}
-                                                        item={item.description}
-                                                    />
-                                                ))}
-                                            </div>
-                                        </div>
+                                        <CardsBlock
+                                            item={item}
+                                            refs={refs}
+                                            pageHeight={pageHeight}
+                                        />
                                     ))}
                                 </div>
                             </div>

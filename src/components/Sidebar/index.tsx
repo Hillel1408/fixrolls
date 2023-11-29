@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "hook";
+import { useEffect } from "react";
+import classNames from "classnames";
 
-const Sidebar = ({ cards }: { cards: any }) => {
+const Sidebar = ({ cards, refs }: { cards: any; refs: any }) => {
+    const activeCharacter = useAppSelector((state) => state.modals.activeCharacter);
+
     return (
         <div className="pt-[100px] sticky top-0 sm:pt-0">
             <div className="bg-white pt-6 px-2 pb-2 rounded-2xl sm:px-0 sm:pb-16px sm:pt-2 sm:rounded-b-[15px] sm:rounded-t-none">
@@ -11,12 +16,20 @@ const Sidebar = ({ cards }: { cards: any }) => {
                 <ul className="text-[16px] text-[#21201F] sm:flex sm:overflow-auto sm:whitespace-nowrap sm:text-[14px]">
                     {cards.map((item: any) => (
                         <li key={item.description.id}>
-                            <Link
-                                to="#"
-                                className="px-[18px] py-[14px] block duration-200 hover:bg-[#F2F2F2] rounded-2xl sm:py-[9px] sm:px-4"
+                            <span
+                                className={classNames(
+                                    "px-[18px] py-[14px] block duration-200 hover:bg-[#F2F2F2] rounded-2xl cursor-pointer sm:py-[9px] sm:px-4",
+                                    activeCharacter === item.description.id && "bg-[#F2F2F2]",
+                                )}
+                                onClick={() => {
+                                    refs[item.description.id].current.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "start",
+                                    });
+                                }}
                             >
                                 {item.description.name}
-                            </Link>
+                            </span>
                         </li>
                     ))}
                 </ul>
