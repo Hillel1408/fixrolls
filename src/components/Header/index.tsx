@@ -1,8 +1,13 @@
-import { CityModal, DeliveryAddressModal, MobileMenuModal } from "components";
+import { CityModal, DeliveryAddressModal, MobileMenuModal, Modal404 } from "components";
 import { useAppDispatch, useAppSelector } from "hook";
+import { useState } from "react";
 import { setActiveModal } from "store";
 
 const Header = () => {
+    const [active, setActive] = useState(false);
+    const [delivery, setDelivery] = useState(false);
+    const [active404, setActive404] = useState(false);
+
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
     const activeModal = useAppSelector((state) => state.modals.activeModal);
@@ -23,7 +28,7 @@ const Header = () => {
                                 <button
                                     className="flex items-center text-left"
                                     onClick={() => {
-                                        dispatch(setActiveModal("city"));
+                                        setActive(true);
                                     }}
                                 >
                                     <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
@@ -37,7 +42,7 @@ const Header = () => {
                                 <button
                                     className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] text-left"
                                     onClick={() => {
-                                        dispatch(setActiveModal("delivery-address"));
+                                        setDelivery(true);
                                     }}
                                 >
                                     {orders.delivery.adresse?.title || "Выберите адресс доставки"}
@@ -59,7 +64,7 @@ const Header = () => {
                         <button
                             className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] mx-4 items-center justify-center gap-[10px] sm:hidden"
                             onClick={() => {
-                                dispatch(setActiveModal("404"));
+                                setActive404(true);
                             }}
                         >
                             <svg className="w-5 h-5" aria-hidden="true">
@@ -71,7 +76,7 @@ const Header = () => {
                         <button
                             className="hidden sm:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center"
                             onClick={() => {
-                                dispatch(setActiveModal("city"));
+                                setActive(true);
                             }}
                         >
                             Выбрать адрес
@@ -94,9 +99,11 @@ const Header = () => {
                 </div>
             </header>
 
-            {activeModal === "city" && <CityModal />}
+            {active && <CityModal active={active} setActive={setActive} />}
 
-            {activeModal === "delivery-address" && <DeliveryAddressModal />}
+            {delivery && <DeliveryAddressModal active={delivery} setActive={setDelivery} />}
+
+            {active404 && <Modal404 active={active404} setActive={setActive404} />}
 
             {activeModal === "mobile-menu" && <MobileMenuModal />}
         </>

@@ -1,19 +1,21 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
 import { DeliveryTotalModal, Button } from "components";
 import { useMatchMedia } from "hooks";
-import { useNavigate } from "react-router-dom";
 import { ROUTES } from "constants/";
 import { useAppDispatch, useAppSelector } from "hook";
-import { setActiveModal, resetCart, addCard, deleteCard } from "store";
-import classNames from "classnames";
+import { resetCart, addCard, deleteCard } from "store";
 
 const Cart = () => {
+    const [active, setActive] = useState(false);
+
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
     const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
-    const activeModal = useAppSelector((state) => state.modals.activeModal);
 
     const minSumOrder = 500 - orders.totalCart;
 
@@ -58,7 +60,10 @@ const Cart = () => {
                             >
                                 <img
                                     className="h-[74px] object-cover w-full"
-                                    src={item.product.image}
+                                    src={item.product.image.replace(
+                                        "http://89.248.201.151",
+                                        "https://fiksroll.ru",
+                                    )}
                                     alt=""
                                 />
 
@@ -134,7 +139,7 @@ const Cart = () => {
                             clickHandler={() => {
                                 document.body.classList.remove("lock");
                                 if (isTablet || isDesktop) navigate(ROUTES.ORDER);
-                                else if (isMobile) dispatch(setActiveModal("delivery-total"));
+                                else if (isMobile) setActive(true);
                             }}
                         />
                     </div>
@@ -145,7 +150,7 @@ const Cart = () => {
                 )}
             </div>
 
-            {isMobile && activeModal === "delivery-total" && <DeliveryTotalModal />}
+            {isMobile && active && <DeliveryTotalModal active={active} setActive={setActive} />}
         </div>
     );
 };

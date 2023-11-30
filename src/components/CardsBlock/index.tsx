@@ -27,15 +27,10 @@ const CardsBlock = ({ item, refs, pageHeight }: { item: any; refs: any; pageHeig
         const observer = new IntersectionObserver(handleIntersection, observerConfig);
         observer.observe(refs[item.description.id].current);
         return () => observer.disconnect();
-    }, [item]);
+    }, [item, activeCharacter, dispatch, observerMargin, pageHeight, refs]);
 
     return (
-        <div
-            key={item.description.id}
-            id={item.description.id}
-            ref={refs[item.description.id]}
-            className="pt-[50px]"
-        >
+        <div id={item.description.id} ref={refs[item.description.id]} className="pt-[50px]">
             <h2 className="text-[#21201F] text-[30px] font-medium mb-4 sm:text-[24px]">
                 {item.description.name}
             </h2>

@@ -1,12 +1,13 @@
 import { useEffect, createRef, useState } from "react";
-import { Sidebar, Cart, Slider, CardModal, CartModal, Layout, CardsBlock } from "components";
+import { Sidebar, Cart, Slider, CartModal, Layout, CardsBlock } from "components";
 import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveModal, getCards } from "store";
+import { getCards } from "store";
 import { ThreeDots } from "react-loader-spinner";
 
 const Main = () => {
-    const activeModal = useAppSelector((state) => state.modals.activeModal);
+    const [active, setActive] = useState(false);
+
     const orders = useAppSelector((state) => state.orders);
     const dispatch = useAppDispatch();
 
@@ -37,10 +38,6 @@ const Main = () => {
         });
     }, []);
 
-    useEffect(() => {
-        console.log(refs);
-    }, [refs]);
-
     return (
         <>
             {cards?.length > 0 && pageHeight ? (
@@ -57,6 +54,7 @@ const Main = () => {
                                 <div className="flex flex-col sm:px-[10px] sm:mt-6">
                                     {cards.map((item: any) => (
                                         <CardsBlock
+                                            key={item.description.id}
                                             item={item}
                                             refs={refs}
                                             pageHeight={pageHeight}
@@ -67,50 +65,45 @@ const Main = () => {
 
                             {isDesktop && <Cart />}
 
-                            {(isMobile || isTablet) && activeModal === "cart" && <CartModal />}
+                            {(isMobile || isTablet) && active && (
+                                <CartModal active={active} setActive={setActive} />
+                            )}
                         </div>
                     </div>
 
-                    {activeModal === "card" && <CardModal />}
+                    {(isMobile || isTablet) && !active && orders.cards.length > 0 && (
+                        <div className="flex py-3 px-7 bg-white items-center fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[14px]">
+                            {minSumOrder > 0 ? (
+                                <p className="p-[10px] text-[14px] text-[#000] border border-[#6C6C6C] rounded-2xl max-w-[190px]">
+                                    <span className="font-semibold">{minSumOrder}₽</span> до
+                                    бесплатной доставки
+                                </p>
+                            ) : (
+                                <p className="text-[14px] text-[#000]">Бесплатная доставка</p>
+                            )}
 
-                    {(isMobile || isTablet) &&
-                        !(activeModal === "cart") &&
-                        orders.cards.length > 0 && (
-                            <div className="flex py-3 px-7 bg-white items-center fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[14px]">
-                                {minSumOrder > 0 ? (
-                                    <p className="p-[10px] text-[14px] text-[#000] border border-[#6C6C6C] rounded-2xl max-w-[190px]">
-                                        <span className="font-semibold">{minSumOrder}₽</span> до
-                                        бесплатной доставки
-                                    </p>
-                                ) : (
-                                    <p className="text-[14px] text-[#000]">Бесплатная доставка</p>
-                                )}
+                            <button
+                                className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14"
+                                onClick={() => {
+                                    setActive(true);
+                                }}
+                            >
+                                <span className="flex items-center">
+                                    <svg className="h-[20px] w-[22px] fill-none" aria-hidden="true">
+                                        <use xlinkHref="/sprites/sprite.svg#cart"></use>
+                                    </svg>
 
-                                <button
-                                    className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14"
-                                    onClick={() => {
-                                        dispatch(setActiveModal("cart"));
-                                    }}
-                                >
-                                    <span className="flex items-center">
-                                        <svg
-                                            className="h-[20px] w-[22px] fill-none"
-                                            aria-hidden="true"
-                                        >
-                                            <use xlinkHref="/sprites/sprite.svg#cart"></use>
-                                        </svg>
-
-                                        <span className="text-[#21201F] text-[12px] ml-4">
-                                            {orders.cards.length} товар
-                                        </span>
+                                    <span className="text-[#21201F] text-[12px] ml-4">
+                                        {orders.cards.length} товар
                                     </span>
+                                </span>
 
-                                    <span className="text-[#21201F] text-[24px] font-medium">
-                                        {orders.totalCart}₽
-                                    </span>
-                                </button>
-                            </div>
-                        )}
+                                <span className="text-[#21201F] text-[24px] font-medium">
+                                    {orders.totalCart}₽
+                                </span>
+                            </button>
+                        </div>
+                    )}
                 </Layout>
             ) : error ? (
                 <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">

@@ -3,15 +3,20 @@ import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveModal, addDelivery } from "store";
+import { addDelivery } from "store";
 import { GeolocationControl, Map, ZoomControl } from "@pbe/react-yandex-maps";
 
-const DeliveryAddressModal = () => {
-    const activeModal = useAppSelector((state) => state.modals.activeModal);
+const DeliveryAddressModal = ({
+    active,
+    setActive,
+}: {
+    active: boolean;
+    setActive: (a: bolean) => void;
+}) => {
     const orders = useAppSelector((state) => state.orders);
     const dispatch = useAppDispatch();
 
-    activeModal === "delivery-address" && document.body.classList.add("lock");
+    active && document.body.classList.add("lock");
 
     const mapOptions = {
         modules: ["geocode", "SuggestView"],
@@ -78,9 +83,9 @@ const DeliveryAddressModal = () => {
         <LayoutModal
             className="px-[22px] pt-[26px] pb-[22px] w-[817px] sm:p-0 sm:w-full"
             closeModal={() => {
-                dispatch(setActiveModal(""));
+                setActive(false);
             }}
-            active={activeModal === "delivery-address"}
+            active={active}
         >
             <>
                 <div className="flex items-center pr-[110px] justify-between mb-[78px] sm:pr-0 sm:mb-0 sm:absolute sm:top-[78px] sm:left-1/2 sm:-translate-x-1/2">
@@ -123,7 +128,7 @@ const DeliveryAddressModal = () => {
                             className="h-[56px] w-full"
                             clickHandler={() => {
                                 handleSubmit();
-                                dispatch(setActiveModal(""));
+                                setActive(false);
                                 document.body.classList.remove("lock");
                             }}
                         />
@@ -138,9 +143,11 @@ const DeliveryAddressModal = () => {
                             instanceRef={mapRef}
                             className="w-full h-[350px] sm:h-[550px] relative"
                         >
-                            <p className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-                                +
-                            </p>
+                            <img
+                                className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+                                src="/images/map-icon.svg"
+                                alt=""
+                            />
 
                             <GeolocationControl {...geolocationOptions} />
 
