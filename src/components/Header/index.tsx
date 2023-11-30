@@ -1,16 +1,14 @@
 import { CityModal, DeliveryAddressModal, MobileMenuModal, Modal404 } from "components";
-import { useAppDispatch, useAppSelector } from "hook";
+import { useAppSelector } from "hook";
 import { useState } from "react";
-import { setActiveModal } from "store";
 
 const Header = () => {
     const [active, setActive] = useState(false);
     const [delivery, setDelivery] = useState(false);
     const [active404, setActive404] = useState(false);
+    const [mobile, setMobile] = useState(false);
 
-    const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
-    const activeModal = useAppSelector((state) => state.modals.activeModal);
 
     return (
         <>
@@ -88,7 +86,7 @@ const Header = () => {
                         <button
                             className="hidden sm:block"
                             onClick={() => {
-                                dispatch(setActiveModal("mobile-menu"));
+                                setMobile(true);
                             }}
                         >
                             <svg className="w-[17px] h-3" aria-hidden="true">
@@ -105,7 +103,7 @@ const Header = () => {
 
             {active404 && <Modal404 active={active404} setActive={setActive404} />}
 
-            {activeModal === "mobile-menu" && <MobileMenuModal />}
+            {mobile && <MobileMenuModal active={mobile} setActive={setMobile} />}
         </>
     );
 };

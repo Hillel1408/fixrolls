@@ -1,13 +1,10 @@
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "hook";
-import { setActiveModal } from "store";
 import { PromotionModal } from "components";
 
 const Slider = () => {
-    const dispatch = useAppDispatch();
-    const activeModal = useAppSelector((state) => state.modals.activeModal);
+    const [active, setActive] = useState(false);
 
     const [loaded, setLoaded] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -42,7 +39,7 @@ const Slider = () => {
                             key={index}
                             className="keen-slider__slide !min-w-[285px] sm:!min-w-[207px] cursor-pointer"
                             onClick={() => {
-                                dispatch(setActiveModal("promotion"));
+                                setActive(true);
                             }}
                         >
                             <img
@@ -55,7 +52,7 @@ const Slider = () => {
                 </div>
             </div>
 
-            {activeModal === "promotion" && <PromotionModal />}
+            {active && <PromotionModal active={active} setActive={setActive} />}
         </>
     );
 };

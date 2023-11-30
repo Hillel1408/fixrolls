@@ -5,7 +5,7 @@ import { Card } from "components";
 
 const CardsBlock = ({ item, refs, pageHeight }: { item: any; refs: any; pageHeight: number }) => {
     const dispatch = useAppDispatch();
-    const activeCharacter = useAppSelector((state) => state.modals.activeCharacter);
+    const activeCharacter = useAppSelector((state) => state.orders.activeCharacter);
 
     const observerMargin = Math.floor(pageHeight / 2);
 

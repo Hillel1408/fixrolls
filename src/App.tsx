@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Main, Order } from "pages";
-import { Layout } from "components";
 import { ROUTES } from "constants/";
 
 function App() {

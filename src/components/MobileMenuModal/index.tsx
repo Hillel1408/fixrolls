@@ -1,15 +1,18 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { Link } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveModal } from "store";
+import { useAppSelector } from "hook";
 
-const MobileMenuModal = () => {
-    const activeModal = useAppSelector((state) => state.modals.activeModal);
+const MobileMenuModal = ({
+    active,
+    setActive,
+}: {
+    active: boolean;
+    setActive: (a: boolean) => void;
+}) => {
     const city = useAppSelector((state) => state.orders.city);
-    const dispatch = useAppDispatch();
 
-    activeModal === "mobile-menu" && document.body.classList.add("lock");
+    active && document.body.classList.add("lock");
 
     const navItems = [
         { text: "Зона доставки", href: "/" },
@@ -28,9 +31,9 @@ const MobileMenuModal = () => {
         <LayoutModal
             className="sm:w-full "
             closeModal={() => {
-                dispatch(setActiveModal(""));
+                setActive(false);
             }}
-            active={activeModal === "mobile-menu"}
+            active={active}
         >
             <>
                 <div className="p-[18px] bg-[#F9F7F7]">

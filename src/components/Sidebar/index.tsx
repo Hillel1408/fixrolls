@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "hook";
-import { useEffect } from "react";
+import { useAppSelector } from "hook";
 import classNames from "classnames";
 
 const Sidebar = ({ cards, refs }: { cards: any; refs: any }) => {
-    const activeCharacter = useAppSelector((state) => state.modals.activeCharacter);
+    const activeCharacter = useAppSelector((state) => state.orders.activeCharacter);
 
     return (
         <div className="pt-[100px] sticky top-0 sm:pt-0">

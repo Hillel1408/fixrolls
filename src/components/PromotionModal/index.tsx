@@ -1,21 +1,22 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
-import { useAppSelector, useAppDispatch } from "hook";
-import { setActiveModal } from "store";
 
-const PromotionModal = () => {
-    const activeModal = useAppSelector((state) => state.modals.activeModal);
-    const dispatch = useAppDispatch();
-
-    activeModal === "promotion" && document.body.classList.add("lock");
+const PromotionModal = ({
+    active,
+    setActive,
+}: {
+    active: boolean;
+    setActive: (a: boolean) => void;
+}) => {
+    active && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="w-[362px] sm:w-full h-[772px]"
             closeModal={() => {
-                dispatch(setActiveModal(""));
+                setActive(false);
             }}
-            active={activeModal === "promotion"}
+            active={active}
         >
             <div className="relative">
                 <img className="h-[237px] object-cover w-full" src="/images/img-4.jpg" alt="" />
@@ -57,7 +58,7 @@ const PromotionModal = () => {
                         text="Понятно"
                         className="h-[56px] w-full"
                         clickHandler={() => {
-                            dispatch(setActiveModal(""));
+                            setActive(false);
                         }}
                     />
                 </div>

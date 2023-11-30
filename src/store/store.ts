@@ -1,5 +1,4 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import modalsReducer from "store/modalsSlice";
 import orderReducer from "store/orderSlice";
 import cardsReducer from "store/cardsSlice";
 
@@ -16,7 +15,6 @@ import {
 import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
-    modals: modalsReducer,
     orders: orderReducer,
     cards: cardsReducer,
 });
@@ -24,7 +22,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
     key: "root",
     storage,
-    blacklist: ["cards", "modals"],
+    blacklist: ["cards"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

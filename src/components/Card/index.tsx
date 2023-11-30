@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CardModal } from "components";
 import { useAppDispatch, useAppSelector } from "hook";
-import { addCard, deleteCard, setItemCardModal } from "store";
+import { addCard, deleteCard } from "store";
 
 const Card = ({ item }: { item: any }) => {
     const { name, image, floatprice } = item;
@@ -19,7 +19,6 @@ const Card = ({ item }: { item: any }) => {
                 className="px-2 pt-[6px] pb-[15px] bg-white rounded-[21px] flex flex-col sm:p-[6px] cursor-pointer"
                 onClick={() => {
                     setActive(true);
-                    dispatch(setItemCardModal(item));
                 }}
             >
                 <img

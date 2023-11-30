@@ -5,6 +5,7 @@ const initialState: {
     city: { name: string; restaurantID: string; wid: string; center: number[]; title: string };
     totalCart: number;
     delivery: any;
+    activeCharacter: string;
 } = {
     cards: [],
     city: {
@@ -16,6 +17,8 @@ const initialState: {
     },
     totalCart: 0,
     delivery: {},
+
+    activeCharacter: "",
 };
 
 const orderSlice = createSlice({
@@ -69,10 +72,21 @@ const orderSlice = createSlice({
             state.totalCart = 0;
             state.delivery = {};
         },
+
+        setActiveCharacter(state, action) {
+            state.activeCharacter = action.payload;
+        },
     },
 });
 
-export const { addCard, deleteCard, resetCart, addCity, addDelivery, resetStore } =
-    orderSlice.actions;
+export const {
+    addCard,
+    deleteCard,
+    resetCart,
+    addCity,
+    addDelivery,
+    resetStore,
+    setActiveCharacter,
+} = orderSlice.actions;
 
 export default orderSlice.reducer;
