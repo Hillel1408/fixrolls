@@ -19,7 +19,6 @@ const CardsBlock = ({ item, refs, pageHeight }: { item: any; refs: any; pageHeig
         const handleIntersection = function (entries: any) {
             entries.forEach((entry: any) => {
                 if (entry.target.id !== activeCharacter && entry.isIntersecting) {
-                    console.log(entry.target.id);
                     dispatch(setActiveCharacter(entry.target.id));
                 }
             });

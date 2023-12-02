@@ -32,7 +32,7 @@ const Delivery = () => {
                     <svg className="w-[29px] h-[22px] sm:w-[25px] sm:h-5" aria-hidden="true">
                         <use xlinkHref="/sprites/sprite.svg#home"></use>
                     </svg>
-                    {delivery.adresse.title}
+                    {delivery.adresse?.title}
                     <svg className="w-6 h-6" aria-hidden="true">
                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                     </svg>
