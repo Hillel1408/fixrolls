@@ -104,21 +104,24 @@ export const sentOrder = createAsyncThunk(
     "cards/fetchCards",
     async function (order: InitialStateType, { rejectWithValue }) {
         try {
-            const params = `user=mobidel&password=723123![]&wid=${order.city.wid}&street=${
-                order.delivery.adresse.title
-            }&room=${order.delivery.apartment}&code2=${order.delivery.intercom}&entrance=${
-                order.delivery.entrance
-            }&floor=${order.delivery.storey}&comment=${
-                order.delivery.commentCourier
-            }&independently=${order.type === "Доставка" ? 0 : 1}`;
-            console.log(params);
-            // const { data } = await axios.get(
-            //     `/makeOrder.php?${params}`,
-            // );
-            // return data;
+            const arr = order.cards.map(
+                (item: { product: { oneCID: string }; count: string }, index: number) =>
+                    `articles[${index}]=${item.product.oneCID}&quantities[${index}]=[${item.count}]`,
+            );
+            const str = arr.join("&");
+            const params =
+                `user=mobidel&password=723123![]&wid=${order.city.wid}&street=${
+                    order.delivery.adresse.title
+                }&room=${order.delivery.apartment}&code2=${order.delivery.intercom}&entrance=${
+                    order.delivery.entrance
+                }&floor=${order.delivery.storey}&comment=${
+                    order.delivery.commentCourier
+                }&independently=${order.type === "Доставка" ? 0 : 1}&` + str;
+
+            const { data } = await axios.get(`/makeOrder.php?${params}`);
+            return data;
         } catch (error: any) {
-            // console.log(error.message);
-            // return rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     },
 );
