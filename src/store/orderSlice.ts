@@ -6,6 +6,7 @@ const initialState: {
     totalCart: number;
     delivery: any;
     activeCharacter: string;
+    type: "Доставка" | "Навынос";
 } = {
     cards: [],
     city: {
@@ -17,7 +18,7 @@ const initialState: {
     },
     totalCart: 0,
     delivery: {},
-
+    type: "Доставка",
     activeCharacter: "",
 };
 
@@ -76,6 +77,10 @@ const orderSlice = createSlice({
         setActiveCharacter(state, action) {
             state.activeCharacter = action.payload;
         },
+
+        addType(state, action) {
+            state.type = action.payload;
+        },
     },
 });
 
@@ -87,6 +92,7 @@ export const {
     addDelivery,
     resetStore,
     setActiveCharacter,
+    addType,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

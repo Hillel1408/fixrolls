@@ -3,8 +3,9 @@ import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { addDelivery } from "store";
+import { addDelivery, addType } from "store";
 import { GeolocationControl, Map, ZoomControl } from "@pbe/react-yandex-maps";
+import classNames from "classnames";
 
 const DeliveryAddressModal = ({
     active,
@@ -15,6 +16,8 @@ const DeliveryAddressModal = ({
 }) => {
     const orders = useAppSelector((state) => state.orders);
     const dispatch = useAppDispatch();
+
+    const listItems = ["Доставка", "Навынос"];
 
     active && document.body.classList.add("lock");
 
@@ -97,8 +100,20 @@ const DeliveryAddressModal = ({
                     </div>
 
                     <ul className="flex px-[10px] py-2 bg-[#F6F5F3] rounded-2xl gap-[10px] text-[#21201F] text-[16px] sm:border sm:border-[#000]">
-                        <li className="py-[10px] px-[27px] bg-white rounded-[13px]">Доставка</li>
-                        <li className="py-[10px] px-[27px] rounded-[13px]">Навынос</li>
+                        {listItems.map((item, index) => (
+                            <li
+                                key={index}
+                                className={classNames(
+                                    "py-[10px] px-[27px] rounded-[13px] cursor-pointer",
+                                    orders.type === item && "bg-white",
+                                )}
+                                onClick={() => {
+                                    dispatch(addType(item));
+                                }}
+                            >
+                                {item}
+                            </li>
+                        ))}
                     </ul>
                 </div>
 

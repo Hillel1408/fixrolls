@@ -6,6 +6,7 @@ import { useMatchMedia } from "hooks";
 import { ROUTES } from "constants/";
 import { useAppDispatch, useAppSelector } from "hook";
 import { resetCart, addCard, deleteCard } from "store";
+import data from "data/data.json";
 
 const Cart = () => {
     const [active, setActive] = useState(false);
@@ -145,7 +146,8 @@ const Cart = () => {
                     </div>
                 ) : (
                     <p className="text-[#21201F] text-[14px] font-medium">
-                        Доставка работает: с 11:00 до 22:30
+                        Доставка работает:{" "}
+                        {data.find((item) => item.id === orders.city.restaurantID)?.working_hours}
                     </p>
                 )}
             </div>

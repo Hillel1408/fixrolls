@@ -1,0 +1,303 @@
+[
+    {
+        "id": "1656087162764067438",
+        "region": "Алатырь",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1642154196437770364",
+        "region": "Владимир",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1642154196591368568",
+        "region": "Вологда",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1639902905223745909",
+        "region": "Димитровград",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1656087157899060669",
+        "region": "Дубна",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1602745682017181653",
+        "region": "Ковров",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1656087162541699433",
+        "region": "Кострома",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1591345972412718352",
+        "region": "Кулебаки",
+        "working_hours": "с 09:00 до 20:00",
+        "promo_codes": [
+            {
+                "code": "KUL001",
+                "discount": 10,
+                "product_offer": "Скидка 10% на все роллы при заказе от 800 рублей",
+                "special_offer": "Специальная цена на ролл 'Калифорния'"
+            },
+            {
+                "code": "KUL002",
+                "discount": 0,
+                "product_offer": "",
+                "special_offer": "Акция 'Суши дня' каждый четверг"
+            }
+        ],
+        "free_delivery": [
+            {
+                "district": "Центральный район",
+                "min_order_amount": 1200,
+                "delivery_price": 300
+            },
+            {
+                "district": "Пригородный район",
+                "min_order_amount": 1500,
+                "free_price": 500
+            }
+        ],
+        "discount_available": true,
+        "pickup_available": true,
+        "pickup_discount": 20,
+        "special_offers": [
+            {
+                "offer_name": "Дарим 10й сет за 10й заказ",
+                "title": "ВНИМАНИЕ! Акция Комбо-Бомба взорвёт ваш вкус!",
+                "description": "Только сейчас! Невероятное предложение от нашей доставки суши - 'Комбо-Бомба'!\n\n'Комбо-Бомба' - это особенное сочетание лучших роллов, сякэ, нигири и гунканов, созданных нашими мастерами суши. Погрузитесь в волшебство вкуса и удовольствия!\n\nМы доставим эту кулинарную изысканность прямо к вашей двери по невероятно выгодной цене!\n\nЗакажите 'Комбо-Бомбу' сейчас и получите: Эксклюзивное сочетание самых свежих ингредиентов; Бесплатную и быструю доставку прямо к вам домой; Неописуемое удовольствие от каждого укуса!\n\nНе упустите возможность попробовать это уникальное сочетание вкусов! Акция ограничена по времени, сделайте заказ 'Комбо-Бомбы' прямо сейчас и наслаждайтесь вкусом восточных изысков!",
+                "image": "slide-1.jpg",
+                "fullImage": "img-4.jpg"
+            }
+        ],
+        "social_links": {
+            "VKontakte": "https://vk.com/sushidelivery_kulebaki",
+            "Telegram": "https://t.me/sushidelivery_kulebaki"
+        },
+        "pickup_points": [
+            {
+                "pickup_id": "PK001",
+                "name": "Магазин 'Суши Хаус'",
+                "address": "ул. Ленина, 10",
+                "working_hours": "10:00 - 19:00"
+            },
+            {
+                "pickup_id": "PK002",
+                "name": "Ресторан 'Вкус Суши'",
+                "address": "пр. Победы, 25",
+                "working_hours": "09:00 - 22:00"
+            }
+        ]
+    },
+    {
+        "id": "1642154196735173474",
+        "region": "Липецк",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1656087162680035397",
+        "region": "Лобня",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1602745683487916651",
+        "region": "Минусинск",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1642154196217440211",
+        "region": "Назарово",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1656087162831638669",
+        "region": "Оренбург",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1600494026166629406",
+        "region": "Рязань",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1642154196880535986",
+        "region": "Самара",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    },
+    {
+        "id": "1602745682547130976",
+        "region": "Черноморское",
+        "working_hours": "",
+        "promo_codes": [],
+        "free_delivery": [],
+        "discount_available": "",
+        "pickup_available": "",
+        "pickup_discount": "",
+        "special_offers": [],
+        "pickup_points": [],
+        "social_links": {
+            "VKontakte": "",
+            "Telegram": ""
+        }
+    }
+]

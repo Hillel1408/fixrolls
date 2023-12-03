@@ -1,38 +1,48 @@
+import classNames from "classnames";
 import { useAppDispatch, useAppSelector } from "hook";
-import { addDelivery } from "store";
+import { addDelivery, addType } from "store";
 
 const Delivery = () => {
     const dispatch = useAppDispatch();
-    const delivery = useAppSelector((state) => state.orders.delivery);
+    const orders = useAppSelector((state) => state.orders);
+
+    const listItems = ["Доставка", "Навынос"];
 
     return (
         <div className="pt-[21px] pr-[35px] pb-[30px] pl-[18px] bg-white rounded-[32px] flex flex-col gap-[26px] sm:px-3 sm:pt-[17px] sm:pb-6">
             <ul className="flex gap-[14px] sm:gap-[5px] sm:grid sm:grid-cols-[1fr_1fr]">
-                <li className="h-12 px-[22px] rounded-2xl bg-[#F2F2F2] flex items-center gap-2 sm:justify-center">
-                    <span className="text-[#21201F] text-[20px] font-medium sm:text-[16px]">
-                        Доставка{" "}
-                    </span>
+                {listItems.map((item) => (
+                    <li
+                        className={classNames(
+                            "h-12 px-[22px] rounded-2xl flex items-center cursor-pointer sm:justify-center",
+                            item === "Доставка" ? "gap-2" : "gap-[10px]",
+                            orders.type === item && "bg-[#F2F2F2]",
+                        )}
+                        onClick={() => {
+                            dispatch(addType(item));
+                        }}
+                    >
+                        <span className="text-[#21201F] text-[20px] font-medium sm:text-[16px]">
+                            {item}
+                        </span>
 
-                    <span className="text-[#767676] text-[16px] sm:hidden">≈ 60 мин</span>
-                </li>
-
-                <li className="h-12 px-[22px] rounded-2xl flex items-center gap-[10px] sm:justify-center">
-                    <span className="text-[#21201F] text-[20px] font-medium sm:text-[16px]">
-                        С собой
-                    </span>
-
-                    <span className="px-1 py-[10px] rounded-[11px] bg-[#6f6e6d] text-white sm:text-[14px]">
-                        15%
-                    </span>
-                </li>
+                        {item === "Доставка" ? (
+                            <span className="text-[#767676] text-[16px] sm:hidden">≈ 60 мин</span>
+                        ) : (
+                            <span className="px-1 py-[10px] rounded-[11px] bg-[#6f6e6d] text-white sm:text-[14px]">
+                                15%
+                            </span>
+                        )}
+                    </li>
+                ))}
             </ul>
 
             <div>
-                <button className="text-[#000] text-[20px] font-medium mb-4 flex gap-2 sm:text-[16px] items-center">
+                <button className="text-[#000] text-[20px] font-medium mb-4 flex text-left gap-2 sm:text-[16px] items-center">
                     <svg className="w-[29px] h-[22px] sm:w-[25px] sm:h-5" aria-hidden="true">
                         <use xlinkHref="/sprites/sprite.svg#home"></use>
                     </svg>
-                    {delivery.adresse?.title}
+                    {orders.delivery.adresse?.title}
                     <svg className="w-6 h-6" aria-hidden="true">
                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                     </svg>
@@ -43,7 +53,7 @@ const Delivery = () => {
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Кв./Офис"
-                        value={delivery.apartment}
+                        value={orders.delivery.apartment}
                         onChange={(e) => dispatch(addDelivery({ apartment: e.target.value }))}
                     />
 
@@ -51,7 +61,7 @@ const Delivery = () => {
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Домофон"
-                        value={delivery.intercom}
+                        value={orders.delivery.intercom}
                         onChange={(e) => dispatch(addDelivery({ intercom: e.target.value }))}
                     />
 
@@ -59,7 +69,7 @@ const Delivery = () => {
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Подъезд"
-                        value={delivery.entrance}
+                        value={orders.delivery.entrance}
                         onChange={(e) => dispatch(addDelivery({ entrance: e.target.value }))}
                     />
 
@@ -67,7 +77,7 @@ const Delivery = () => {
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Этаж"
-                        value={delivery.storey}
+                        value={orders.delivery.storey}
                         onChange={(e) => dispatch(addDelivery({ storey: e.target.value }))}
                     />
                 </div>
@@ -76,7 +86,7 @@ const Delivery = () => {
                     type="text"
                     className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                     placeholder="Комментарий курьеру"
-                    value={delivery.commentCourier}
+                    value={orders.delivery.commentCourier}
                     onChange={(e) => dispatch(addDelivery({ commentCourier: e.target.value }))}
                 />
             </div>
