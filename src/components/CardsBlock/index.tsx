@@ -29,7 +29,7 @@ const CardsBlock = ({ item, refs, pageHeight }: { item: any; refs: any; pageHeig
     }, [item, activeCharacter, dispatch, observerMargin, pageHeight, refs]);
 
     return (
-        <div id={item.description.id} ref={refs[item.description.id]} className="pt-[50px]">
+        <div id={item.description.id} ref={refs[item.description.id]}>
             <h2 className="text-[#21201F] text-[30px] font-medium mb-4 sm:text-[24px]">
                 {item.description.name}
             </h2>

@@ -1,7 +1,9 @@
 import { Button } from "components";
-import { useAppSelector } from "hook";
+import { useAppSelector, useAppDispatch } from "hook";
+import { sentOrder } from "store";
 
 const Total = () => {
+    const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
 
     return (
@@ -37,7 +39,13 @@ const Total = () => {
             </div>
 
             <div className="flex justify-between items-center">
-                <Button text="Оплатить" className="h-[48px]" />
+                <Button
+                    text="Заказать"
+                    className="h-[48px]"
+                    clickHandler={() => {
+                        dispatch(sentOrder(orders));
+                    }}
+                />
 
                 <span className="text-[#000] text-[26px] font-medium">{orders.totalCart} ₽</span>
             </div>

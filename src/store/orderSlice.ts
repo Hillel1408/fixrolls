@@ -1,13 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "http/axios";
 
-const initialState: {
+interface InitialStateType {
     cards: any;
     city: { name: string; restaurantID: string; wid: string; center: number[]; title: string };
     totalCart: number;
     delivery: any;
     activeCharacter: string;
     type: "Доставка" | "Навынос";
-} = {
+}
+
+const initialState: InitialStateType = {
     cards: [],
     city: {
         name: "Владимир",
@@ -96,3 +99,26 @@ export const {
 } = orderSlice.actions;
 
 export default orderSlice.reducer;
+
+export const sentOrder = createAsyncThunk(
+    "cards/fetchCards",
+    async function (order: InitialStateType, { rejectWithValue }) {
+        try {
+            const params = `user=mobidel&password=723123![]&wid=${order.city.wid}&street=${
+                order.delivery.adresse.title
+            }&room=${order.delivery.apartment}&code2=${order.delivery.intercom}&entrance=${
+                order.delivery.entrance
+            }&floor=${order.delivery.storey}&comment=${
+                order.delivery.commentCourier
+            }&independently=${order.type === "Доставка" ? 0 : 1}`;
+            console.log(params);
+            // const { data } = await axios.get(
+            //     `/makeOrder.php?${params}`,
+            // );
+            // return data;
+        } catch (error: any) {
+            // console.log(error.message);
+            // return rejectWithValue(error.message);
+        }
+    },
+);

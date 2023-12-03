@@ -16,7 +16,7 @@ const Slider = () => {
 
     const items = data.find((item) => item.id === orders.city.restaurantID)?.special_offers;
 
-    const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    const [sliderRef] = useKeenSlider<HTMLDivElement>({
         mode: "free",
 
         slides: {
@@ -39,7 +39,7 @@ const Slider = () => {
         <>
             {items && items.length > 0 && (
                 <div>
-                    <div className="px-[10px] py-2 bg-white rounded-[30px] sm:rounded-none sm:mb-0">
+                    <div className="px-[10px] py-2 bg-white rounded-[30px] mb-[50px] sm:rounded-none sm:mb-0">
                         <div ref={sliderRef} className="keen-slider max-w-[1126px] rounded-[30px]">
                             {items.map((item, index) => (
                                 <div

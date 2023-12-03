@@ -41,6 +41,7 @@ const PromotionModal = ({
                         className="h-[56px] w-full"
                         clickHandler={() => {
                             setActive(false);
+                            document.body.classList.remove("lock");
                         }}
                     />
                 </div>

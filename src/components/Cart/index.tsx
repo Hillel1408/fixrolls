@@ -24,7 +24,7 @@ const Cart = () => {
         <div className="sticky pt-[100px] top-0 xl:pt-0">
             <div
                 className={classNames(
-                    "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative",
+                    "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative xl:pb-[150px] xl:h-auto",
                     orders.cards.length > 0 ? "pb-[150px]" : "justify-between pb-6",
                 )}
             >
