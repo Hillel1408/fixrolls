@@ -21,8 +21,7 @@ const Main = () => {
         dispatch(getCards(orders.city));
     }, [orders.city, dispatch]);
 
-    const refs = cards.reduce((refsObj, character) => {
-        //@ts-ignore
+    const refs = cards.reduce((refsObj: any, character: { description: { id: number } }) => {
         refsObj[character.description.id] = createRef();
         return refsObj;
     }, {});
@@ -46,10 +45,10 @@ const Main = () => {
                         <div className="grid grid-cols-[232px_1fr_334px] rounded-2xl items-start gap-[26px] xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr] sm:pt-0">
                             {(isDesktop || isTablet) && <Sidebar cards={cards} refs={refs} />}
 
-                            <div className="overflow-hidden pt-[100px] sm:pt-[57.5px]">
-                                <Slider />
-
+                            <div className="overflow-hidden pt-[100px] sm:pt-[108.5px]">
                                 {isMobile && <Sidebar cards={cards} refs={refs} />}
+
+                                <Slider />
 
                                 <div className="flex flex-col [&>*:not(:first-child)]:pt-[50px] sm:px-[10px] sm:mt-6">
                                     {cards.map((item: any) => (

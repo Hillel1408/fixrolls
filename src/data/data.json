@@ -1,6 +1,8 @@
 [
     {
-        "id": "1656087162764067438",
+        "id": "11510",
+        "wid": "1656087162769125139",
+        "restaurantID": "1656087162764067438",
         "region": "Алатырь",
         "working_hours": "",
         "promo_codes": [],
@@ -13,10 +15,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [54.84072414519224, 46.59023238623043],
+        "title": "Чувашская Республика, Алатырь",
+        "point_available": false
     },
     {
-        "id": "1642154196437770364",
+        "id": "11503",
+        "wid": "1642154196451843135",
+        "restaurantID": "1642154196437770364",
         "region": "Владимир",
         "working_hours": "",
         "promo_codes": [],
@@ -29,10 +36,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [56.129056999993274, 40.40663499999998],
+        "title": "Владимир, Большая Московская улица",
+        "point_available": false
     },
     {
-        "id": "1642154196591368568",
+        "id": "11504",
+        "wid": "1642154196597661641",
+        "restaurantID": "1642154196591368568",
         "region": "Вологда",
         "working_hours": "",
         "promo_codes": [],
@@ -45,10 +57,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [59.220501, 39.891523],
+        "title": "Вологда, улица Марии Ульяновой",
+        "point_available": false
     },
     {
-        "id": "1639902905223745909",
+        "id": "11501",
+        "wid": "1639902905220073019",
+        "restaurantID": "1639902905223745909",
         "region": "Димитровград",
         "working_hours": "",
         "promo_codes": [],
@@ -61,10 +78,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [54.217515, 49.623924],
+        "title": "Ульяновская область, Димитровград, Комсомольская улица",
+        "point_available": false
     },
     {
-        "id": "1656087157899060669",
+        "id": "11507",
+        "wid": "1656087157888601384",
+        "restaurantID": "1656087157899060669",
         "region": "Дубна",
         "working_hours": "",
         "promo_codes": [],
@@ -77,10 +99,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [56.736345, 37.162189],
+        "title": "Московская область, Дубна, район Большая Волга",
+        "point_available": false
     },
     {
-        "id": "1602745682017181653",
+        "id": "11480",
+        "wid": "1602745682010019794",
+        "restaurantID": "1602745682017181653",
         "region": "Ковров",
         "working_hours": "",
         "promo_codes": [],
@@ -93,10 +120,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [56.362506, 41.310933],
+        "title": "Владимирская область, Ковров, аллея Героев",
+        "point_available": false
     },
     {
-        "id": "1656087162541699433",
+        "id": "11508",
+        "wid": "1656087162541898964",
+        "restaurantID": "1656087162541699433",
         "region": "Кострома",
         "working_hours": "",
         "promo_codes": [],
@@ -109,10 +141,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [57.767918, 40.926885],
+        "title": "Кострома, Сусанинская площадь",
+        "point_available": false
     },
     {
-        "id": "1591345972412718352",
+        "id": "11445",
+        "wid": "1591345972413847051",
+        "restaurantID": "1591345972412718352",
         "region": "Кулебаки",
         "working_hours": "с 09:00 до 20:00",
         "promo_codes": [
@@ -191,10 +228,15 @@
                 "address": "пр. Победы, 25",
                 "working_hours": "09:00 - 22:00"
             }
-        ]
+        ],
+        "center": [55.429716, 42.512492],
+        "title": "Нижегородская область, Кулебаки, улица Воровского",
+        "point_available": true
     },
     {
-        "id": "1642154196735173474",
+        "id": "11505",
+        "wid": "1642154196736732109",
+        "restaurantID": "1642154196735173474",
         "region": "Липецк",
         "working_hours": "",
         "promo_codes": [],
@@ -207,10 +249,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [52.608826, 39.599229],
+        "title": "Липецк, Ленина-Соборная площадь",
+        "point_available": false
     },
     {
-        "id": "1656087162680035397",
+        "id": "11509",
+        "wid": "1656087162684171945",
+        "restaurantID": "1656087162680035397",
         "region": "Лобня",
         "working_hours": "",
         "promo_codes": [],
@@ -223,10 +270,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [56.01242, 37.47492],
+        "title": "Московская область, Лобня, парк культуры и отдыха города Лобня",
+        "point_available": false
     },
     {
-        "id": "1602745683487916651",
+        "id": "11482",
+        "wid": "1602745683478884310",
+        "restaurantID": "1602745683487916651",
         "region": "Минусинск",
         "working_hours": "",
         "promo_codes": [],
@@ -239,10 +291,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [53.710015, 91.686981],
+        "title": "Красноярский край, Минусинск, Соборная площадь",
+        "point_available": false
     },
     {
-        "id": "1642154196217440211",
+        "id": "11502",
+        "wid": "1642154196207440881",
+        "restaurantID": "1642154196217440211",
         "region": "Назарово",
         "working_hours": "",
         "promo_codes": [],
@@ -255,10 +312,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [56.012345, 90.417697],
+        "title": "Красноярский край, Назарово, Центральная площадь",
+        "point_available": false
     },
     {
-        "id": "1656087162831638669",
+        "id": "11511",
+        "wid": "1656087162822910371",
+        "restaurantID": "1656087162831638669",
         "region": "Оренбург",
         "working_hours": "",
         "promo_codes": [],
@@ -271,10 +333,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [51.768205, 55.096964],
+        "title": "Оренбург, улица Михаила Фадеева",
+        "point_available": false
     },
     {
-        "id": "1600494026166629406",
+        "id": "11478",
+        "wid": "1600494026157029846",
+        "restaurantID": "1600494026166629406",
         "region": "Рязань",
         "working_hours": "",
         "promo_codes": [],
@@ -287,10 +354,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [54.621429, 39.757045],
+        "title": "Рязань, Театральная площадь",
+        "point_available": false
     },
     {
-        "id": "1642154196880535986",
+        "id": "11506",
+        "wid": "1642154196872664457",
+        "restaurantID": "1642154196880535986",
         "region": "Самара",
         "working_hours": "",
         "promo_codes": [],
@@ -303,10 +375,15 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [53.195878, 50.100202],
+        "title": "Самара, Чапаевская улица",
+        "point_available": false
     },
     {
-        "id": "1602745682547130976",
+        "id": "11481",
+        "wid": "1602745682552846414",
+        "restaurantID": "1602745682547130976",
         "region": "Черноморское",
         "working_hours": "",
         "promo_codes": [],
@@ -319,6 +396,9 @@
         "social_links": {
             "VKontakte": "",
             "Telegram": ""
-        }
+        },
+        "center": [45.509381, 32.703536],
+        "title": "Республика Крым, посёлок городского типа Черноморское, улица Кирова",
+        "point_available": false
     }
 ]

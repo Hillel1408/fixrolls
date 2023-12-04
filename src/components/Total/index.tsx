@@ -43,7 +43,7 @@ const Total = () => {
                     text="Заказать"
                     className="h-[48px]"
                     clickHandler={() => {
-                        // dispatch(sentOrder(orders));
+                        dispatch(sentOrder(orders));
                     }}
                 />
 

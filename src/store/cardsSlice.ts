@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, AnyAction, PayloadAction } from "@reduxjs/toolkit";
 import axios from "http/axios";
 
 export const getCards = createAsyncThunk(
-    "cards/fetchCards",
+    "cards/getCards",
     async function (params: { restaurantID: string; wid: string }, { rejectWithValue }) {
         try {
             const { data } = await axios.get(
@@ -11,7 +11,6 @@ export const getCards = createAsyncThunk(
 
             return data;
         } catch (error: any) {
-            console.log(error.message);
             return rejectWithValue(error.message);
         }
     },
@@ -28,25 +27,27 @@ const cardsSlice = createSlice({
     initialState,
     reducers: {},
 
-    extraReducers: {
-        //@ts-ignore
-        [getCards.pending]: (state) => {
-            state.status = "loading";
-            state.error = null;
-        },
-        //@ts-ignore
-        [getCards.fulfilled]: (state, action) => {
-            state.status = "resolved";
-            state.cards = action.payload;
-        },
-        //@ts-ignore
-        [getCards.rejected]: (state, action) => {
-            state.status = "rejected";
-            state.error = action.payload;
-        },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getCards.pending, (state) => {
+                state.status = "loading";
+                state.error = "";
+            })
+            .addCase(getCards.fulfilled, (state, action) => {
+                state.status = "resolved";
+                state.cards = action.payload;
+            })
+            .addMatcher(isError, (state, action: PayloadAction<string>) => {
+                state.status = "rejected";
+                state.error = action.payload;
+            });
     },
 });
 
 export const {} = cardsSlice.actions;
 
 export default cardsSlice.reducer;
+
+function isError(action: AnyAction) {
+    return action.type.endsWith("rejected");
+}

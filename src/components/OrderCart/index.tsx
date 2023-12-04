@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "hook";
 import { resetCart, addCard, deleteCard } from "store";
 import { ROUTES } from "constants/";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useMatchMedia } from "hooks";
 
 const OrderCart = () => {

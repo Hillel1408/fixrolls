@@ -45,7 +45,7 @@ const MobileMenuModal = ({
                         <div className="text-[#21201F] text-[22px] font-medium">
                             Ваш город:{" "}
                             <span className="py-1 px-[10px] bg-[#F9F7F7] rounded-[8px] inline-flex items-center gap-1">
-                                {city.name}
+                                {city.region}
                                 <svg className="w-5 h-5 -rotate-90" aria-hidden="true">
                                     <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                                 </svg>

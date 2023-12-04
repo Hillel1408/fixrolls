@@ -3,21 +3,41 @@ import axios from "http/axios";
 
 interface InitialStateType {
     cards: any;
-    city: { name: string; restaurantID: string; wid: string; center: number[]; title: string };
+    city: { region: string; restaurantID: string; wid: string; center: number[]; title: string };
     totalCart: number;
     delivery: any;
     activeCharacter: string;
     type: "Доставка" | "Навынос";
 }
 
+export const sentOrder = createAsyncThunk(
+    "cards/sentOrder",
+    async function (order: InitialStateType) {
+        try {
+            const arr = order.cards.map(
+                (item: { product: { oneCID: string }; count: string }, index: number) =>
+                    `articles[${index}]=${item.product.oneCID}&quantities[${index}]=${item.count}`,
+            );
+            const str = arr.join("&");
+            const params = `user=mobidel&password=723123![]`;
+            const { data } = await axios.get(
+                `/makeOrder.php?${params}&${str}&family=Иванов&street=Ленина&home=1&room=1&comment=&phone=223344`,
+            );
+            // return data;
+        } catch (error: any) {
+            // return rejectWithValue(error.message);
+        }
+    },
+);
+
 const initialState: InitialStateType = {
     cards: [],
     city: {
-        name: "Владимир",
-        restaurantID: "1642154196437770364",
-        wid: "1642154196451843135",
-        center: [56.129056999993274, 40.40663499999998],
-        title: "Владимир, Большая Московская улица",
+        region: "Кулебаки",
+        restaurantID: "1591345972412718352",
+        wid: "1591345972413847051",
+        center: [55.429716, 42.512492],
+        title: "Нижегородская область, Кулебаки, улица Воровского",
     },
     totalCart: 0,
     delivery: {},
@@ -99,29 +119,3 @@ export const {
 } = orderSlice.actions;
 
 export default orderSlice.reducer;
-
-export const sentOrder = createAsyncThunk(
-    "cards/fetchCards",
-    async function (order: InitialStateType, { rejectWithValue }) {
-        try {
-            const arr = order.cards.map(
-                (item: { product: { oneCID: string }; count: string }, index: number) =>
-                    `articles[${index}]=${item.product.oneCID}&quantities[${index}]=[${item.count}]`,
-            );
-            const str = arr.join("&");
-            const params =
-                `user=mobidel&password=723123![]&wid=${order.city.wid}&street=${
-                    order.delivery.adresse.title
-                }&room=${order.delivery.apartment}&code2=${order.delivery.intercom}&entrance=${
-                    order.delivery.entrance
-                }&floor=${order.delivery.storey}&comment=${
-                    order.delivery.commentCourier
-                }&independently=${order.type === "Доставка" ? 0 : 1}&` + str;
-
-            const { data } = await axios.get(`/makeOrder.php?${params}`);
-            return data;
-        } catch (error: any) {
-            return rejectWithValue(error.message);
-        }
-    },
-);
