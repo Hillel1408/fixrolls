@@ -3,7 +3,14 @@ import axios from "http/axios";
 
 interface InitialStateType {
     cards: any;
-    city: { region: string; restaurantID: string; wid: string; center: number[]; title: string };
+    city: {
+        region: string;
+        restaurantID: string;
+        wid: string;
+        center: number[];
+        title: string;
+        id: string;
+    };
     totalCart: number;
     delivery: any;
     activeCharacter: string;
@@ -14,18 +21,29 @@ export const sentOrder = createAsyncThunk(
     "cards/sentOrder",
     async function (order: InitialStateType) {
         try {
-            const arr = order.cards.map(
-                (item: { product: { oneCID: string }; count: string }, index: number) =>
-                    `articles[${index}]=${item.product.oneCID}&quantities[${index}]=${item.count}`,
-            );
-            const str = arr.join("&");
-            const params = `user=mobidel&password=723123![]`;
+            const params = `user=mobidel&password=723123![]&wid=11445&line=${order.city.id}`;
+            const products = order.cards
+                .map(
+                    (item: { product: { oneCID: string }; count: string }, index: number) =>
+                        `articles[${index}]=${item.product.oneCID}&quantities[${index}]=${item.count}`,
+                )
+                .join("&");
+            const delivery =
+                order.type === "Доставка" &&
+                Object.keys(order.delivery)
+                    .map((key) => {
+                        if (key === "street") {
+                            return `${key}=${order.delivery[key].title}`;
+                        } else return `${key}=${order.delivery[key]}`;
+                    })
+                    .join("&");
+
             const { data } = await axios.get(
-                `/makeOrder.php?${params}&${str}&family=Иванов&street=Ленина&home=1&room=1&comment=&phone=223344`,
+                `/makeOrder.php?${params}&${products}&${delivery || `independently=1`}`,
             );
-            // return data;
+            return data;
         } catch (error: any) {
-            // return rejectWithValue(error.message);
+            console.log(error);
         }
     },
 );
@@ -38,6 +56,7 @@ const initialState: InitialStateType = {
         wid: "1591345972413847051",
         center: [55.429716, 42.512492],
         title: "Нижегородская область, Кулебаки, улица Воровского",
+        id: "11445",
     },
     totalCart: 0,
     delivery: {},

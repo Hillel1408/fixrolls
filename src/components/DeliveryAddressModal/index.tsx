@@ -27,8 +27,8 @@ const DeliveryAddressModal = ({
     };
 
     const initialState = {
-        title: orders.delivery.adresse?.title || orders.city.title,
-        center: orders.delivery.adresse?.center || orders.city.center,
+        title: orders.delivery.street?.title || orders.city.title,
+        center: orders.delivery.street?.center || orders.city.center,
         zoom: 12,
     };
 
@@ -45,7 +45,7 @@ const DeliveryAddressModal = ({
 
     const handleSubmit = () => {
         dispatch(
-            addDelivery({ adresse: { title: state.title, center: mapRef.current.getCenter() } }),
+            addDelivery({ street: { title: state.title, center: mapRef.current.getCenter() } }),
         );
     };
 
@@ -127,7 +127,7 @@ const DeliveryAddressModal = ({
 
                             <input
                                 ref={searchRef}
-                                defaultValue={orders.delivery.adresse?.title || orders.city.title}
+                                defaultValue={orders.delivery.street?.title || orders.city.title}
                                 type="text"
                                 className="h-14 bg-[#F9F7F7] rounded-[13px] w-full px-12 text-[#000] text-[16px]"
                             />

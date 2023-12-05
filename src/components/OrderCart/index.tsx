@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "hook";
-import { resetCart, addCard, deleteCard } from "store";
+import { resetCart, addCard, deleteCard, addDelivery } from "store";
 import { ROUTES } from "constants/";
 import { useNavigate } from "react-router-dom";
 import { useMatchMedia } from "hooks";
@@ -89,6 +89,8 @@ const OrderCart = () => {
                 type="text"
                 className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                 placeholder="Комментарий повару"
+                value={orders.delivery.staffComment}
+                onChange={(e) => dispatch(addDelivery({ staffComment: e.target.value }))}
             />
         </div>
     );

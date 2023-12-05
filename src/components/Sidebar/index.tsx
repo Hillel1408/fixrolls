@@ -5,7 +5,7 @@ const Sidebar = ({ cards, refs }: { cards: any; refs: any }) => {
     const activeCharacter = useAppSelector((state) => state.orders.activeCharacter);
 
     return (
-        <div className="pt-[100px] sticky top-0 sm:pt-0 sm:fixed sm:top-[57.5px] sm:z-10 sm:left-0 sm:right-0 sm:shadow-[0px_3px_70px_-20px_rgba(34,60,80,0.2)]">
+        <div className="pt-[100px] sticky top-0 sm:pt-0 sm:shadow-[0px_3px_70px_-20px_rgba(34,60,80,0.2)] sm:top-[57px]">
             <div className="bg-white pt-6 px-2 pb-2 rounded-2xl sm:pb-16px sm:pt-2 sm:rounded-b-[15px] sm:rounded-t-none sm:px-[10px]">
                 <h2 className="text-[#21201F] text-[22px] font-medium px-[16px] mb-[13px] sm:hidden">
                     Меню

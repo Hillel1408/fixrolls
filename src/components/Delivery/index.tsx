@@ -43,7 +43,7 @@ const Delivery = () => {
                         <use xlinkHref="/sprites/sprite.svg#home"></use>
                     </svg>
 
-                    {orders.delivery.adresse?.title}
+                    {orders.delivery.street?.title}
 
                     <svg className="w-6 h-6" aria-hidden="true">
                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
@@ -55,16 +55,16 @@ const Delivery = () => {
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Кв./Офис"
-                        value={orders.delivery.apartment}
-                        onChange={(e) => dispatch(addDelivery({ apartment: e.target.value }))}
+                        value={orders.delivery.room}
+                        onChange={(e) => dispatch(addDelivery({ room: e.target.value }))}
                     />
 
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Домофон"
-                        value={orders.delivery.intercom}
-                        onChange={(e) => dispatch(addDelivery({ intercom: e.target.value }))}
+                        value={orders.delivery.code2}
+                        onChange={(e) => dispatch(addDelivery({ code2: e.target.value }))}
                     />
 
                     <input
@@ -79,8 +79,8 @@ const Delivery = () => {
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Этаж"
-                        value={orders.delivery.storey}
-                        onChange={(e) => dispatch(addDelivery({ storey: e.target.value }))}
+                        value={orders.delivery.floor}
+                        onChange={(e) => dispatch(addDelivery({ floor: e.target.value }))}
                     />
                 </div>
 
@@ -88,8 +88,8 @@ const Delivery = () => {
                     type="text"
                     className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                     placeholder="Комментарий курьеру"
-                    value={orders.delivery.commentCourier}
-                    onChange={(e) => dispatch(addDelivery({ commentCourier: e.target.value }))}
+                    value={orders.delivery.comment}
+                    onChange={(e) => dispatch(addDelivery({ comment: e.target.value }))}
                 />
             </div>
 
