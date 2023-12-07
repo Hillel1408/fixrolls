@@ -3,23 +3,18 @@ import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { addDelivery, addType } from "store";
+import { addDelivery, addType, setActiveModal } from "store";
 import { GeolocationControl, Map, ZoomControl } from "@pbe/react-yandex-maps";
 import classNames from "classnames";
 
-const DeliveryAddressModal = ({
-    active,
-    setActive,
-}: {
-    active: boolean;
-    setActive: (a: bolean) => void;
-}) => {
+const DeliveryAddressModal = () => {
     const orders = useAppSelector((state) => state.orders);
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
     const dispatch = useAppDispatch();
 
     const listItems = ["Доставка", "Навынос"];
 
-    active && document.body.classList.add("lock");
+    activeModal === "delivery-address" && document.body.classList.add("lock");
 
     const mapOptions = {
         modules: ["geocode", "SuggestView"],
@@ -87,9 +82,9 @@ const DeliveryAddressModal = ({
         <LayoutModal
             className="px-[22px] pt-[26px] pb-[22px] w-[817px] sm:p-0 sm:w-full"
             closeModal={() => {
-                setActive(false);
+                dispatch(setActiveModal(""));
             }}
-            active={active}
+            active={activeModal === "delivery-address"}
         >
             <>
                 <div className="flex items-center pr-[110px] justify-between mb-[78px] sm:pr-0 sm:mb-0 sm:absolute sm:top-[78px] sm:left-1/2 sm:-translate-x-1/2">
@@ -144,7 +139,7 @@ const DeliveryAddressModal = ({
                             className="h-[56px] w-full"
                             clickHandler={() => {
                                 handleSubmit();
-                                setActive(false);
+                                dispatch(setActiveModal(""));
                                 document.body.classList.remove("lock");
                             }}
                         />

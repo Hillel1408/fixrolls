@@ -1,37 +1,36 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
+import { useAppSelector, useAppDispatch } from "hook";
+import { setActiveModal } from "store";
 
-const PromotionModal = ({
-    active,
-    setActive,
-    item,
-}: {
-    active: boolean;
-    setActive: (a: boolean) => void;
-    item: { title: string; description: string; fullImage: string };
-}) => {
-    active && document.body.classList.add("lock");
+const PromotionModal = () => {
+    const modals = useAppSelector((state) => state.modals);
+    const dispatch = useAppDispatch();
+
+    modals.activeModal === "promotion" && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="w-[362px] sm:w-full h-[772px]"
             closeModal={() => {
-                setActive(false);
+                dispatch(setActiveModal(""));
             }}
-            active={active}
+            active={modals.activeModal === "promotion"}
         >
             <div className="relative">
                 <img
                     className="h-[237px] object-cover w-full"
-                    src={`/images/${item.fullImage}`}
+                    src={`/images/${modals.itempPomotionModal.fullImage}`}
                     alt=""
                 />
 
                 <div className="pt-7 px-5 h-[535px] overflow-y-auto pb-[100px]">
-                    <h2 className="text-[#000] text-[32px] font-medium mb-7">{item.title}</h2>
+                    <h2 className="text-[#000] text-[32px] font-medium mb-7">
+                        {modals.itempPomotionModal.title}
+                    </h2>
 
                     <div className="flex flex-col gap-3 whitespace-pre-wrap">
-                        {item.description}
+                        {modals.itempPomotionModal.description}
                     </div>
                 </div>
 
@@ -40,7 +39,7 @@ const PromotionModal = ({
                         text="Понятно"
                         className="h-[56px] w-full"
                         clickHandler={() => {
-                            setActive(false);
+                            dispatch(setActiveModal(""));
                             document.body.classList.remove("lock");
                         }}
                     />

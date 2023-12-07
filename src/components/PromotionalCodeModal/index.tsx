@@ -1,33 +1,28 @@
 import { createPortal } from "react-dom";
 import { useAppDispatch, useAppSelector } from "hook";
-import { addPromoCode } from "store";
+import { addPromoCode, setActiveModal } from "store";
 import { LayoutModal, Button } from "components";
 import data from "data/data.json";
 import { useState } from "react";
 import classNames from "classnames";
 
-const PromotionalCodeModal = ({
-    active,
-    setActive,
-}: {
-    active: boolean;
-    setActive: (a: boolean) => void;
-}) => {
+const PromotionalCodeModal = () => {
     const [flag, setFlag] = useState(false);
     const [value, setValue] = useState("");
 
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
 
-    active && document.body.classList.add("lock");
+    activeModal === "promotion-code" && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="p-[32px] w-[400px] sm:w-full"
             closeModal={() => {
-                setActive(false);
+                dispatch(setActiveModal(""));
             }}
-            active={active}
+            active={activeModal === "promotion-code"}
         >
             <>
                 <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-[22px] max-w-[325px] sm:text-[22px]">
@@ -69,7 +64,7 @@ const PromotionalCodeModal = ({
                         if (flag) {
                             dispatch(addPromoCode(value));
                             document.body.classList.remove("lock");
-                            setActive(false);
+                            dispatch(setActiveModal(""));
                         } else setFlag(true);
                     }}
                 />

@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { Button, PromotionalCodeModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { sentOrder } from "store";
+import { sentOrder, setActiveModal } from "store";
 
 const Total = () => {
-    const [active, setActive] = useState(false);
-
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
 
@@ -34,7 +31,7 @@ const Total = () => {
                     <button
                         className="text-[#21201F] text-[20px] font-medium flex gap-[10px]"
                         onClick={() => {
-                            setActive(true);
+                            dispatch(setActiveModal("promotion-code"));
                         }}
                     >
                         У меня есть промокод
@@ -48,7 +45,7 @@ const Total = () => {
                     )}
                 </div>
 
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center gap-4">
                     <Button
                         text="Заказать"
                         className="h-[48px]"
@@ -57,13 +54,13 @@ const Total = () => {
                         }}
                     />
 
-                    <span className="text-[#000] text-[26px] font-medium">
+                    <span className="text-[#000] text-[26px] font-medium whitespace-nowrap sm:text-[24px]">
                         {orders.totalCart} ₽
                     </span>
                 </div>
             </div>
 
-            {active && <PromotionalCodeModal active={active} setActive={setActive} />}
+            <PromotionalCodeModal />
         </>
     );
 };

@@ -2,22 +2,23 @@ import classNames from "classnames";
 import { createPortal } from "react-dom";
 import { LayoutModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { addCity, resetStore } from "store";
+import { addCity, resetStore, setActiveModal } from "store";
 import data from "data/data.json";
 
-const CityModal = ({ active, setActive }: { active: boolean; setActive: (a: boolean) => void }) => {
+const CityModal = () => {
     const activeCity = useAppSelector((state) => state.orders.city);
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
     const dispatch = useAppDispatch();
 
-    active && document.body.classList.add("lock");
+    activeModal === "city" && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="px-[56px] pt-[47px] pb-[74px] w-[478px] sm:p-5 sm:pt-7 sm:w-full"
             closeModal={() => {
-                setActive(false);
+                dispatch(setActiveModal(""));
             }}
-            active={active}
+            active={activeModal === "city"}
         >
             <>
                 <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-8 max-w-[325px] sm:text-[22px]">
@@ -39,7 +40,7 @@ const CityModal = ({ active, setActive }: { active: boolean; setActive: (a: bool
                                     onClick={() => {
                                         dispatch(addCity(item));
                                         dispatch(resetStore());
-                                        setActive(false);
+                                        dispatch(setActiveModal(""));
                                         document.body.classList.remove("lock");
                                     }}
                                 >

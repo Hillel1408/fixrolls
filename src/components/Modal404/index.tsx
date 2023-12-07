@@ -1,16 +1,21 @@
 import { createPortal } from "react-dom";
 import { LayoutModal, Button } from "components";
+import { useAppSelector, useAppDispatch } from "hook";
+import { setActiveModal } from "store";
 
-const Modal404 = ({ active, setActive }: { active: boolean; setActive: (a: boolean) => void }) => {
-    active && document.body.classList.add("lock");
+const Modal404 = () => {
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
+    const dispatch = useAppDispatch();
+
+    activeModal === "404" && document.body.classList.add("lock");
 
     return createPortal(
         <LayoutModal
             className="w-[818px] sm:w-full h-[772px]"
             closeModal={() => {
-                setActive(false);
+                dispatch(setActiveModal(""));
             }}
-            active={active}
+            active={activeModal === "404"}
         >
             <div className="relative h-full">
                 <div className="flex items-center justify-center h-full flex-col gap-2">
@@ -23,7 +28,7 @@ const Modal404 = ({ active, setActive }: { active: boolean; setActive: (a: boole
                         text="Понятно"
                         className="h-[56px] w-full"
                         clickHandler={() => {
-                            setActive(false);
+                            dispatch(setActiveModal(""));
                         }}
                     />
                 </div>

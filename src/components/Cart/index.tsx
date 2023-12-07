@@ -1,16 +1,13 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
-import { DeliveryTotalModal, Button } from "components";
+import { Button } from "components";
 import { useMatchMedia } from "hooks";
 import { ROUTES } from "constants/";
 import { useAppDispatch, useAppSelector } from "hook";
-import { resetCart, addCard, deleteCard } from "store";
+import { resetCart, addCard, deleteCard, setActiveModal } from "store";
 import data from "data/data.json";
 
 const Cart = () => {
-    const [active, setActive] = useState(false);
-
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
     const navigate = useNavigate();
@@ -24,8 +21,8 @@ const Cart = () => {
         <div className="sticky pt-[100px] top-0 xl:pt-0">
             <div
                 className={classNames(
-                    "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative xl:pb-[180px] sm:pb-[150px] xl:h-auto",
-                    orders.cards.length > 0 ? "pb-[150px]" : "justify-between pb-6",
+                    "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative sm:pb-[150px] xl:h-auto xl:min-h-[500px]",
+                    orders.cards.length > 0 ? "pb-[150px] xl:pb-[180px]" : "justify-between pb-6",
                 )}
             >
                 <div className="flex justify-between items-center mb-[13px]">
@@ -33,7 +30,7 @@ const Cart = () => {
 
                     {orders.cards.length > 0 && (
                         <button
-                            className="text-[#21201F] text-[15px]"
+                            className="text-[#21201F] text-[15px] xl:mr-20"
                             onClick={() => {
                                 dispatch(resetCart(""));
                             }}
@@ -140,19 +137,17 @@ const Cart = () => {
                             clickHandler={() => {
                                 document.body.classList.remove("lock");
                                 if (isTablet || isDesktop) navigate(ROUTES.ORDER);
-                                else if (isMobile) setActive(true);
+                                else if (isMobile) dispatch(setActiveModal("delivery-total"));
                             }}
                         />
                     </div>
                 ) : (
                     <p className="text-[#21201F] text-[14px] font-medium">
                         Доставка работает:{" "}
-                        {data.find((item) => item.id === orders.city.restaurantID)?.working_hours}
+                        {data.find((item) => item.region === orders.city.region)?.working_hours}
                     </p>
                 )}
             </div>
-
-            {isMobile && active && <DeliveryTotalModal active={active} setActive={setActive} />}
         </div>
     );
 };

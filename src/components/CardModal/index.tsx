@@ -3,35 +3,42 @@ import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { LayoutModal, Button } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { addCard, deleteCard } from "store";
+import { useMatchMedia } from "hooks";
+import { addCard, deleteCard, setActiveModal } from "store";
 import { ROUTES } from "constants/";
 
-const CardModal = (props: { active: boolean; setActive: (a: boolean) => void; item: any }) => {
-    const { active, setActive, item } = props;
+const CardModal = () => {
+    const modals = useAppSelector((state) => state.modals);
 
     const dispatch = useAppDispatch();
 
     const cards = useAppSelector((state) => state.orders.cards);
 
-    const card = cards[cards.findIndex((card: any) => card.product.id === item.id)] || 0;
+    const card =
+        cards[cards.findIndex((card: any) => card.product.id === modals.itemCardModal.id)] || 0;
 
-    active && document.body.classList.add("lock");
+    modals.activeModal === "card" && document.body.classList.add("lock");
 
     const navigate = useNavigate();
+
+    const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
     return createPortal(
         <LayoutModal
             className="p-[15px] w-[1000px] sm:p-0"
             closeModal={() => {
-                setActive(false);
+                dispatch(setActiveModal(""));
             }}
-            active={active}
+            active={modals.activeModal === "card"}
         >
             <div className="grid grid-cols-[1fr_1fr] gap-[25px] sm:grid-cols-[1fr] sm:gap-0">
                 <div className="bg-[#f2f2f2] h-[473px] rounded-[44px] sm:rounded-none sm:h-[350px]">
                     <img
                         className="h-full object-cover w-full"
-                        src={item.image.replace("http://89.248.201.151", "https://fiksroll.ru")}
+                        src={modals.itemCardModal.image.replace(
+                            "http://89.248.201.151",
+                            "https://fiksroll.ru",
+                        )}
                         alt=""
                     />
                 </div>
@@ -40,7 +47,7 @@ const CardModal = (props: { active: boolean; setActive: (a: boolean) => void; it
                     <div className="py-[18px] flex flex-col gap-5 sm:py-0 sm:gap-4">
                         <div>
                             <h2 className="text-[36px] font-medium leading-[111%] sm:text-[32px]">
-                                {item.name}
+                                {modals.itemCardModal.name}
                             </h2>
                             <p className="text-[12px] font-medium text-[#6C6C6C]">670 г / 56 шт</p>
                         </div>
@@ -50,9 +57,11 @@ const CardModal = (props: { active: boolean; setActive: (a: boolean) => void; it
                                 Описание:
                             </p>
                             <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
-                                {item.description.split(";").map((item: string, index: number) => (
-                                    <li key={index}>{item}</li>
-                                ))}
+                                {modals.itemCardModal.description
+                                    .split(";")
+                                    .map((item: string, index: number) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
                             </ol>
                         </div>
 
@@ -77,7 +86,10 @@ const CardModal = (props: { active: boolean; setActive: (a: boolean) => void; it
                     <div className="mt-4 py-[13px] border-t border-[#f2f2f2] flex justify-between text-[#21201F] items-center">
                         <p className="text-[15px]">SET Радужный</p>
                         <span className="text-[22px] font-medium">
-                            {card.count > 0 ? card.total : item.floatprice.split(".")[0]}₽
+                            {card.count > 0
+                                ? card.total
+                                : modals.itemCardModal.floatprice.split(".")[0]}
+                            ₽
                         </span>
                     </div>
 
@@ -92,7 +104,7 @@ const CardModal = (props: { active: boolean; setActive: (a: boolean) => void; it
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        dispatch(deleteCard(item));
+                                        dispatch(deleteCard(modals.itemCardModal));
                                     }}
                                 >
                                     <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
@@ -107,7 +119,7 @@ const CardModal = (props: { active: boolean; setActive: (a: boolean) => void; it
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        dispatch(addCard(item));
+                                        dispatch(addCard(modals.itemCardModal));
                                     }}
                                 >
                                     <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
@@ -121,9 +133,11 @@ const CardModal = (props: { active: boolean; setActive: (a: boolean) => void; it
                             clickHandler={() => {
                                 if (card.count > 0) {
                                     document.body.classList.remove("lock");
-                                    setActive(false);
-                                    navigate(ROUTES.ORDER);
-                                } else dispatch(addCard(item));
+                                    dispatch(setActiveModal(""));
+                                    if (isMobile) {
+                                        dispatch(setActiveModal("cart"));
+                                    } else navigate(ROUTES.ORDER);
+                                } else dispatch(addCard(modals.itemCardModal));
                             }}
                             text={card.count > 0 ? "Оформить заказ" : "Добавить"}
                             className="h-[47px] w-full"
