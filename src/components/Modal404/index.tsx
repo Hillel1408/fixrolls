@@ -11,7 +11,7 @@ const Modal404 = () => {
 
     return createPortal(
         <LayoutModal
-            className="w-[818px] sm:w-full h-[772px]"
+            className="w-[818px] sm:w-full h-[calc(100vh-190px)]"
             closeModal={() => {
                 dispatch(setActiveModal(""));
             }}
