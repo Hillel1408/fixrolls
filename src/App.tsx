@@ -1,22 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Main, Order } from "pages";
 import { ROUTES } from "constants/";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 function App() {
-    useEffect(() => {
-        // const a = () => {
-        //     const mvp = document.getElementById("myViewport");
-        //     window.screen.width > 479
-        //         ? mvp?.setAttribute("content", "width=1365")
-        //         : mvp?.setAttribute("content", "width=device-width, initial-scale=1");
-        // };
-        // window.addEventListener("resize", (e) => {
-        //     setTimeout(() => {
-        //         a();
-        //     }, 300);
-        // });
-        // a();
+    useLayoutEffect(() => {
+        const a = () => {
+            const mvp = document.getElementById("myViewport");
+            window.screen.width > 479
+                ? mvp?.setAttribute("content", "width=1365")
+                : mvp?.setAttribute("content", "width=device-width, initial-scale=1");
+        };
+        window.addEventListener("resize", (e) => {
+            setTimeout(() => {
+                a();
+            }, 300);
+        });
+        a();
     }, []);
 
     return (
