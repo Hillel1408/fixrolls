@@ -84,6 +84,24 @@ const Delivery = () => {
                     />
                 </div>
 
+                <div className="grid grid-cols-[1fr_1fr] gap-3 mb-[13px] sm:grid-cols-[1fr_1fr]">
+                    <input
+                        type="text"
+                        className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
+                        placeholder="Ваше имя"
+                        value={orders.delivery.family}
+                        onChange={(e) => dispatch(addDelivery({ family: e.target.value }))}
+                    />
+
+                    <input
+                        type="tel"
+                        className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
+                        placeholder="Контактный телефон"
+                        value={orders.delivery.phone}
+                        onChange={(e) => dispatch(addDelivery({ phone: e.target.value }))}
+                    />
+                </div>
+
                 <input
                     type="text"
                     className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"

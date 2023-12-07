@@ -19,6 +19,7 @@ import OrderCart from "components/OrderCart";
 import PromotionModal from "components/PromotionModal";
 import Modal404 from "components/Modal404";
 import CardsBlock from "components/CardsBlock";
+import PromotionalCodeModal from "components/PromotionalCodeModal";
 
 export {
     Layout,
@@ -42,4 +43,5 @@ export {
     PromotionModal,
     Modal404,
     CardsBlock,
+    PromotionalCodeModal,
 };

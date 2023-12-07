@@ -15,6 +15,7 @@ interface InitialStateType {
     delivery: any;
     activeCharacter: string;
     type: "Доставка" | "Навынос";
+    promoCode: string;
 }
 
 export const sentOrder = createAsyncThunk(
@@ -61,6 +62,7 @@ const initialState: InitialStateType = {
     totalCart: 0,
     delivery: {},
     type: "Доставка",
+    promoCode: "",
     activeCharacter: "",
 };
 
@@ -123,6 +125,10 @@ const orderSlice = createSlice({
         addType(state, action) {
             state.type = action.payload;
         },
+
+        addPromoCode(state, action) {
+            state.promoCode = action.payload;
+        },
     },
 });
 
@@ -135,6 +141,7 @@ export const {
     resetStore,
     setActiveCharacter,
     addType,
+    addPromoCode,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;
