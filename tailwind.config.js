@@ -57,8 +57,16 @@ module.exports = {
                     display: "none",
                 },
                 "@media (max-width: 1365px)": {
+                    body: {
+                        minWidth: "1365px",
+                    },
                     ".scroll-bar::-webkit-scrollbar": {
                         width: "2px",
+                    },
+                },
+                "@media (max-width: 479px)": {
+                    body: {
+                        minWidth: "479px",
                     },
                 },
             });
