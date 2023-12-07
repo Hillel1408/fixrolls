@@ -1,7 +1,16 @@
 import classNames from "classnames";
-import { LayoutModalProps } from "components/LayoutModal/LayoutModal.props";
 
-const LayoutModal = ({ children, closeModal, active, className }: LayoutModalProps) => {
+const LayoutModal = ({
+    children,
+    closeModal,
+    active,
+    className,
+}: {
+    children: JSX.Element;
+    closeModal: () => void;
+    active?: boolean;
+    className?: string;
+}) => {
     return (
         <div
             className={classNames(

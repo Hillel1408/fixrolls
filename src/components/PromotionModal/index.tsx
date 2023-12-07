@@ -20,17 +20,17 @@ const PromotionModal = () => {
             <div className="relative">
                 <img
                     className="h-[237px] object-cover w-full"
-                    src={`/images/${modals.itempPomotionModal.fullImage}`}
+                    src={`/images/${modals.itemPomotionModal.fullImage}`}
                     alt=""
                 />
 
                 <div className="pt-7 px-5 h-[535px] overflow-y-auto pb-[100px]">
                     <h2 className="text-[#000] text-[32px] font-medium mb-7">
-                        {modals.itempPomotionModal.title}
+                        {modals.itemPomotionModal.title}
                     </h2>
 
                     <div className="flex flex-col gap-3 whitespace-pre-wrap">
-                        {modals.itempPomotionModal.description}
+                        {modals.itemPomotionModal.description}
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@ const initialState = {
 
     itemCardModal: { image: "", name: "", description: "", id: "", floatprice: "" },
 
-    itempPomotionModal: { fullImage: "", title: "", description: "" },
+    itemPomotionModal: { fullImage: "", title: "", description: "" },
 };
 
 const modalsSlice = createSlice({
@@ -21,7 +21,7 @@ const modalsSlice = createSlice({
         },
 
         setItempPomotionModal(state, action) {
-            state.itempPomotionModal = action.payload;
+            state.itemPomotionModal = action.payload;
         },
     },
 });

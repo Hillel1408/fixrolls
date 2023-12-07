@@ -8,10 +8,8 @@ import { addCard, deleteCard, setActiveModal } from "store";
 import { ROUTES } from "constants/";
 
 const CardModal = () => {
-    const modals = useAppSelector((state) => state.modals);
-
     const dispatch = useAppDispatch();
-
+    const modals = useAppSelector((state) => state.modals);
     const cards = useAppSelector((state) => state.orders.cards);
 
     const card =

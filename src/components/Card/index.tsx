@@ -1,4 +1,3 @@
-import { CardModal } from "components";
 import { useAppDispatch, useAppSelector } from "hook";
 import { addCard, deleteCard, setItemCardModal, setActiveModal } from "store";
 

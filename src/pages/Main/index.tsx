@@ -16,7 +16,6 @@ import { ThreeDots } from "react-loader-spinner";
 
 const Main = () => {
     const activeModal = useAppSelector((state) => state.modals.activeModal);
-
     const orders = useAppSelector((state) => state.orders);
     const dispatch = useAppDispatch();
 
