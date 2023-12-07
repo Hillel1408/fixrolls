@@ -5,20 +5,18 @@ import { useEffect } from "react";
 
 function App() {
     useEffect(() => {
-        const a = () => {
-            const mvp = document.getElementById("myViewport");
-
-            window.screen.width > 479
-                ? mvp?.setAttribute("content", "width=1365")
-                : mvp?.setAttribute("content", "width=device-width, initial-scale=1");
-        };
-
-        window.addEventListener("resize", (e) => {
-            setTimeout(() => {
-                a();
-            }, 300);
-        });
-        a();
+        // const a = () => {
+        //     const mvp = document.getElementById("myViewport");
+        //     window.screen.width > 479
+        //         ? mvp?.setAttribute("content", "width=1365")
+        //         : mvp?.setAttribute("content", "width=device-width, initial-scale=1");
+        // };
+        // window.addEventListener("resize", (e) => {
+        //     setTimeout(() => {
+        //         a();
+        //     }, 300);
+        // });
+        // a();
     }, []);
 
     return (
