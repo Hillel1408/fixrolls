@@ -9,7 +9,6 @@ import data from "data/data.json";
 const Slider = () => {
     const dispatch = useAppDispatch();
 
-    const [loaded, setLoaded] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const orders = useAppSelector((state) => state.orders);
@@ -19,17 +18,18 @@ const Slider = () => {
     )?.special_offers;
 
     const [sliderRef] = useKeenSlider<HTMLDivElement>({
-        mode: "free",
-
         slides: {
-            spacing: 8,
-            perView: "auto",
+            spacing: 11,
+            perView: 3.4,
         },
 
-        breakpoints: {},
-
-        created() {
-            setLoaded(true);
+        breakpoints: {
+            "(max-width: 480px)": {
+                slides: {
+                    spacing: 11,
+                    perView: 1.6,
+                },
+            },
         },
 
         slideChanged(slider) {
@@ -46,7 +46,7 @@ const Slider = () => {
                             {items.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="keen-slider__slide !min-w-[285px] max-w-[285px] sm:!min-w-[207px] cursor-pointer"
+                                    className="keen-slider__slide sm:!max-h-[207px] cursor-pointer"
                                     onClick={() => {
                                         dispatch(setItempPomotionModal(item));
                                         dispatch(setActiveModal("promotion"));
