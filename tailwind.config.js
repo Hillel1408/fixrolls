@@ -66,7 +66,7 @@ module.exports = {
                 },
                 "@media (max-width: 479px)": {
                     body: {
-                        minWidth: "479px",
+                        minWidth: "360px",
                     },
                 },
             });
