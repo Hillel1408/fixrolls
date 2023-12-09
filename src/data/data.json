@@ -155,15 +155,56 @@
         "promo_codes": [
             {
                 "code": "KUL001",
-                "discount": 10,
-                "product_offer": "Скидка 10% на все роллы при заказе от 800 рублей",
-                "special_offer": "Специальная цена на ролл 'Калифорния'"
+                "discount_percentage": 10,
+                "discount_amount": 0,
+                "product_offer": "10% скидка на все роллы при наличии определенных продуктов \"12345\" 2 шт и \"67890\" 3 шт в корзине",
+                "special_offer": "",
+                "conditions": {
+                    "cart_product_id": [
+                        {
+                            "product_id": "12345",
+                            "quantity": 2
+                        },
+                        {
+                            "product_id": "67890",
+                            "quantity": 3
+                        }
+                    ],
+                    "order_amount": "",
+                    "promotion_end_date": "2023-12-31",
+                    "promotion_trigger_date": ["2023-01-01"]
+                }
             },
             {
                 "code": "KUL002",
-                "discount": 0,
+                "discount_percentage": 0,
+                "discount_amount": 0,
                 "product_offer": "",
-                "special_offer": "Акция 'Суши дня' каждый четверг"
+                "special_offer": "Акция 'Суши Филадельфия' в подарок при заказе от 800 рублей",
+                "conditions": {
+                    "order_amount": 800,
+                    "cart_product_id": "",
+                    "promotion_end_date": "",
+                    "promotion_trigger_date": []
+                }
+            },
+            {
+                "code": "KUL003",
+                "discount_percentage": 15,
+                "discount_amount": 0,
+                "product_offer": "15% скидка на заказ при наличии определенного продукта \"56789\" в корзине и заказе от 1000 рублей",
+                "special_offer": "",
+                "conditions": {
+                    "cart_product_id": [
+                        {
+                            "product_id": "56789",
+                            "quantity": 1
+                        }
+                    ],
+                    "order_amount": 1000,
+                    "promotion_end_date": "2023-12-31",
+                    "promotion_trigger_date": ["2023-01-01"]
+                }
             }
         ],
         "free_delivery": [

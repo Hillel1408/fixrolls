@@ -1,8 +1,9 @@
 import { useKeenSlider } from "keen-slider/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PromotionModal } from "components";
 import { setActiveModal, setItempPomotionModal } from "store";
 import { useAppSelector, useAppDispatch } from "hook";
+import { useMatchMedia } from "hooks";
 import data from "data/data.json";
 import classNames from "classnames";
 import "keen-slider/keen-slider.min.css";
@@ -14,6 +15,8 @@ const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const orders = useAppSelector((state) => state.orders);
+
+    const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
     const items = data.find(
         (item) => item.restaurantID === orders.city.restaurantID,
@@ -39,10 +42,6 @@ const Slider = () => {
             setCurrentSlide(slider.track.details.rel);
         },
     });
-
-    useEffect(() => {
-        console.log();
-    }, []);
 
     return (
         <>
@@ -71,7 +70,7 @@ const Slider = () => {
                             {loaded &&
                                 new Array(
                                     instanceRef.current?.slides?.length &&
-                                        instanceRef.current?.slides?.length - 2,
+                                        instanceRef.current?.slides?.length - (isMobile ? 0 : 2),
                                 )
                                     .fill("")
                                     .map((item, index) => (
