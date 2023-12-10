@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, AnyAction, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, AnyAction } from "@reduxjs/toolkit";
 import axios from "http/axios";
 
 export const getCards = createAsyncThunk(
@@ -37,7 +37,7 @@ const cardsSlice = createSlice({
                 state.status = "resolved";
                 state.cards = action.payload;
             })
-            .addMatcher(isError, (state, action: PayloadAction<string>) => {
+            .addMatcher(isError, (state, action) => {
                 state.status = "rejected";
                 state.error = action.payload;
             });

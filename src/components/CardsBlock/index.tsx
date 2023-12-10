@@ -3,7 +3,17 @@ import { useAppSelector, useAppDispatch } from "hook";
 import { setActiveCharacter } from "store";
 import { Card } from "components";
 
-const CardsBlock = ({ item, refs, pageHeight }: { item: any; refs: any; pageHeight: number }) => {
+const CardsBlock = ({
+    item,
+    refs,
+    pageHeight,
+    index,
+}: {
+    item: any;
+    refs: any;
+    pageHeight: number;
+    index: number;
+}) => {
     const dispatch = useAppDispatch();
     const activeCharacter = useAppSelector((state) => state.orders.activeCharacter);
 
@@ -19,7 +29,7 @@ const CardsBlock = ({ item, refs, pageHeight }: { item: any; refs: any; pageHeig
         const handleIntersection = function (entries: any) {
             entries.forEach((entry: any) => {
                 if (entry.target.id !== activeCharacter && entry.isIntersecting) {
-                    dispatch(setActiveCharacter(entry.target.id));
+                    dispatch(setActiveCharacter({ id: entry.target.id, index: index }));
                 }
             });
         };

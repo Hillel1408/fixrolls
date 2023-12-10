@@ -13,7 +13,7 @@ interface InitialStateType {
     };
     totalCart: number;
     delivery: any;
-    activeCharacter: string;
+    activeCharacter: { id: string; index: number };
     type: "Доставка" | "Навынос";
     promoCode: string;
 }
@@ -63,7 +63,7 @@ const initialState: InitialStateType = {
     delivery: {},
     type: "Доставка",
     promoCode: "",
-    activeCharacter: "",
+    activeCharacter: { id: "", index: 0 },
 };
 
 const orderSlice = createSlice({
