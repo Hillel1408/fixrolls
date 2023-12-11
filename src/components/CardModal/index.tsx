@@ -19,7 +19,7 @@ const CardModal = () => {
 
     const navigate = useNavigate();
 
-    const { isMobile, isTablet, isDesktop } = useMatchMedia();
+    const { isMobile } = useMatchMedia();
 
     return createPortal(
         <LayoutModal
