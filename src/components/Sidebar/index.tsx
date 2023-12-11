@@ -41,28 +41,32 @@ const Sidebar = ({ cards, refs }: { cards: any; refs: any }) => {
                     ref={sliderRef}
                     className="keen-slider text-[16px] text-[#21201F] lg:flex lg:overflow-auto lg:whitespace-nowrap sm:text-[14px]"
                 >
-                    {cards.map((item: any, index: number) => (
-                        <li
-                            className="keen-slider__slide !min-w-[fit-content]"
-                            key={item.description.id}
-                        >
-                            <span
-                                className={classNames(
-                                    "px-[18px] py-[14px] block duration-200 rounded-2xl cursor-pointer sm:py-[9px] sm:px-4",
-                                    !isMobile && "hover:bg-[#F2F2F2]",
-                                    activeCharacter.id === item.description.id && "bg-[#F2F2F2]",
-                                )}
-                                onClick={() => {
-                                    refs[item.description.id].current.scrollIntoView({
-                                        behavior: "smooth",
-                                        block: "start",
-                                    });
-                                }}
-                            >
-                                {item.description.name}
-                            </span>
-                        </li>
-                    ))}
+                    {cards.map(
+                        (item: any, index: number) =>
+                            item.description.mobileEnable !== "0" && (
+                                <li
+                                    className="keen-slider__slide !min-w-[fit-content]"
+                                    key={item.description.id}
+                                >
+                                    <span
+                                        className={classNames(
+                                            "px-[18px] py-[14px] block duration-200 rounded-2xl cursor-pointer sm:py-[9px] sm:px-4",
+                                            !isMobile && "hover:bg-[#F2F2F2]",
+                                            activeCharacter.id === item.description.id &&
+                                                "bg-[#F2F2F2]",
+                                        )}
+                                        onClick={() => {
+                                            refs[item.description.id].current.scrollIntoView({
+                                                behavior: "smooth",
+                                                block: "start",
+                                            });
+                                        }}
+                                    >
+                                        {item.description.name}
+                                    </span>
+                                </li>
+                            ),
+                    )}
                 </ul>
             </div>
         </div>
