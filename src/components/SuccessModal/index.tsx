@@ -26,7 +26,7 @@ const SuccessModal = () => {
                 </h2>
 
                 <p className="text-[#21201F] text-[14px]">
-                    Информация и статус о заказе: <br /> {response.split(" ")[1]}
+                    Информация и статус о заказе: <br /> {response?.split(" ")[1]}
                 </p>
 
                 <Button
