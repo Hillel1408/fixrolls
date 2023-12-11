@@ -39,7 +39,7 @@ const OrderCart = () => {
             {orders.cards.map((item: any) => (
                 <div key={item.product.id} className="grid grid-cols-[1fr_122px_77px] items-center">
                     <div className="flex gap-2 items-center">
-                        <div className="w-[94px]">
+                        <div className="min-w-[94px]">
                             <img
                                 className="h-[94px] object-cover w-full"
                                 src={item.product.image.replace(

@@ -9,7 +9,7 @@ const Order = () => {
 
     return (
         <Layout>
-            <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] pt-[100px] pb-[100px] xl:grid-cols-[1fr]">
+            <div className="container grid grid-cols-[232px_1fr_334px] gap-[26px] pt-[100px] pb-[100px] xl:grid-cols-[1fr] lg:pb-[14px]">
                 <div className="xl:hidden"></div>
 
                 <div>
@@ -31,7 +31,7 @@ const Order = () => {
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-[1.14fr_1fr] gap-5 items-start 2xl:grid-cols-[1fr] xl:grid-cols-[1.14fr_1fr] sm:grid-cols-[1fr]">
+                    <div className="grid grid-cols-[1.14fr_1fr] gap-5 items-start 2xl:grid-cols-[1fr] xl:grid-cols-[1.14fr_1fr] lg:grid-cols-[1fr]">
                         <div>
                             <Delivery />
 

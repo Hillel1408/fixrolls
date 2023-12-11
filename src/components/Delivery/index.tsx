@@ -10,11 +10,11 @@ const Delivery = () => {
 
     return (
         <div className="pt-[21px] pr-[35px] pb-[30px] pl-[18px] bg-white rounded-[32px] flex flex-col gap-[26px] sm:px-3 sm:pt-[17px] sm:pb-6">
-            <ul className="flex gap-[14px] sm:gap-[5px] sm:grid sm:grid-cols-[1fr_1fr]">
+            <ul className="flex gap-[14px] sm:gap-[5px] sm:grid sm:grid-cols-[1fr_1fr] sm:pr-[90px]">
                 {listItems.map((item) => (
                     <li
                         className={classNames(
-                            "h-12 px-[22px] rounded-2xl flex items-center cursor-pointer sm:justify-center",
+                            "h-12 px-[22px] rounded-2xl flex items-center cursor-pointer sm:px-2 sm:justify-center",
                             item === "Доставка" ? "gap-2" : "gap-[10px]",
                             orders.type === item && "bg-[#F2F2F2]",
                         )}
