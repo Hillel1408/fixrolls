@@ -9,7 +9,7 @@ export const getCards = createAsyncThunk(
                 `/getMenu.php?restaurantID=${params.restaurantID}&wid=${params.wid}`,
             );
 
-            return data;
+            return data.filter((item: any) => item.description.mobileEnable !== "0");
         } catch (error: any) {
             return rejectWithValue(error.message);
         }
