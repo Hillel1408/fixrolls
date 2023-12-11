@@ -25,10 +25,34 @@ const Slider = () => {
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
         slides: {
             spacing: 11,
-            perView: 3.4,
+            perView: 3.8,
         },
         breakpoints: {
-            "(max-width: 480px)": {
+            "(max-width: 1600px)": {
+                slides: {
+                    spacing: 11,
+                    perView: 3.2,
+                },
+            },
+            "(max-width: 1365px)": {
+                slides: {
+                    spacing: 11,
+                    perView: 3.6,
+                },
+            },
+            "(max-width: 1023px)": {
+                slides: {
+                    spacing: 11,
+                    perView: 4.6,
+                },
+            },
+            "(max-width: 768px)": {
+                slides: {
+                    spacing: 11,
+                    perView: 3.6,
+                },
+            },
+            "(max-width: 479px)": {
                 slides: {
                     spacing: 11,
                     perView: 1.6,
@@ -47,19 +71,19 @@ const Slider = () => {
         <>
             {items && items.length > 0 && (
                 <div>
-                    <div className="px-[10px] py-2 bg-white relative rounded-[30px] mb-[50px] sm:rounded-b-none sm:rounded-t-none sm:mb-0">
+                    <div className="px-[10px] py-2 bg-white relative rounded-[30px] mb-[50px] lg:rounded-b-none lg:-mx-[10px] md:rounded-t-none lg:mb-0">
                         <div ref={sliderRef} className="keen-slider max-w-[1126px] rounded-[30px]">
                             {items.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="keen-slider__slide sm:!max-h-[207px] cursor-pointer"
+                                    className="keen-slider__slide lg:!max-h-[207px] cursor-pointer"
                                     onClick={() => {
                                         dispatch(setItempPomotionModal(item));
                                         dispatch(setActiveModal("promotion"));
                                     }}
                                 >
                                     <img
-                                        className="h-[285px] object-cover w-full rounded-[20px] sm:h-[207px]"
+                                        className="h-[285px] object-cover w-full rounded-[20px] lg:h-[207px]"
                                         src={`/images/${item.image}`}
                                         alt=""
                                     />
@@ -70,7 +94,8 @@ const Slider = () => {
                             {loaded &&
                                 new Array(
                                     instanceRef.current?.slides?.length &&
-                                        instanceRef.current?.slides?.length - (isMobile ? 0 : 2),
+                                        instanceRef.current?.slides?.length -
+                                            (isMobile ? 0 : isTablet ? 3 : 2),
                                 )
                                     .fill("")
                                     .map((item, index) => (

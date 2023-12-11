@@ -18,15 +18,17 @@ const Card = ({ item }: { item: any }) => {
             }}
         >
             <img
-                className="h-[195px] object-cover w-full sm:h-[144px]"
+                className="h-[195px] rounded-[21px] mb-1 object-cover w-full lg:h-[144px]"
                 src={image.replace("http://89.248.201.151", "https://fiksroll.ru")}
                 alt=""
             />
 
             <div className="px-2 sm:px-[6px] mb-[10px] flex flex-col flex-auto">
-                <h3 className="text-[#21201F] text-[18px] font-medium sm:text-[14px]">{name}</h3>
+                <h3 className="text-[#21201F] text-[18px] font-medium lg:text-[14px]">{name}</h3>
 
-                <p className="text-[#797979] text-[12px] font-medium mb-6">5 микс ролов / 40 шт</p>
+                <p className="text-[#797979] text-[12px] font-medium mb-6 lg:mb-4">
+                    5 микс ролов / 40 шт
+                </p>
 
                 <div className="flex gap-2 items-center sm:mt-4 sm:gap-1 mt-auto">
                     <span className="text-[#21201F] text-[22px] font-medium sm:text-[16px]">
@@ -42,9 +44,9 @@ const Card = ({ item }: { item: any }) => {
             </div>
 
             {count > 0 ? (
-                <div className="flex justify-between items-center border border-[#F2F2F2] p-1 rounded-2xl">
+                <div className="flex justify-between items-center outline outline-[#F2F2F2] p-1 rounded-2xl">
                     <button
-                        className="w-10 h-10 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
+                        className="w-10 h-10 lg:h-8 lg:w-8 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
                         onClick={(e) => {
                             e.stopPropagation();
                             dispatch(deleteCard(item));
@@ -55,10 +57,12 @@ const Card = ({ item }: { item: any }) => {
                         </svg>
                     </button>
 
-                    <span className="text-[#21201F] text-[22px] font-medium">{count}</span>
+                    <span className="text-[#21201F] text-[22px] lg:text-[18px] font-medium">
+                        {count}
+                    </span>
 
                     <button
-                        className="w-10 h-10 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
+                        className="w-10 h-10 lg:h-8 lg:w-8 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
                         onClick={(e) => {
                             e.stopPropagation();
                             dispatch(addCard(item));
@@ -71,7 +75,7 @@ const Card = ({ item }: { item: any }) => {
                 </div>
             ) : (
                 <button
-                    className="h-[50px] w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium sm:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]"
+                    className="h-[50px] w-full rounded-2xl bg-[#F2F2F2] text-[#21201F] text-[16px] font-medium lg:h-10 sm:text-[14px] flex items-center justify-center gap-[6px]"
                     onClick={(e) => {
                         e.stopPropagation();
                         dispatch(addCard(item));

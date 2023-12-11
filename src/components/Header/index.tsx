@@ -10,16 +10,16 @@ const Header = () => {
     return (
         <>
             <header className="fixed left-0 right-0 z-10">
-                <div className="container sm:px-0">
-                    <div className="bg-white shadow-[0px_3px_70px_-20px_rgba(34,60,80,0.2)] rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_234px] sm:grid-cols-[auto_1fr_auto] sm:gap-[18px] sm:px-[10px] sm:py-2 sm:rounded-t-[16px] sm:rounded-b-none sm:shadow-none">
-                        <div className="py-4 px-[30px] sm:hidden">
+                <div className="container lg:px-0">
+                    <div className="bg-white shadow-[0px_3px_70px_-20px_rgba(34,60,80,0.2)] rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_80px] lg:gap-5 lg:grid-cols-[175px_1fr_80px] md:grid-cols-[auto_1fr_auto] md:gap-[18px] md:px-[10px] md:py-2 md:rounded-t-[16px] lg:rounded-b-none lg:shadow-none">
+                        <div className="py-4 px-[30px] lg:pr-0 lg:pl-5 md:hidden">
                             <img src="/images/logo.svg" alt="" />
                         </div>
 
-                        <img className="hidden sm:block" src="/images/logo-3.svg" alt="" />
+                        <img className="hidden md:block" src="/images/logo-3.svg" alt="" />
 
-                        <div className="grid grid-cols-[1fr_auto] gap-[54px] items-center xl:gap-5 sm:hidden">
-                            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-[21px]">
+                        <div className="grid grid-cols-[1fr_auto] gap-[54px] items-center xl:gap-5 md:hidden">
+                            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-[21px] lg:grid-cols-[auto_1fr]">
                                 <button
                                     className="flex items-center text-left"
                                     onClick={() => {
@@ -35,7 +35,7 @@ const Header = () => {
                                 </button>
 
                                 <button
-                                    className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] text-left"
+                                    className="py-[13px] pl-[14px] pr-[6px] text-[#21201F] text-[16px] rounded-[14px] border-[2px] border-[#FC931C] text-left whitespace-nowrap overflow-hidden text-ellipsis"
                                     onClick={() => {
                                         dispatch(setActiveModal("delivery-address"));
                                     }}
@@ -43,7 +43,7 @@ const Header = () => {
                                     {orders.delivery.street?.title || "Выберите адресс доставки"}
                                 </button>
 
-                                <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap">
+                                <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap lg:hidden">
                                     Зоны доставки
                                 </button>
                             </div>
@@ -57,7 +57,7 @@ const Header = () => {
                         </div>
 
                         <button
-                            className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] mx-4 items-center justify-center gap-[10px] sm:hidden"
+                            className="text-[#21201F] text-[16px] font-medium flex bg-[#FFCD36] rounded-2xl h-[48px] mx-4 items-center justify-center gap-[10px] md:hidden"
                             onClick={() => {
                                 dispatch(setActiveModal("404"));
                             }}
@@ -65,11 +65,11 @@ const Header = () => {
                             <svg className="w-5 h-5" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#person"></use>
                             </svg>
-                            Войти
+                            <span className="xl:hidden">Войти</span>
                         </button>
 
                         <button
-                            className="hidden sm:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center"
+                            className="hidden md:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center"
                             onClick={() => {
                                 dispatch(setActiveModal("city"));
                             }}
@@ -81,7 +81,7 @@ const Header = () => {
                         </button>
 
                         <button
-                            className="hidden sm:block"
+                            className="hidden md:block"
                             onClick={() => {
                                 dispatch(setActiveModal("mobile-menu"));
                             }}

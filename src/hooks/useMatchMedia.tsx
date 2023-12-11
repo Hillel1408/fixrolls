@@ -2,8 +2,8 @@ import { useState, useLayoutEffect } from "react";
 
 const queries = [
     "(max-width: 479px)",
-    "(min-width: 480px) and (max-width: 1365px)",
-    "(min-width: 1366px)",
+    "(min-width: 480px) and (max-width: 1023px)",
+    "(min-width: 1024px)",
 ];
 
 export default function useMatchMedia(): any {

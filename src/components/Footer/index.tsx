@@ -29,7 +29,7 @@ const Footer = () => {
                     "container grid grid-cols-[232px_1fr_334px] gap-[26px]",
                     location.pathname === "/order"
                         ? "xl:grid-cols-[1fr]"
-                        : "xl:grid-cols-[232px_1fr] sm:grid-cols-[1fr]",
+                        : "xl:grid-cols-[232px_1fr] lg:grid-cols-[1fr]",
                 )}
             >
                 <div className="sm:hidden"></div>
