@@ -29,10 +29,10 @@ const CardModal = () => {
             }}
             active={modals.activeModal === "card"}
         >
-            <div className="grid grid-cols-[1fr_1fr] gap-[25px] sm:grid-cols-[1fr] sm:gap-0">
+            <div className="grid grid-cols-[1fr_1fr] gap-[25px] md:grid-cols-[1fr] sm:gap-0">
                 <div className="bg-[#f2f2f2] h-[473px] rounded-[44px] sm:rounded-none sm:h-[350px]">
                     <img
-                        className="h-full object-cover w-full"
+                        className="h-full object-cover w-full rounded-[44px]"
                         src={modals.itemCardModal.image.replace(
                             "http://89.248.201.151",
                             "https://fiksroll.ru",

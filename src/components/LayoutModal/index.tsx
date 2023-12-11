@@ -22,7 +22,7 @@ const LayoutModal = ({
                 document.body.classList.remove("lock");
             }}
         >
-            <div className="py-5 flex items-center justify-center min-h-full sm:px-0 sm:pb-0 sm:items-end">
+            <div className="py-5 px-5 flex items-center justify-center min-h-full sm:px-0 sm:pb-0 sm:items-end">
                 <div
                     className={classNames(
                         "bg-white rounded-[44px] relative sm:rounded-b-none overflow-hidden",

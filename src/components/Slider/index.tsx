@@ -23,41 +23,10 @@ const Slider = () => {
     )?.special_offers;
 
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+        loop: true,
         slides: {
             spacing: 11,
-            perView: 3.8,
-        },
-        breakpoints: {
-            "(max-width: 1600px)": {
-                slides: {
-                    spacing: 11,
-                    perView: 3.2,
-                },
-            },
-            "(max-width: 1365px)": {
-                slides: {
-                    spacing: 11,
-                    perView: 3.6,
-                },
-            },
-            "(max-width: 1023px)": {
-                slides: {
-                    spacing: 11,
-                    perView: 4.6,
-                },
-            },
-            "(max-width: 768px)": {
-                slides: {
-                    spacing: 11,
-                    perView: 3.6,
-                },
-            },
-            "(max-width: 479px)": {
-                slides: {
-                    spacing: 11,
-                    perView: 1.6,
-                },
-            },
+            perView: "auto",
         },
         created() {
             setLoaded(true);
@@ -71,12 +40,12 @@ const Slider = () => {
         <>
             {items && items.length > 0 && (
                 <div>
-                    <div className="px-[10px] py-2 bg-white relative rounded-[30px] mb-[50px] lg:rounded-b-none lg:-mx-[10px] md:rounded-t-none lg:mb-0">
+                    <div className="px-[10px] py-2 bg-white relative rounded-[30px] mb-[50px] lg:rounded-b-none lg:-mx-[10px] md:rounded-t-none lg:mb-0 sm:mx-0">
                         <div ref={sliderRef} className="keen-slider max-w-[1126px] rounded-[30px]">
                             {items.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="keen-slider__slide lg:!max-h-[207px] cursor-pointer"
+                                    className="keen-slider__slide lg:max-h-[207px] min-w-[285px] cursor-pointer lg:min-w-[207px]"
                                     onClick={() => {
                                         dispatch(setItempPomotionModal(item));
                                         dispatch(setActiveModal("promotion"));
@@ -92,11 +61,7 @@ const Slider = () => {
                         </div>
                         <div className="px-[7px] py-[19px] bg-white rounded-[5px] flex flex-col gap-5 absolute right-[7px] top-1/2 -translate-y-1/2">
                             {loaded &&
-                                new Array(
-                                    instanceRef.current?.slides?.length &&
-                                        instanceRef.current?.slides?.length -
-                                            (isMobile ? 0 : isTablet ? 3 : 2),
-                                )
+                                new Array(instanceRef.current?.slides?.length)
                                     .fill("")
                                     .map((item, index) => (
                                         <button

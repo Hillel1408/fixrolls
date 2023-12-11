@@ -71,7 +71,9 @@ const Main = () => {
                                 </div>
                             </div>
 
-                            {isDesktop && <Cart />}
+                            <div className="xl:hidden">
+                                <Cart />
+                            </div>
 
                             <CartModal />
                         </div>
