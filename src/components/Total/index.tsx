@@ -1,10 +1,12 @@
-import { Button, PromotionalCodeModal } from "components";
+import { Button, PromotionalCodeModal, SuccessModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
 import { sentOrder, setActiveModal } from "store";
 
 const Total = () => {
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
+
+    const { status } = useAppSelector((state) => state.orders);
 
     return (
         <>
@@ -51,6 +53,7 @@ const Total = () => {
                         className="h-[48px]"
                         clickHandler={() => {
                             dispatch(sentOrder(orders));
+                            status === "resolved" && dispatch(setActiveModal("success"));
                         }}
                     />
 
@@ -61,6 +64,8 @@ const Total = () => {
             </div>
 
             <PromotionalCodeModal />
+
+            <SuccessModal />
         </>
     );
 };

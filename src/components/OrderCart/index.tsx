@@ -26,7 +26,7 @@ const OrderCart = () => {
                     className="flex items-center gap-[6px]"
                     onClick={() => {
                         navigate(ROUTES.HOME);
-                        dispatch(resetCart(""));
+                        dispatch(resetCart());
                     }}
                 >
                     <svg className="w-[14px] h-4" aria-hidden="true">

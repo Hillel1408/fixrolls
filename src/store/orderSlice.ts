@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, AnyAction } from "@reduxjs/toolkit";
 import axios from "http/axios";
 
 interface InitialStateType {
@@ -16,6 +16,10 @@ interface InitialStateType {
     activeCharacter: { id: string; index: number };
     type: "Доставка" | "Навынос";
     promoCode: string;
+
+    status: string;
+    error: string;
+    response: string;
 }
 
 export const sentOrder = createAsyncThunk(
@@ -42,6 +46,7 @@ export const sentOrder = createAsyncThunk(
             const { data } = await axios.get(
                 `/makeOrder.php?${params}&${products}&${delivery || `independently=1`}`,
             );
+
             return data;
         } catch (error: any) {
             console.log(error);
@@ -64,6 +69,10 @@ const initialState: InitialStateType = {
     type: "Доставка",
     promoCode: "",
     activeCharacter: { id: "", index: 0 },
+
+    response: "",
+    status: "",
+    error: "",
 };
 
 const orderSlice = createSlice({
@@ -99,7 +108,7 @@ const orderSlice = createSlice({
             state.totalCart -= Number(action.payload.floatprice);
         },
 
-        resetCart(state, action) {
+        resetCart(state) {
             state.cards = [];
             state.totalCart = 0;
         },
@@ -130,6 +139,21 @@ const orderSlice = createSlice({
             state.promoCode = action.payload;
         },
     },
+    extraReducers: (builder) => {
+        builder
+            .addCase(sentOrder.pending, (state) => {
+                state.status = "loading";
+                state.error = "";
+            })
+            .addCase(sentOrder.fulfilled, (state, action) => {
+                state.status = "resolved";
+                state.response = action.payload;
+            })
+            .addMatcher(isError, (state, action) => {
+                state.status = "rejected";
+                state.error = action.payload;
+            });
+    },
 });
 
 export const {
@@ -145,3 +169,7 @@ export const {
 } = orderSlice.actions;
 
 export default orderSlice.reducer;
+
+function isError(action: AnyAction) {
+    return action.type.endsWith("rejected");
+}
