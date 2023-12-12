@@ -94,7 +94,12 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <button className="text-[#21201F] text-[16px] border-b border-[#21201F] mb-11">
+                        <button
+                            className="text-[#21201F] text-[16px] border-b border-[#21201F] mb-11"
+                            onClick={() => {
+                                dispatch(setActiveModal("delivery"));
+                            }}
+                        >
                             Зоны доставки
                         </button>
 

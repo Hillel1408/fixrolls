@@ -1,4 +1,10 @@
-import { CityModal, DeliveryAddressModal, MobileMenuModal, Modal404 } from "components";
+import {
+    CityModal,
+    DeliveryAddressModal,
+    MobileMenuModal,
+    Modal404,
+    DeliveryModal,
+} from "components";
 import { useAppDispatch, useAppSelector } from "hook";
 import { setActiveModal } from "store";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +60,12 @@ const Header = () => {
                                     {orders.delivery.street?.title || "Выберите адресс доставки"}
                                 </button>
 
-                                <button className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap lg:hidden">
+                                <button
+                                    className="text-[#21201F] text-[16px] border-b border-[#21201F] whitespace-nowrap lg:hidden"
+                                    onClick={() => {
+                                        dispatch(setActiveModal("delivery"));
+                                    }}
+                                >
                                     Зоны доставки
                                 </button>
                             </div>
@@ -112,6 +123,8 @@ const Header = () => {
             <Modal404 />
 
             <MobileMenuModal />
+
+            <DeliveryModal />
         </>
     );
 };

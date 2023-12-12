@@ -267,6 +267,10 @@
                 "working_hours": "09:00 - 22:00"
             }
         ],
+        "delivery_area": {
+            "description": "Бесплатная доставка по г. Кулебаки от 600₽\n\nДоставка в с. Мурзицы платная — 100₽",
+            "area_img": "https://rollsfix.ru/img/delivery/kulebaki.jpg"
+        },
         "center": [55.429716, 42.512492],
         "title": "Нижегородская область, Кулебаки, улица Воровского",
         "point_available": true

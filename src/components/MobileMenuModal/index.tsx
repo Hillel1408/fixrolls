@@ -74,8 +74,9 @@ const MobileMenuModal = () => {
                             <li
                                 key={index}
                                 onClick={(e) => {
-                                    item.text !== "Зона доставки" &&
-                                        dispatch(setActiveModal("404"));
+                                    item.text !== "Зона доставки"
+                                        ? dispatch(setActiveModal("404"))
+                                        : dispatch(setActiveModal("delivery"));
                                 }}
                             >
                                 <Link to={item.href}>{item.text}</Link>

@@ -21,6 +21,7 @@ import Modal404 from "components/Modal404";
 import CardsBlock from "components/CardsBlock";
 import PromotionalCodeModal from "components/PromotionalCodeModal";
 import SuccessModal from "components/SuccessModal";
+import DeliveryModal from "components/DeliveryModal";
 
 export {
     Layout,
@@ -46,4 +47,5 @@ export {
     CardsBlock,
     PromotionalCodeModal,
     SuccessModal,
+    DeliveryModal,
 };
