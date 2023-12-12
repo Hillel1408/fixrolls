@@ -44,9 +44,9 @@ const Card = ({ item }: { item: any }) => {
             </div>
 
             {count > 0 ? (
-                <div className="flex justify-between items-center outline outline-[#F2F2F2] p-1 rounded-2xl">
+                <div className="flex justify-between items-center border border-[#F2F2F2] p-1 rounded-2xl">
                     <button
-                        className="w-10 h-10 lg:h-8 lg:w-8 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
+                        className="w-10 h-10 lg:h-[30px] lg:w-[30px] rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
                         onClick={(e) => {
                             e.stopPropagation();
                             dispatch(deleteCard(item));
@@ -62,7 +62,7 @@ const Card = ({ item }: { item: any }) => {
                     </span>
 
                     <button
-                        className="w-10 h-10 lg:h-8 lg:w-8 rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
+                        className="w-10 h-10 lg:h-[30px] lg:w-[30px] rounded-[13px] bg-[#FFCD36] flex justify-center items-center"
                         onClick={(e) => {
                             e.stopPropagation();
                             dispatch(addCard(item));

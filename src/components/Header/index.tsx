@@ -1,9 +1,13 @@
 import { CityModal, DeliveryAddressModal, MobileMenuModal, Modal404 } from "components";
 import { useAppDispatch, useAppSelector } from "hook";
 import { setActiveModal } from "store";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "constants/";
 
 const Header = () => {
     const dispatch = useAppDispatch();
+
+    const navigate = useNavigate();
 
     const orders = useAppSelector((state) => state.orders);
 
@@ -13,7 +17,14 @@ const Header = () => {
                 <div className="container lg:px-0">
                     <div className="bg-white shadow-[0px_3px_70px_-20px_rgba(34,60,80,0.2)] rounded-b-[16px] grid grid-cols-[232px_1fr_334px] items-center gap-[26px] xl:grid-cols-[232px_1fr_80px] lg:gap-5 lg:grid-cols-[175px_1fr_80px] md:grid-cols-[auto_1fr_auto] md:gap-[18px] md:px-[10px] md:py-2 md:rounded-t-[16px] lg:rounded-b-none lg:shadow-none">
                         <div className="py-4 px-[30px] lg:pr-0 lg:pl-5 md:hidden">
-                            <img src="/images/logo.svg" alt="" />
+                            <img
+                                className="cursor-pointer"
+                                src="/images/logo.svg"
+                                alt=""
+                                onClick={() => {
+                                    navigate(ROUTES.HOME);
+                                }}
+                            />
                         </div>
 
                         <img className="hidden md:block" src="/images/logo-3.svg" alt="" />

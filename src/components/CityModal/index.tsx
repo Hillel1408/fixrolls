@@ -14,7 +14,7 @@ const CityModal = () => {
 
     return createPortal(
         <LayoutModal
-            className="px-[56px] pt-[47px] pb-[74px] w-[478px] sm:p-5 sm:pt-7 sm:w-full"
+            className="px-[56px] pt-[47px] pb-[74px] w-[478px] sm:p-5 sm:pt-7 sm:w-full sm:h-[calc(100vh-100px)]"
             closeModal={() => {
                 dispatch(setActiveModal(""));
             }}

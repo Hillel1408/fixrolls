@@ -14,7 +14,7 @@ const LayoutModal = ({
     return (
         <div
             className={classNames(
-                "fixed top-0 w-full h-full bg-[rgba(0,0,0,0.40)] overflow-auto duration-200 z-20 sm:duration-500",
+                "fixed top-0 w-full h-full bg-[rgba(0,0,0,0.40)] overflow-auto duration-300 z-20",
                 active ? "visible opacity-100" : "invisible opacity-0",
             )}
             onClick={() => {
@@ -24,7 +24,7 @@ const LayoutModal = ({
         >
             <div
                 className={classNames(
-                    "py-5 px-5 flex items-center justify-center min-h-full duration-700 sm:px-0 sm:pb-0 sm:items-end",
+                    "py-5 px-5 flex items-center justify-center min-h-full duration-300 sm:px-0 sm:pb-0 sm:items-end",
                     active ? "" : "sm:translate-x-0 sm:translate-y-full",
                 )}
             >

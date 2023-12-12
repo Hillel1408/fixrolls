@@ -1,8 +1,17 @@
 import classNames from "classnames";
-import { Link, useLocation } from "react-router-dom";
+import { useAppSelector } from "hook";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import data from "data/data.json";
+import { cityIn } from "lvovich";
+import { ROUTES } from "constants/";
 
 const Footer = () => {
     const location = useLocation();
+
+    const navigate = useNavigate();
+
+    const orders = useAppSelector((state) => state.orders);
+    const item = data.find((item) => item.restaurantID === orders.city.restaurantID);
 
     const navLinks = [
         [
@@ -18,8 +27,8 @@ const Footer = () => {
     ];
 
     const socialItems = [
-        { icon: "telegram", href: "#" },
-        { icon: "vk", href: "#" },
+        { icon: "telegram", href: `${item?.social_links.Telegram}` },
+        { icon: "vk", href: `${item?.social_links.VKontakte}` },
     ];
 
     return (
@@ -37,10 +46,17 @@ const Footer = () => {
                 <div className="w-full gap-5 mx-auto px-[10px] pt-[34px] pb-[121px] grid grid-cols-[641px_255px] justify-between 2xl:grid-cols-[1fr_255px] 2xl:gap-10 md:grid-cols-[1fr] sm:pb-[24px] sm:px-0">
                     <div>
                         <div className="flex gap-[26px] items-center mb-10">
-                            <img src="/images/logo-2.png" alt="" />
+                            <img
+                                className="cursor-pointer"
+                                src="/images/logo-2.png"
+                                alt=""
+                                onClick={() => {
+                                    navigate(ROUTES.HOME);
+                                }}
+                            />
 
                             <p className="text-[#21201F] text-[16px] font-medium max-w-[202px]">
-                                Доставка роллов и суши в Нижнем Новгороде
+                                Доставка роллов и суши в {cityIn(`${item?.region}`)}
                             </p>
                         </div>
 
