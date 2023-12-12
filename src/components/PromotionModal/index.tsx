@@ -11,7 +11,7 @@ const PromotionModal = () => {
 
     return createPortal(
         <LayoutModal
-            className="w-[362px] sm:w-full h-[772px]"
+            className="w-[362px] sm:w-full max-h-[772px]"
             closeModal={() => {
                 dispatch(setActiveModal(""));
             }}
@@ -20,13 +20,13 @@ const PromotionModal = () => {
             <div className="relative">
                 <img
                     className="h-[237px] object-cover w-full"
-                    src={`/images/${modals.itemPomotionModal.fullImage}`}
+                    src={modals.itemPomotionModal.image_link}
                     alt=""
                 />
 
-                <div className="pt-7 px-5 h-[535px] overflow-y-auto pb-[100px]">
+                <div className="pt-7 px-5 max-h-[535px] overflow-y-auto pb-[100px]">
                     <h2 className="text-[#000] text-[32px] font-medium mb-7">
-                        {modals.itemPomotionModal.title}
+                        {modals.itemPomotionModal.offer_name}
                     </h2>
 
                     <div className="flex flex-col gap-3 whitespace-pre-wrap">

@@ -53,7 +53,7 @@ const Slider = () => {
                                 >
                                     <img
                                         className="h-[285px] object-cover w-full rounded-[20px] lg:h-[207px]"
-                                        src={`/images/${item.image}`}
+                                        src={item.image_link}
                                         alt=""
                                     />
                                 </div>

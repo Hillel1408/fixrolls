@@ -5,7 +5,7 @@ const initialState = {
 
     itemCardModal: { image: "", name: "", description: "", id: "", floatprice: "" },
 
-    itemPomotionModal: { fullImage: "", title: "", description: "" },
+    itemPomotionModal: { image_link: "", offer_name: "", description: "" },
 };
 
 const modalsSlice = createSlice({
