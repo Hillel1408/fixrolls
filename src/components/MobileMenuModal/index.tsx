@@ -71,7 +71,13 @@ const MobileMenuModal = () => {
 
                     <ul className="text-[#21201F] text-[22px] font-medium flex flex-col gap-2">
                         {navItems.map((item, index) => (
-                            <li key={index}>
+                            <li
+                                key={index}
+                                onClick={(e) => {
+                                    item.text !== "Зона доставки" &&
+                                        dispatch(setActiveModal("404"));
+                                }}
+                            >
                                 <Link to={item.href}>{item.text}</Link>
                             </li>
                         ))}

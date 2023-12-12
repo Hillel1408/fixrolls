@@ -1,11 +1,14 @@
 import classNames from "classnames";
-import { useAppSelector } from "hook";
+import { useAppDispatch, useAppSelector } from "hook";
+import { setActiveModal } from "store";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import data from "data/data.json";
 import { cityIn } from "lvovich";
 import { ROUTES } from "constants/";
 
 const Footer = () => {
+    const dispatch = useAppDispatch();
+
     const location = useLocation();
 
     const navigate = useNavigate();
@@ -64,7 +67,12 @@ const Footer = () => {
                             {navLinks.map((ul, index) => (
                                 <ul key={index} className="max-w-[290px] flex flex-col gap-[14px]">
                                     {ul.map((li, index) => (
-                                        <li key={index}>
+                                        <li
+                                            key={index}
+                                            onClick={(e) => {
+                                                dispatch(setActiveModal("404"));
+                                            }}
+                                        >
                                             <Link to={li.link}>{li.text}</Link>
                                         </li>
                                     ))}
