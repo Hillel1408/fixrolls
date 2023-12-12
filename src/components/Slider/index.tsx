@@ -65,6 +65,7 @@ const Slider = () => {
                                     .fill("")
                                     .map((item, index) => (
                                         <button
+                                            key={index}
                                             onClick={() => {
                                                 instanceRef.current?.moveToIdx(index);
                                             }}
