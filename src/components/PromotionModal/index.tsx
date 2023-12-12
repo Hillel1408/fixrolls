@@ -18,11 +18,7 @@ const PromotionModal = () => {
             active={modals.activeModal === "promotion"}
         >
             <div className="relative">
-                <img
-                    className="h-[237px] object-cover w-full"
-                    src={modals.itemPomotionModal.image_link}
-                    alt=""
-                />
+                <img className="w-full" src={modals.itemPomotionModal.image_link} alt="" />
 
                 <div className="pt-7 px-5 max-h-[535px] overflow-y-auto pb-[100px]">
                     <h2 className="text-[#000] text-[32px] font-medium mb-7">
