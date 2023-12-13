@@ -41,7 +41,10 @@ const Slider = () => {
             {items && items.length > 0 && (
                 <div>
                     <div className="px-[10px] py-2 bg-white relative rounded-[30px] mb-[50px] lg:rounded-b-none lg:-mx-[10px] md:rounded-t-none lg:mb-0 sm:mx-0">
-                        <div ref={sliderRef} className="keen-slider max-w-[1126px] rounded-[30px]">
+                        <div
+                            ref={sliderRef}
+                            className="keen-slider max-w-[1126px] rounded-[30px] sm:rounded-[20px]"
+                        >
                             {items.map((item, index) => (
                                 <div
                                     key={index}

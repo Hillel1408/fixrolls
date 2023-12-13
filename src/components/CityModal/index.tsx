@@ -41,8 +41,10 @@ const CityModal = () => {
                                             : "bg-[#F9F7F7]",
                                     )}
                                     onClick={() => {
-                                        dispatch(addCity(item));
-                                        dispatch(resetStore());
+                                        if (activeCity !== item) {
+                                            dispatch(addCity(item));
+                                            dispatch(resetStore());
+                                        }
                                         dispatch(setActiveModal(""));
                                         dispatch(setActiveModal("delivery-address"));
                                     }}
