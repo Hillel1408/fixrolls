@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { createPortal } from "react-dom";
 import { LayoutModal } from "components";
+import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";
 import { addCity, resetStore, setActiveModal } from "store";
 import data from "data/data.json";
@@ -9,6 +10,8 @@ const CityModal = () => {
     const activeCity = useAppSelector((state) => state.orders.city);
     const activeModal = useAppSelector((state) => state.modals.activeModal);
     const dispatch = useAppDispatch();
+
+    const { isMobile } = useMatchMedia();
 
     activeModal === "city" && document.body.classList.add("lock");
 
@@ -41,7 +44,7 @@ const CityModal = () => {
                                         dispatch(addCity(item));
                                         dispatch(resetStore());
                                         dispatch(setActiveModal(""));
-                                        document.body.classList.remove("lock");
+                                        dispatch(setActiveModal("delivery-address"));
                                     }}
                                 >
                                     {item.region}

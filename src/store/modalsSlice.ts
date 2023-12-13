@@ -3,7 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     activeModal: "",
 
-    itemCardModal: { image: "", name: "", description: "", id: "", floatprice: "" },
+    itemCardModal: {
+        image: "",
+        name: "",
+        description: "",
+        id: "",
+        floatprice: "",
+        storageConditions: "",
+        weight: "",
+        protein: "",
+        fat: "",
+        carbohydrates: "",
+        calories: "",
+    },
 
     itemPomotionModal: { image_link: "", offer_name: "", description: "" },
 };

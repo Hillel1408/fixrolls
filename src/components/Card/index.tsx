@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "hook";
 import { addCard, deleteCard, setItemCardModal, setActiveModal } from "store";
 
 const Card = ({ item }: { item: any }) => {
-    const { name, image, floatprice } = item;
+    const { name, image, floatprice, volume } = item;
 
     const dispatch = useAppDispatch();
     const cards = useAppSelector((state) => state.orders.cards);
@@ -35,9 +35,9 @@ const Card = ({ item }: { item: any }) => {
                         {floatprice.split(".")[0]}₽
                     </span>
 
-                    {false && (
+                    {Number(volume) > 0 && (
                         <span className="text-[#A5A5A5] text-[15px] line-through sm:text-[12px]">
-                            1045₽
+                            {volume.split(".")[0]}₽
                         </span>
                     )}
                 </div>

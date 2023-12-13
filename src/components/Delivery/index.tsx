@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { withMask } from "use-mask-input";
 import { useAppDispatch, useAppSelector } from "hook";
 import { addDelivery, addType } from "store";
 
@@ -98,6 +99,7 @@ const Delivery = () => {
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
                         placeholder="Контактный телефон"
                         value={orders.delivery.phone}
+                        ref={withMask("+7(999)999-99-99")}
                         onChange={(e) => dispatch(addDelivery({ phone: e.target.value }))}
                     />
                 </div>
