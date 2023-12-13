@@ -108,7 +108,7 @@ const Header = () => {
                                 dispatch(setActiveModal("mobile-menu"));
                             }}
                         >
-                            <svg className="w-[17px] h-3" aria-hidden="true">
+                            <svg className="w-[17px] h-3 mr-2" aria-hidden="true">
                                 <use xlinkHref="/sprites/sprite.svg#menu-btn"></use>
                             </svg>
                         </button>
