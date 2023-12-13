@@ -18,7 +18,7 @@ const Cart = () => {
     const minSumOrder = 500 - orders.totalCart;
 
     return (
-        <div className="sticky pt-[100px] top-0 xl:pt-0">
+        <div className="xl:pt-0">
             <div
                 className={classNames(
                     "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative xl:h-auto xl:min-h-[500px]",

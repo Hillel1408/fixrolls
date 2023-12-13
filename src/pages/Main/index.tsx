@@ -71,7 +71,7 @@ const Main = () => {
                                 </div>
                             </div>
 
-                            <div className="xl:hidden">
+                            <div className="sticky pt-[100px] top-0 xl:hidden">
                                 <Cart />
                             </div>
 
