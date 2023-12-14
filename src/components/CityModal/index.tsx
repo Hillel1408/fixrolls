@@ -44,8 +44,8 @@ const CityModal = () => {
                                         if (activeCity !== item) {
                                             dispatch(addCity(item));
                                             dispatch(resetStore());
-                                        } else dispatch(setActiveModal("delivery-address"));
-                                        dispatch(setActiveModal(""));
+                                        }
+                                        dispatch(setActiveModal("delivery-address"));
                                         document.body.classList.remove("lock");
                                     }}
                                 >
