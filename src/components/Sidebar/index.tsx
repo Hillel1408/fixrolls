@@ -30,6 +30,10 @@ const Sidebar = ({ cards, refs }: { cards: any; refs: any }) => {
         setCurrentSlide((prev) => activeCharacter.index);
     }, [activeCharacter, currentSlide, instanceRef]);
 
+    useEffect(() => {
+        instanceRef.current?.update();
+    }, [cards, instanceRef]);
+
     return (
         <div className="pt-[100px] sticky top-0 lg:pt-0 lg:shadow-[0px_3px_70px_-20px_rgba(34,60,80,0.2)] lg:top-[80px] md:top-[57px]">
             <div className="bg-white pt-6 px-2 pb-2 rounded-2xl sm:pb-16px lg:pt-2 sm:rounded-b-[15px] lg:rounded-t-none lg:-mx-[10px] sm:mx-0 sm:px-[10px]">
