@@ -95,22 +95,24 @@ const DeliveryAddressModal = () => {
                         <p className="text-[15px] text-[#000]">Чтобы курьер смог вас найти</p>
                     </div>
 
-                    <ul className="flex px-[10px] py-2 bg-[#F6F5F3] rounded-2xl gap-[10px] text-[#21201F] text-[16px] sm:border sm:border-[#000]">
-                        {listItems.map((item, index) => (
-                            <li
-                                key={index}
-                                className={classNames(
-                                    "py-[10px] px-[27px] rounded-[13px] cursor-pointer",
-                                    orders.type === item && "bg-white",
-                                )}
-                                onClick={() => {
-                                    dispatch(addType(item));
-                                }}
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
+                    {false && (
+                        <ul className="flex px-[10px] py-2 bg-[#F6F5F3] rounded-2xl gap-[10px] text-[#21201F] text-[16px] sm:border sm:border-[#000]">
+                            {listItems.map((item, index) => (
+                                <li
+                                    key={index}
+                                    className={classNames(
+                                        "py-[10px] px-[27px] rounded-[13px] cursor-pointer",
+                                        orders.type === item && "bg-white",
+                                    )}
+                                    onClick={() => {
+                                        dispatch(addType(item));
+                                    }}
+                                >
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
 
                 <div className="sm:flex sm:flex-col-reverse">

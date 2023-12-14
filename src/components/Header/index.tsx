@@ -9,8 +9,11 @@ import { useAppDispatch, useAppSelector } from "hook";
 import { setActiveModal } from "store";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "constants/";
+import classNames from "classnames";
 
 const Header = () => {
+    const activeModal = useAppSelector((state) => state.modals.activeModal);
+
     const dispatch = useAppDispatch();
 
     const navigate = useNavigate();
@@ -91,15 +94,21 @@ const Header = () => {
                         </button>
 
                         <button
-                            className="hidden md:flex bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center"
+                            className={classNames(
+                                "hidden bg-[#F2F2F2] py-[11px] px-6 text-[16px] text-[#21201F] font-medium rounded-[7px] items-center whitespace-nowrap overflow-hidden text-ellipsis",
+                                orders.delivery.street?.title ? "md:block" : "md:flex",
+                            )}
                             onClick={() => {
                                 dispatch(setActiveModal("city"));
                             }}
                         >
-                            Выбрать адрес
-                            <svg className="w-[18px] h-[18px] -rotate-90" aria-hidden="true">
-                                <use xlinkHref="/sprites/sprite.svg#arrow"></use>
-                            </svg>
+                            {orders.delivery.street?.title || "Выбрать адрес"}
+
+                            {!orders.delivery.street?.title && (
+                                <svg className="w-[18px] h-[18px] -rotate-90" aria-hidden="true">
+                                    <use xlinkHref="/sprites/sprite.svg#arrow"></use>
+                                </svg>
+                            )}
                         </button>
 
                         <button
@@ -118,7 +127,7 @@ const Header = () => {
 
             <CityModal />
 
-            <DeliveryAddressModal />
+            {activeModal === "delivery-address" && <DeliveryAddressModal />}
 
             <Modal404 />
 

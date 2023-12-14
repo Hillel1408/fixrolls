@@ -15,6 +15,7 @@ const initialState = {
         fat: "",
         carbohydrates: "",
         calories: "",
+        mobileDescription: "",
     },
 
     itemPomotionModal: { image_link: "", offer_name: "", description: "" },

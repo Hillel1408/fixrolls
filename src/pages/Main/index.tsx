@@ -8,6 +8,7 @@ import {
     CardsBlock,
     CardModal,
     DeliveryTotalModal,
+    DeliveryAddressModal,
 } from "components";
 import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";

@@ -54,7 +54,7 @@ const CardModal = () => {
 
                         <div>
                             <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
-                                Описание:
+                                Состав:
                             </p>
                             <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
                                 {modals.itemCardModal.description
@@ -63,6 +63,15 @@ const CardModal = () => {
                                         <li key={index}>{item}</li>
                                     ))}
                             </ol>
+                        </div>
+
+                        <div>
+                            <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
+                                Описание состава:
+                            </p>
+                            <p className="text-[#21201F] text-[15px] sm:text-[14px]">
+                                {modals.itemCardModal.mobileDescription}
+                            </p>
                         </div>
 
                         <div>

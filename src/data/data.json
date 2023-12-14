@@ -109,21 +109,84 @@
         "wid": "1602745682010019794",
         "restaurantID": "1602745682017181653",
         "region": "Ковров",
-        "working_hours": "",
+        "working_hours": "с 11:00 до 22:55",
         "promo_codes": [],
-        "free_delivery": [],
-        "discount_available": "",
-        "pickup_available": "",
-        "pickup_discount": "",
-        "special_offers": [],
-        "pickup_points": [],
+        "free_delivery": [
+            {
+                "district": "Ковров",
+                "min_order_amount": 600,
+                "delivery_price": 40
+            },
+            {
+                "district": "мкр-н Слободка",
+                "min_order_amount": 600,
+                "free_price": 150
+            },
+            {
+                "district": "мкр-н Чкалово",
+                "min_order_amount": 600,
+                "free_price": 150
+            },
+            {
+                "district": "мкр-н Заря",
+                "min_order_amount": 600,
+                "free_price": 150
+            },
+            {
+                "district": "д.Ручей",
+                "min_order_amount": 600,
+                "free_price": 180
+            }
+        ],
+        "discount_available": true,
+        "pickup_available": true,
+        "pickup_discount": 0,
+        "special_offers": [
+            {
+                "offer_name": "1 = 2",
+                "description": "Закажи один 'Сет №2' и получи второй бесплатно всего за 699₽",
+                "image_link": "https://rollsfix.ru/img/sale/1-2.jpg"
+            },
+            {
+                "offer_name": "Дарим сет №10",
+                "description": "Каждый 10-й заказ дарим сет №10",
+                "image_link": "https://rollsfix.ru/img/sale/10.jpg"
+            },
+            {
+                "offer_name": "День рождения",
+                "description": "Дарим подарок в день рождения Жаренный ролл 'Самурай'",
+                "image_link": "https://rollsfix.ru/img/sale/dr.jpg"
+            },
+            {
+                "offer_name": "ДАРИМ! БОНУС!",
+                "description": "Дарим филадельфию с огурцом к первому заказу от 1000₽, нопиши 'Хочу бонус' нам в сообщения группы",
+                "image_link": "https://rollsfix.ru/img/sale/first.jpg"
+            },
+            {
+                "offer_name": "Килограмм+ всегого за 550₽",
+                "description": "Получи огромный SET Килограмм+ вкусных роллов по специальной цене всего за 550₽, при заказе от 1000₽",
+                "image_link": "https://rollsfix.ru/img/sale/kilo.jpg"
+            }
+        ],
         "social_links": {
-            "VKontakte": "",
-            "Telegram": ""
+            "VKontakte": "https://vk.com/fixrolls_kovrov",
+            "Telegram": "https://t.me/fix_rolls_bot"
+        },
+        "pickup_points": [
+            {
+                "pickup_id": "PK001",
+                "name": "Самовывоз FixRolls в Ковров",
+                "address": "пр. Ленина, 22",
+                "working_hours": "11:00 - 22:55"
+            }
+        ],
+        "delivery_area": {
+            "description": "ДОСТАВКА ПО ГОРОДУ 40₽ при заказе от 600₽ по всему г. Ковров.<br> Мкр-н Слободка доставка 150₽<br> Мкр-н Чкалово доставка 150₽<br> Мкр-н Заря доставка 180₽<br>  Д. Ручей доставка 180₽<br> <br> Самовывоз по адресу: Проспект Ленина 22<br> Заказы принимаем ежедневно с 11:00 до 22:55",
+            "area_img": "https://rollsfix.ru/img/delivery/kovrov.jpg"
         },
         "center": [56.362506, 41.310933],
         "title": "Владимирская область, Ковров, аллея Героев",
-        "point_available": false
+        "point_available": true
     },
     {
         "id": "11508",
@@ -151,7 +214,7 @@
         "wid": "1591345972413847051",
         "restaurantID": "1591345972412718352",
         "region": "Кулебаки",
-        "working_hours": "с 09:00 до 20:00",
+        "working_hours": "с 10:00 до 21:30",
         "promo_codes": [
             {
                 "code": "KUL001",
@@ -209,14 +272,14 @@
         ],
         "free_delivery": [
             {
-                "district": "Центральный район",
-                "min_order_amount": 1200,
-                "delivery_price": 300
+                "district": "Кулебаки",
+                "min_order_amount": 600,
+                "delivery_price": 0
             },
             {
-                "district": "Пригородный район",
-                "min_order_amount": 1500,
-                "free_price": 500
+                "district": "с.Мурзицы",
+                "min_order_amount": 600,
+                "free_price": 100
             }
         ],
         "discount_available": true,
