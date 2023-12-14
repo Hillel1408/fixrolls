@@ -44,7 +44,7 @@ const Delivery = () => {
 
             <div>
                 <button
-                    className="text-[#000] text-[20px] font-medium mb-4 flex text-left gap-2 sm:text-[16px] items-center"
+                    className="text-[#000] text-[20px] font-medium mb-4 flex text-left gap-2 sm:text-[16px] items-center sm:pr-[90px]"
                     onClick={() => {
                         dispatch(setActiveModal("city"));
                     }}
