@@ -15,7 +15,11 @@ const Cart = () => {
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
 
-    const minSumOrder = 500 - orders.totalCart;
+    const minOrderAmount =
+        data.find((item) => item.restaurantID === orders.city.restaurantID)?.free_delivery[0]
+            .min_order_amount || 0;
+
+    const minSumOrder = minOrderAmount - orders.totalCart;
 
     return (
         <div className="xl:pt-0">
@@ -125,23 +129,19 @@ const Cart = () => {
 
                         {minSumOrder > 0 ? (
                             <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center">
-                                {minSumOrder}₽ до бесплатной доставки
+                                {minSumOrder}₽ до минимальной суммы заказа
                             </p>
                         ) : (
-                            <p className="text-[#000] text-[12px] font-medium">
-                                Бесплатная доставка
-                            </p>
+                            <Button
+                                text="Продолжить"
+                                className="h-[56px] w-full"
+                                clickHandler={() => {
+                                    document.body.classList.remove("lock");
+                                    if (isTablet || isDesktop) navigate(ROUTES.ORDER);
+                                    else if (isMobile) dispatch(setActiveModal("delivery-total"));
+                                }}
+                            />
                         )}
-
-                        <Button
-                            text="Продолжить"
-                            className="h-[56px] w-full"
-                            clickHandler={() => {
-                                document.body.classList.remove("lock");
-                                if (isTablet || isDesktop) navigate(ROUTES.ORDER);
-                                else if (isMobile) dispatch(setActiveModal("delivery-total"));
-                            }}
-                        />
                     </div>
                 ) : (
                     <p className="text-[#21201F] text-[14px] font-medium">
