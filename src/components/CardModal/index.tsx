@@ -52,31 +52,39 @@ const CardModal = () => {
                             </p>
                         </div>
 
-                        <div>
-                            <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
-                                Состав:
-                            </p>
-                            <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
-                                {modals.itemCardModal.description
-                                    .split(";")
-                                    .map((item: string, index: number) => (
-                                        <li key={index}>{item}</li>
-                                    ))}
-                            </ol>
-                        </div>
+                        {modals.itemCardModal.description && (
+                            <div>
+                                <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
+                                    Состав:
+                                </p>
+                                <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
+                                    {modals.itemCardModal.description
+                                        .split(";")
+                                        .map((item: string, index: number) => (
+                                            <li key={index}>{item}</li>
+                                        ))}
+                                </ol>
+                            </div>
+                        )}
 
-                        <div>
-                            <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
-                                Описание состава:
-                            </p>
-                            <p className="text-[#21201F] text-[15px] sm:text-[14px]">
-                                {modals.itemCardModal.mobileDescription}
-                            </p>
-                        </div>
+                        {modals.itemCardModal.mobileDescription && (
+                            <div>
+                                <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
+                                    Описание состава:
+                                </p>
+                                <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
+                                    {modals.itemCardModal.mobileDescription
+                                        .split(";")
+                                        .map((item: string, index: number) => (
+                                            <li key={index}>{item}</li>
+                                        ))}
+                                </ol>
+                            </div>
+                        )}
 
                         <div>
                             <p className="text-[#6C6C6C] text-[12px] font-medium mb-[6px]">
-                                Пищевая ценность на {modals.itemCardModal.weight}
+                                Пищевая ценность на {modals.itemCardModal.weight} г.
                             </p>
                             <div className="grid grid-cols-[1fr_1fr_1fr_1fr]">
                                 <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
@@ -98,7 +106,7 @@ const CardModal = () => {
 
                                 <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
                                     <span>Энерг. ценн</span>
-                                    <span>{modals.itemCardModal.calories.split(".")[0]} г.</span>
+                                    <span>{modals.itemCardModal.calories.split(".")[0]} ккал.</span>
                                 </div>
                             </div>
                         </div>

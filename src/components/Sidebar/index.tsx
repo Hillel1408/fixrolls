@@ -59,7 +59,6 @@ const Sidebar = ({ cards, refs }: { cards: any; refs: any }) => {
                                 onClick={() => {
                                     refs[item.description.id].current.scrollIntoView({
                                         behavior: "smooth",
-                                        block: "start",
                                     });
                                 }}
                             >

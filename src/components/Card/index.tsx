@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "hook";
 import { addCard, deleteCard, setItemCardModal, setActiveModal } from "store";
 
 const Card = ({ item }: { item: any }) => {
-    const { name, image, floatprice, volume } = item;
+    const { name, image, floatprice, volume, storageConditions } = item;
 
     const dispatch = useAppDispatch();
     const cards = useAppSelector((state) => state.orders.cards);
@@ -27,7 +27,7 @@ const Card = ({ item }: { item: any }) => {
                 <h3 className="text-[#21201F] text-[18px] font-medium lg:text-[14px]">{name}</h3>
 
                 <p className="text-[#797979] text-[12px] font-medium mb-6 lg:mb-4">
-                    5 микс ролов / 40 шт
+                    {storageConditions}
                 </p>
 
                 <div className="flex gap-2 items-center sm:mt-4 sm:gap-1 mt-auto">
