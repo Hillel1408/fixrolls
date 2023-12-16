@@ -128,8 +128,16 @@ const Cart = () => {
                         </div>
 
                         {minSumOrder > 0 && (
-                            <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center">
+                            <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center flex items-center gap-4">
                                 {minSumOrder}₽ до минимальной суммы заказа
+                                <img
+                                    className="cursor-pointer w-4"
+                                    src="/images/img-5.png"
+                                    alt=""
+                                    onClick={() => {
+                                        dispatch(setActiveModal("delivery"));
+                                    }}
+                                />
                             </p>
                         )}
 
