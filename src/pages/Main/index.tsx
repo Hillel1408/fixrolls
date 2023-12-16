@@ -58,7 +58,7 @@ const Main = () => {
 
                                 {(isMobile || isTablet) && <Sidebar cards={cards} refs={refs} />}
 
-                                <div className="flex flex-col [&>*:not(:first-child)]:pt-[50px] sm:px-[10px] lg:mt-6">
+                                <div className="flex flex-col [&>*]:pt-[100px] [&>*]:-mt-[50px] [&>*:first-child]:-mt-[100px] lg:[&>*]:pt-[160px] lg:[&>*]:-mt-[110px] lg:[&>*:first-child]:-mt-[160px] md:[&>*]:pt-[130px] md:[&>*]:-mt-[90px] md:[&>*:first-child]:-mt-[130px] sm:[&>*]:pt-[120px] sm:px-[10px] lg:mt-6">
                                     {cards.map((item: any, index) => (
                                         <CardsBlock
                                             key={item.description.id}
