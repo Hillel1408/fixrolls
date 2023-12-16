@@ -72,12 +72,16 @@ const Cart = () => {
                                 />
 
                                 <div className="flex flex-col gap-1 text-[#21201F]">
-                                    <span className="text-[15px]">{item.product.name}</span>
+                                    <span className="text-[14px]">{item.product.name}</span>
                                     <div>
                                         <span className="text-[16px] font-medium">
                                             {item.total}₽
                                         </span>
-                                        <span className="text-[12px] font-medium ml-3">280 г</span>
+                                        {item.product.weight && item.product.weight !== "0" && (
+                                            <span className="text-[12px] font-medium ml-3">
+                                                {item.product.weight} г
+                                            </span>
+                                        )}
                                     </div>
                                 </div>
 
