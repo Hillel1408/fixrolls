@@ -122,7 +122,7 @@ const CardModal = () => {
                         </div>
                     </div>
 
-                    <div className="mt-4 py-[13px] border-t border-[#f2f2f2] flex justify-between text-[#21201F] items-center">
+                    <div className="mt-4 py-[13px] border-t border-[#f2f2f2] flex justify-between text-[#21201F] items-center gap-4">
                         <p className="text-[15px]">{modals.itemCardModal.name}</p>
                         <span className="text-[22px] font-medium">
                             {card.count > 0
