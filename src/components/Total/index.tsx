@@ -1,6 +1,6 @@
 import { Button, PromotionalCodeModal, SuccessModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { sentOrder, setActiveModal } from "store";
+import { sentOrder, setActiveModal, setFlag } from "store";
 
 const Total = () => {
     const dispatch = useAppDispatch();
@@ -52,8 +52,10 @@ const Total = () => {
                         text="Заказать"
                         className="h-[48px]"
                         clickHandler={() => {
-                            dispatch(sentOrder(orders));
-                            status === "resolved" && dispatch(setActiveModal("success"));
+                            if (orders.delivery.phone) {
+                                dispatch(sentOrder(orders));
+                                status === "resolved" && dispatch(setActiveModal("success"));
+                            } else dispatch(setFlag(true));
                         }}
                     />
 

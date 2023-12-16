@@ -19,6 +19,8 @@ const initialState = {
     },
 
     itemPomotionModal: { image_link: "", offer_name: "", description: "" },
+
+    flag: false,
 };
 
 const modalsSlice = createSlice({
@@ -36,9 +38,14 @@ const modalsSlice = createSlice({
         setItempPomotionModal(state, action) {
             state.itemPomotionModal = action.payload;
         },
+
+        setFlag(state, action) {
+            state.flag = action.payload;
+        },
     },
 });
 
-export const { setItemCardModal, setActiveModal, setItempPomotionModal } = modalsSlice.actions;
+export const { setItemCardModal, setActiveModal, setItempPomotionModal, setFlag } =
+    modalsSlice.actions;
 
 export default modalsSlice.reducer;

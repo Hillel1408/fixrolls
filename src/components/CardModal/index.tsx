@@ -123,7 +123,7 @@ const CardModal = () => {
                     </div>
 
                     <div className="mt-4 py-[13px] border-t border-[#f2f2f2] flex justify-between text-[#21201F] items-center">
-                        <p className="text-[15px]">SET Радужный</p>
+                        <p className="text-[15px]">{modals.itemCardModal.name}</p>
                         <span className="text-[22px] font-medium">
                             {card.count > 0
                                 ? card.total

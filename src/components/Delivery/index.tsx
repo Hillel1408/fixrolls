@@ -6,6 +6,7 @@ import { addDelivery, addType, setActiveModal } from "store";
 const Delivery = () => {
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
+    const modals = useAppSelector((state) => state.modals);
 
     const listItems = ["Доставка", "Навынос"];
 
@@ -44,7 +45,12 @@ const Delivery = () => {
 
             <div>
                 <button
-                    className="text-[#000] text-[20px] font-medium mb-4 flex text-left gap-2 sm:text-[16px] items-center sm:pr-[90px]"
+                    className={classNames(
+                        "text-[20px] font-medium mb-4 flex text-left gap-2 sm:text-[16px] items-center sm:pr-[90px]",
+                        modals.flag && !orders.delivery.street?.title
+                            ? "text-[red]"
+                            : "text-[#000]",
+                    )}
                     onClick={() => {
                         dispatch(setActiveModal("city"));
                     }}
@@ -53,14 +59,27 @@ const Delivery = () => {
                         <use xlinkHref="/sprites/sprite.svg#home"></use>
                     </svg>
 
-                    {orders.delivery.street?.title}
+                    {orders.delivery.street?.title || "Введите улицу"}
 
                     <svg className="w-6 h-6" aria-hidden="true">
                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                     </svg>
                 </button>
 
-                <div className="grid grid-cols-[1fr_1fr_1fr_1fr] gap-3 mb-[13px] sm:grid-cols-[1fr_1fr]">
+                <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-3 mb-[13px] sm:grid-cols-[1fr_1fr]">
+                    <input
+                        type="text"
+                        className={classNames(
+                            "h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full",
+                            modals.flag && !orders.delivery.home
+                                ? "border-[red]"
+                                : "border-[#D2D0CC]",
+                        )}
+                        placeholder="Дом"
+                        value={orders.delivery.home}
+                        onChange={(e) => dispatch(addDelivery({ home: e.target.value }))}
+                    />
+
                     <input
                         type="text"
                         className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
@@ -97,7 +116,12 @@ const Delivery = () => {
                 <div className="grid grid-cols-[1fr_1fr] gap-3 mb-[13px] sm:grid-cols-[1fr_1fr]">
                     <input
                         type="text"
-                        className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
+                        className={classNames(
+                            "h-12 px-[17px] rounded-[16px] border placeholder:text-[#9E9B98] placeholder:text-[16px] w-full",
+                            modals.flag && !orders.delivery.family
+                                ? "border-[red]"
+                                : "border-[#D2D0CC]",
+                        )}
                         placeholder="Ваше имя"
                         value={orders.delivery.family}
                         onChange={(e) => dispatch(addDelivery({ family: e.target.value }))}
@@ -105,7 +129,12 @@ const Delivery = () => {
 
                     <input
                         type="tel"
-                        className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
+                        className={classNames(
+                            "h-12 px-[17px] rounded-[16px] border placeholder:text-[#9E9B98] placeholder:text-[16px] w-full",
+                            modals.flag && !orders.delivery.phone
+                                ? "border-[red]"
+                                : "border-[#D2D0CC]",
+                        )}
                         placeholder="Контактный телефон"
                         value={orders.delivery.phone}
                         ref={withMask("+7(999)999-99-99")}

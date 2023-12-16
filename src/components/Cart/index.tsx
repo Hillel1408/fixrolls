@@ -127,21 +127,22 @@ const Cart = () => {
                             </span>
                         </div>
 
-                        {minSumOrder > 0 ? (
+                        {minSumOrder > 0 && (
                             <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center">
                                 {minSumOrder}₽ до минимальной суммы заказа
                             </p>
-                        ) : (
-                            <Button
-                                text="Продолжить"
-                                className="h-[56px] w-full"
-                                clickHandler={() => {
-                                    document.body.classList.remove("lock");
-                                    if (isTablet || isDesktop) navigate(ROUTES.ORDER);
-                                    else if (isMobile) dispatch(setActiveModal("delivery-total"));
-                                }}
-                            />
                         )}
+
+                        <Button
+                            text="Продолжить"
+                            className="h-[56px] w-full"
+                            disabled={minSumOrder > 0}
+                            clickHandler={() => {
+                                document.body.classList.remove("lock");
+                                if (isTablet || isDesktop) navigate(ROUTES.ORDER);
+                                else if (isMobile) dispatch(setActiveModal("delivery-total"));
+                            }}
+                        />
                     </div>
                 ) : (
                     <p className="text-[#21201F] text-[14px] font-medium">
