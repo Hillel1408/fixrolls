@@ -41,7 +41,7 @@ const CityModal = () => {
                                             : "bg-[#F9F7F7]",
                                     )}
                                     onClick={() => {
-                                        if (activeCity !== item) {
+                                        if (activeCity.region !== item.region) {
                                             dispatch(addCity(item));
                                             dispatch(resetStore());
                                         }
