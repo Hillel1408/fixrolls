@@ -120,8 +120,19 @@ const Cart = () => {
                 )}
 
                 {orders.cards.length > 0 ? (
-                    <div className="flex flex-col gap-2 items-center absolute bottom-6 left-6 right-6 sm:flex-row sm:bg-[#F9F7F7] sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:px-5 sm:py-3 sm:gap-[30px] sm:rounded-t-2xl">
-                        <div className="flex gap-[10px] items-center sm:flex-col sm:items-start sm:gap-1">
+                    <div
+                        className={classNames(
+                            "flex flex-col gap-2 items-center absolute bottom-6 left-6 right-6",
+                            !(minSumOrder > 0) &&
+                                "sm:flex-row sm:bg-[#F9F7F7] sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:px-5 sm:py-3 sm:gap-[30px] sm:rounded-t-2xl",
+                        )}
+                    >
+                        <div
+                            className={classNames(
+                                "flex gap-[10px] items-center",
+                                !(minSumOrder > 0) && "sm:flex-col sm:items-start sm:gap-1",
+                            )}
+                        >
                             <span className="text-[rgba(0,0,0,0.70)] text-[14px] font-medium">
                                 Итого:
                             </span>
