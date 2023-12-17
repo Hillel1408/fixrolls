@@ -81,15 +81,6 @@ const Main = () => {
 
                     {!(activeModal === "cart") && orders.cards.length > 0 && (
                         <div className="hidden xl:flex py-3 px-7 bg-white items-center fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[14px] lg:left-0 lg:right-0">
-                            {minSumOrder > 0 ? (
-                                <p className="p-[10px] text-[14px] text-[#000] border border-[#6C6C6C] rounded-2xl max-w-[190px]">
-                                    <span className="font-semibold">{minSumOrder}₽</span> до
-                                    бесплатной доставки
-                                </p>
-                            ) : (
-                                <p className="text-[14px] text-[#000]">Бесплатная доставка</p>
-                            )}
-
                             <button
                                 className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14"
                                 onClick={() => {
