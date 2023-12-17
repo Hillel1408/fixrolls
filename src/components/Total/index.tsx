@@ -47,21 +47,31 @@ const Total = () => {
                     )}
                 </div>
 
-                <div className="flex justify-between items-center gap-4">
+                <div className="flex justify-between items-center gap-4 sm:flex-row-reverse sm:bg-[#F9F7F7] sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:px-5 sm:py-3 sm:gap-[30px] sm:rounded-t-2xl">
                     <Button
                         text="Заказать"
-                        className="h-[48px]"
+                        className="h-[56px] w-full"
                         clickHandler={() => {
-                            if (orders.delivery.phone) {
+                            if (
+                                orders.delivery.phone &&
+                                orders.delivery.street.title &&
+                                orders.delivery.home &&
+                                orders.delivery.family
+                            ) {
                                 dispatch(sentOrder(orders));
                                 status === "resolved" && dispatch(setActiveModal("success"));
                             } else dispatch(setFlag(true));
                         }}
                     />
+                    <div className="sm:flex sm:flex-col sm:items-start sm:gap-1">
+                        <span className="hidden sm:block text-[rgba(0,0,0,0.70)] text-[14px] font-medium">
+                            Итого:
+                        </span>
 
-                    <span className="text-[#000] text-[26px] font-medium whitespace-nowrap sm:text-[24px]">
-                        {orders.totalCart} ₽
-                    </span>
+                        <span className="text-[#000] text-[26px] font-medium whitespace-nowrap sm:text-[24px]">
+                            {orders.totalCart}₽
+                        </span>
+                    </div>
                 </div>
             </div>
 

@@ -27,7 +27,7 @@ const Cart = () => {
                 className={classNames(
                     "bg-white pt-6 px-5 rounded-2xl flex flex-col xl:p-0 h-[calc(100vh-130px)] relative xl:h-auto xl:min-h-[500px]",
                     orders.cards.length > 0
-                        ? "pb-[150px] xl:pb-[180px] sm:pb-[150px]"
+                        ? "pb-[150px] xl:pb-[180px] sm:pb-[90px]"
                         : "justify-between pb-6 sm:pb-0",
                 )}
             >
@@ -120,13 +120,13 @@ const Cart = () => {
                 )}
 
                 {orders.cards.length > 0 ? (
-                    <div className="flex flex-col gap-2 items-center absolute bottom-6 left-6 right-6">
-                        <div className="flex gap-[10px] items-center">
+                    <div className="flex flex-col gap-2 items-center absolute bottom-6 left-6 right-6 sm:flex-row sm:bg-[#F9F7F7] sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:px-5 sm:py-3 sm:gap-[30px] sm:rounded-t-2xl">
+                        <div className="flex gap-[10px] items-center sm:flex-col sm:items-start sm:gap-1">
                             <span className="text-[rgba(0,0,0,0.70)] text-[14px] font-medium">
                                 Итого:
                             </span>
 
-                            <span className="text-[#21201F] text-[30px] font-medium">
+                            <span className="text-[#21201F] text-[30px] font-medium sm:text-[24px]">
                                 {orders.totalCart}₽
                             </span>
                         </div>

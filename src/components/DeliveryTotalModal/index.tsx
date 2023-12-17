@@ -11,7 +11,7 @@ const DeliveryTotalModal = () => {
 
     return createPortal(
         <LayoutModal
-            className="w-[478px] sm:w-full"
+            className="w-[478px] sm:w-full sm:pb-20"
             closeModal={() => {
                 dispatch(setActiveModal(""));
             }}

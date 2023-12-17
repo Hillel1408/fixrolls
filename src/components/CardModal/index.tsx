@@ -29,7 +29,7 @@ const CardModal = () => {
             }}
             active={modals.activeModal === "card"}
         >
-            <div className="grid grid-cols-[1fr_1fr] gap-[25px] md:grid-cols-[1fr] sm:gap-0">
+            <div className="grid grid-cols-[1fr_1fr] gap-[25px] md:grid-cols-[1fr] sm:gap-0 sm:pb-[120px]">
                 <div className="bg-white h-[473px] rounded-[44px] sm:rounded-none sm:h-[350px]">
                     <img
                         className="h-full object-cover w-full rounded-[44px]"
@@ -41,7 +41,7 @@ const CardModal = () => {
                     />
                 </div>
 
-                <div className="p-5">
+                <div className="p-5 relative">
                     <div className="py-[18px] flex flex-col gap-5 sm:py-0 sm:gap-4">
                         <div>
                             <h2 className="text-[36px] font-medium leading-[111%] sm:text-[32px]">
@@ -122,65 +122,75 @@ const CardModal = () => {
                         </div>
                     </div>
 
-                    <div className="mt-4 py-[13px] border-t border-[#f2f2f2] flex justify-between text-[#21201F] items-center gap-4">
-                        <p className="text-[15px]">{modals.itemCardModal.name}</p>
-                        <span className="text-[22px] font-medium">
-                            {card.count > 0
-                                ? card.total
-                                : modals.itemCardModal.floatprice.split(".")[0]}
-                            ₽
-                        </span>
-                    </div>
+                    <div className="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:bg-white sm:p-5 sm:pt-0">
+                        <div className="mt-4 py-[13px] border-t border-[#f2f2f2] flex justify-between text-[#21201F] items-center gap-4 sm:mt-0">
+                            <p className="text-[15px]">{modals.itemCardModal.name}</p>
+                            <span className="text-[22px] font-medium">
+                                {card.count > 0
+                                    ? card.total
+                                    : modals.itemCardModal.floatprice.split(".")[0]}
+                                ₽
+                            </span>
+                        </div>
 
-                    <div
-                        className={classNames(
-                            "gap-[5px]",
-                            card.count > 0 ? "grid grid-cols-[121px_1fr]" : "grid grid-cols-[1fr]",
-                        )}
-                    >
-                        {card.count > 0 && (
-                            <div className="flex items-center gap-[17px] px-[13px] h-[47px] border border-[#E6E6E6] rounded-[24px]">
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        dispatch(deleteCard(modals.itemCardModal));
-                                    }}
-                                >
-                                    <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
-                                        <use xlinkHref="/sprites/sprite.svg#-"></use>
-                                    </svg>
-                                </button>
+                        <div
+                            className={classNames(
+                                "gap-[5px]",
+                                card.count > 0
+                                    ? "grid grid-cols-[121px_1fr]"
+                                    : "grid grid-cols-[1fr]",
+                            )}
+                        >
+                            {card.count > 0 && (
+                                <div className="flex items-center gap-[17px] px-[13px] h-[47px] border border-[#E6E6E6] rounded-[24px]">
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            dispatch(deleteCard(modals.itemCardModal));
+                                        }}
+                                    >
+                                        <svg
+                                            className="h-[22px] w-[22px] fill-none"
+                                            aria-hidden="true"
+                                        >
+                                            <use xlinkHref="/sprites/sprite.svg#-"></use>
+                                        </svg>
+                                    </button>
 
-                                <span className="text-[#21201F] text-[18px] font-medium">
-                                    {card.count}
-                                </span>
+                                    <span className="text-[#21201F] text-[18px] font-medium">
+                                        {card.count}
+                                    </span>
 
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        dispatch(addCard(modals.itemCardModal));
-                                    }}
-                                >
-                                    <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
-                                        <use xlinkHref="/sprites/sprite.svg#+"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                        )}
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            dispatch(addCard(modals.itemCardModal));
+                                        }}
+                                    >
+                                        <svg
+                                            className="h-[22px] w-[22px] fill-none"
+                                            aria-hidden="true"
+                                        >
+                                            <use xlinkHref="/sprites/sprite.svg#+"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            )}
 
-                        <Button
-                            clickHandler={() => {
-                                if (card.count > 0) {
-                                    document.body.classList.remove("lock");
-                                    dispatch(setActiveModal(""));
-                                    if (isMobile) {
-                                        dispatch(setActiveModal("cart"));
-                                    } else navigate(ROUTES.ORDER);
-                                } else dispatch(addCard(modals.itemCardModal));
-                            }}
-                            text={card.count > 0 ? "Оформить заказ" : "Добавить"}
-                            className="h-[47px] w-full"
-                        />
+                            <Button
+                                clickHandler={() => {
+                                    if (card.count > 0) {
+                                        document.body.classList.remove("lock");
+                                        dispatch(setActiveModal(""));
+                                        if (isMobile) {
+                                            dispatch(setActiveModal("cart"));
+                                        } else navigate(ROUTES.ORDER);
+                                    } else dispatch(addCard(modals.itemCardModal));
+                                }}
+                                text={card.count > 0 ? "Оформить заказ" : "Добавить"}
+                                className="h-[47px] w-full"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
