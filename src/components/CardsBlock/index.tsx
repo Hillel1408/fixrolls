@@ -44,7 +44,7 @@ const CardsBlock = ({
                 {item.description.name}
             </h2>
 
-            <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-x-2 gap-y-4 2xl:grid-cols-[1fr_1fr_1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1fr_1fr_1fr] sm:grid-cols-[1fr_1fr] sm:gap-y-2">
+            <div className="relative grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-x-2 gap-y-4 2xl:grid-cols-[1fr_1fr_1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1fr_1fr_1fr] sm:grid-cols-[1fr_1fr] sm:gap-y-2">
                 {item.childrens.map((item: any) => (
                     <Card key={item.description.id} item={item.description} />
                 ))}
