@@ -147,7 +147,7 @@ const DeliveryAddressModal = () => {
                         />
                     </div>
 
-                    <div className="mt-[13px] min-h-[350px] sm:mt-0">
+                    <div className="mt-[13px] min-h-[350px] sm:mt-0 sm:min-h-[550px]">
                         <Map
                             {...mapOptions}
                             state={state}
