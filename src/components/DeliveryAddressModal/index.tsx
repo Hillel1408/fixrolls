@@ -45,7 +45,6 @@ const DeliveryAddressModal = () => {
     };
 
     const handleReset = () => {
-        mapRef.current.setZoom(12);
         searchRef.current.value = "";
     };
 
