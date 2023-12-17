@@ -30,14 +30,20 @@ const Total = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <button
-                        className="text-[#21201F] text-[20px] font-medium flex gap-[10px]"
-                        onClick={() => {
-                            dispatch(setActiveModal("promotion-code"));
-                        }}
-                    >
-                        У меня есть промокод
-                    </button>
+                    {orders.promoCode ? (
+                        <p className="text-[#21201F] text-[20px] font-medium ">
+                            Промокод: {orders.promoCode}
+                        </p>
+                    ) : (
+                        <button
+                            className="text-[#21201F] text-[20px] font-medium flex gap-[10px]"
+                            onClick={() => {
+                                dispatch(setActiveModal("promotion-code"));
+                            }}
+                        >
+                            У меня есть промокод
+                        </button>
+                    )}
 
                     {false && (
                         <label className="text-[#21201F] text-[20px] font-medium flex gap-[10px]">

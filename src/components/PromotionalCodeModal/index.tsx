@@ -44,7 +44,11 @@ const PromotionalCodeModal = () => {
                         }}
                     />
 
-                    {flag && <p className="text-[red]">Неверный промокод</p>}
+                    {flag && (
+                        <p className="text-[red]">
+                            Неверный промокод или невыполнены условия акции
+                        </p>
+                    )}
                 </div>
 
                 <Button
@@ -58,7 +62,13 @@ const PromotionalCodeModal = () => {
                             (item) =>
                                 item.region === orders.city.region &&
                                 item.promo_codes.map((item) => {
-                                    if (item.code === value) flag = true;
+                                    if (item.code === value) {
+                                        if (item.conditions.order_amount) {
+                                            if (orders.totalCart > +item.conditions.order_amount) {
+                                                flag = true;
+                                            }
+                                        } else flag = true;
+                                    }
                                 }),
                         );
                         if (flag) {
