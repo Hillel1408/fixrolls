@@ -1,6 +1,6 @@
 import { Button, PromotionalCodeModal, SuccessModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { sentOrder, setActiveModal, setFlag } from "store";
+import { sentOrder, setActiveModal, setFlag, addPromoCode } from "store";
 
 const Total = () => {
     const dispatch = useAppDispatch();
@@ -31,9 +31,21 @@ const Total = () => {
 
                 <div className="flex flex-col gap-2">
                     {orders.promoCode ? (
-                        <p className="text-[#21201F] text-[20px] font-medium ">
-                            Промокод: {orders.promoCode}
-                        </p>
+                        <div className="flex items-center gap-2">
+                            <p className="text-[#21201F] text-[20px] font-medium ">
+                                Промокод: {orders.promoCode}
+                            </p>
+
+                            <button
+                                onClick={() => {
+                                    dispatch(addPromoCode(""));
+                                }}
+                            >
+                                <svg className="w-[10px] h-[10px]" aria-hidden="true">
+                                    <use xlinkHref="/sprites/sprite.svg#close"></use>
+                                </svg>
+                            </button>
+                        </div>
                     ) : (
                         <button
                             className="text-[#21201F] text-[20px] font-medium flex gap-[10px]"
