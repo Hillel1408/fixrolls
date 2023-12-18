@@ -53,11 +53,6 @@ const Main = () => {
 
     const minSumOrder = minOrderAmount - orders.totalCart;
 
-    useEffect(() => {
-        const storageItem = localStorage.getItem("persist:root");
-        !storageItem && dispatch(setActiveModal("city"));
-    }, []);
-
     return (
         <>
             {cards?.length > 0 && pageHeight ? (

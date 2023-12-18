@@ -113,6 +113,7 @@ const orderSlice = createSlice({
         resetCart(state) {
             state.cards = [];
             state.totalCart = 0;
+            state.promoCode = "";
         },
 
         addCity(state, action) {
