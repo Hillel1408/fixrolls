@@ -12,6 +12,21 @@ const Total = () => {
         <>
             <div className="bg-white py-[35px] px-[30px] rounded-[32px] flex flex-col gap-6 sticky top-[100px] sm:px-3 sm:pt-0 sm:pb-6">
                 <div>
+                    <h2 className="text-[#000] text-[26px] font-medium mb-3">Способ оплаты</h2>
+
+                    <div className="flex gap-3">
+                        <button className="text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border border-[#FFCD36] items-start">
+                            <span className="w-4 h-4 rounded-[4px] border border-[#231F20]"></span>
+                            Картой при получении
+                        </button>
+                        <button className="text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border border-[#FFCD36] items-start">
+                            <span className="w-4 h-4 rounded-[4px] border border-[#231F20]"></span>
+                            Наличными при получении
+                        </button>
+                    </div>
+                </div>
+
+                <div>
                     <h2 className="text-[#000] text-[26px] font-medium mb-5">Итого</h2>
 
                     <div className="flex flex-col gap-2 text-[#000] text-[20px]">
