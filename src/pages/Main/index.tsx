@@ -1,4 +1,4 @@
-import { useEffect, createRef, useState } from "react";
+import { useEffect, createRef, useState, useLayoutEffect } from "react";
 import {
     Sidebar,
     Cart,
@@ -52,6 +52,14 @@ const Main = () => {
             .min_order_amount || 0;
 
     const minSumOrder = minOrderAmount - orders.totalCart;
+
+    useLayoutEffect(() => {
+        const storageItem = localStorage.getItem("auth");
+        if (!storageItem) {
+            dispatch(setActiveModal("city"));
+            localStorage.setItem("auth", "true");
+        }
+    }, []);
 
     return (
         <>
