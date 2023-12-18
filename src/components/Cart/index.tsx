@@ -19,6 +19,9 @@ const Cart = () => {
         data.find((item) => item.restaurantID === orders.city.restaurantID)?.free_delivery[0]
             .min_order_amount || 0;
 
+    const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)
+        ?.free_delivery[0].delivery_price;
+
     const minSumOrder = minOrderAmount - orders.totalCart;
 
     return (
@@ -142,19 +145,23 @@ const Cart = () => {
                             </span>
                         </div>
 
-                        {minSumOrder > 0 && (
-                            <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center flex items-center gap-4">
-                                {minSumOrder}₽ до минимальной суммы заказа
-                                <img
-                                    className="cursor-pointer w-4"
-                                    src="/images/img-5.png"
-                                    alt=""
-                                    onClick={() => {
-                                        dispatch(setActiveModal("delivery"));
-                                    }}
-                                />
-                            </p>
-                        )}
+                        <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center flex items-center gap-4 justify-between">
+                            {minSumOrder > 0 ? (
+                                <span>{minSumOrder}₽ до минимальной суммы заказа</span>
+                            ) : delivery === 0 ? (
+                                <span>Бесплатная доставка</span>
+                            ) : (
+                                <span>Доставка {delivery}₽</span>
+                            )}
+                            <img
+                                className="cursor-pointer w-4"
+                                src="/images/img-5.png"
+                                alt=""
+                                onClick={() => {
+                                    dispatch(setActiveModal("delivery"));
+                                }}
+                            />
+                        </p>
 
                         <Button
                             text="Продолжить"

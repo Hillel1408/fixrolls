@@ -2,11 +2,15 @@ import classNames from "classnames";
 import { Button, PromotionalCodeModal, SuccessModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
 import { sentOrder, setActiveModal, setFlag, addPromoCode, addDelivery } from "store";
+import data from "data/data.json";
 
 const Total = () => {
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
     const modals = useAppSelector((state) => state.modals);
+
+    const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)
+        ?.free_delivery[0].delivery_price;
 
     const { status } = useAppSelector((state) => state.orders);
 
@@ -65,12 +69,10 @@ const Total = () => {
                             <span>{orders.totalCart} ₽</span>
                         </div>
 
-                        {false && (
-                            <div className="flex justify-between">
-                                <span>Доставка</span>
-                                <span>200 ₽</span>
-                            </div>
-                        )}
+                        <div className="flex justify-between">
+                            <span>Доставка</span>
+                            {delivery ? <span>{delivery} ₽</span> : "Бесплатно"}
+                        </div>
                     </div>
                 </div>
 
@@ -133,7 +135,7 @@ const Total = () => {
                         </span>
 
                         <span className="text-[#000] text-[26px] font-medium whitespace-nowrap sm:text-[24px]">
-                            {orders.totalCart}₽
+                            {orders.totalCart + Number(delivery)}₽
                         </span>
                     </div>
                 </div>
