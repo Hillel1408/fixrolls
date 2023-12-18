@@ -67,7 +67,7 @@ const PromotionalCodeModal = () => {
                             (item) =>
                                 item.region === orders.city.region &&
                                 item.promo_codes.map((item) => {
-                                    if (item.code === value) {
+                                    if (item.code === Number(value)) {
                                         if (item.conditions.order_amount) {
                                             if (orders.totalCart > +item.conditions.order_amount) {
                                                 flag = true;

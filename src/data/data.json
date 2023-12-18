@@ -217,7 +217,7 @@
         "working_hours": "с 10:00 до 21:30",
         "promo_codes": [
             {
-                "code": "KUL001",
+                "code": 636033,
                 "discount_percentage": 10,
                 "discount_amount": 0,
                 "product_offer": "10% скидка на все роллы при наличии определенных продуктов \"12345\" 2 шт и \"67890\" 3 шт в корзине",
