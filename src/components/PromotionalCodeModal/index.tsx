@@ -23,7 +23,9 @@ const PromotionalCodeModal = () => {
         <LayoutModal
             className="p-[32px] w-[400px] sm:w-full"
             closeModal={() => {
-                dispatch(setActiveModal(""));
+                isMobile
+                    ? dispatch(setActiveModal("delivery-total"))
+                    : dispatch(setActiveModal(""));
             }}
             active={activeModal === "promotion-code"}
         >

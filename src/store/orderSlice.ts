@@ -44,7 +44,9 @@ export const sentOrder = createAsyncThunk(
                     .join("&");
 
             const { data } = await axios.get(
-                `/makeOrder.php?${params}&${products}&${delivery || `independently=1`}`,
+                `/makeOrder.php?${params}&${products}&${delivery || `independently=1`}&promoCode=${
+                    order.promoCode
+                }`,
             );
 
             return data;
