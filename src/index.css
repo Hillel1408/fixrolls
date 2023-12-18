@@ -7,3 +7,6 @@
 body.lock {
     overflow: hidden;
 }
+input {
+    outline: none;
+}
