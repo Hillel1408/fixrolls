@@ -1,10 +1,12 @@
+import classNames from "classnames";
 import { Button, PromotionalCodeModal, SuccessModal } from "components";
 import { useAppSelector, useAppDispatch } from "hook";
-import { sentOrder, setActiveModal, setFlag, addPromoCode } from "store";
+import { sentOrder, setActiveModal, setFlag, addPromoCode, addDelivery } from "store";
 
 const Total = () => {
     const dispatch = useAppDispatch();
     const orders = useAppSelector((state) => state.orders);
+    const modals = useAppSelector((state) => state.modals);
 
     const { status } = useAppSelector((state) => state.orders);
 
@@ -15,12 +17,40 @@ const Total = () => {
                     <h2 className="text-[#000] text-[26px] font-medium mb-3">Способ оплаты</h2>
 
                     <div className="flex gap-3">
-                        <button className="text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border border-[#FFCD36] items-start">
-                            <span className="w-4 h-4 rounded-[4px] border border-[#231F20]"></span>
+                        <button
+                            className={classNames(
+                                "text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border items-start",
+                                modals.flag && orders.delivery.paymentMethod === undefined
+                                    ? "border-[red]"
+                                    : "border-[#FFCD36]",
+                            )}
+                            onClick={() => {
+                                dispatch(addDelivery({ paymentMethod: 1 }));
+                            }}
+                        >
+                            <span className="w-4 h-4 rounded-[4px] border border-[#231F20] flex items-center justify-center">
+                                {orders.delivery.paymentMethod === 1 && (
+                                    <span className="bg-[#231F20] w-2 h-2 rounded-[4px]"></span>
+                                )}
+                            </span>
                             Картой при получении
                         </button>
-                        <button className="text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border border-[#FFCD36] items-start">
-                            <span className="w-4 h-4 rounded-[4px] border border-[#231F20]"></span>
+                        <button
+                            className={classNames(
+                                "text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border items-start",
+                                modals.flag && orders.delivery.paymentMethod === undefined
+                                    ? "border-[red]"
+                                    : "border-[#FFCD36]",
+                            )}
+                            onClick={() => {
+                                dispatch(addDelivery({ paymentMethod: 0 }));
+                            }}
+                        >
+                            <span className="w-4 h-4 rounded-[4px] border border-[#231F20] flex items-center justify-center">
+                                {orders.delivery.paymentMethod === 0 && (
+                                    <span className="bg-[#231F20] w-2 h-2 rounded-[4px]"></span>
+                                )}
+                            </span>
                             Наличными при получении
                         </button>
                     </div>
@@ -89,7 +119,8 @@ const Total = () => {
                                 orders.delivery.phone &&
                                 orders.delivery.street.title &&
                                 orders.delivery.home &&
-                                orders.delivery.family
+                                orders.delivery.family &&
+                                orders.delivery.paymentMethod !== undefined
                             ) {
                                 dispatch(sentOrder(orders));
                                 status === "resolved" && dispatch(setActiveModal("success"));
