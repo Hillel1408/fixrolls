@@ -58,7 +58,7 @@ const CardModal = () => {
                                     Состав:
                                 </p>
                                 <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
-                                    {modals.itemCardModal.description
+                                    {modals.itemCardModal.mobileDescription
                                         .split(";")
                                         .map((item: string, index: number) => (
                                             <li key={index}>{item}</li>
@@ -73,7 +73,7 @@ const CardModal = () => {
                                     Описание состава:
                                 </p>
                                 <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
-                                    {modals.itemCardModal.mobileDescription
+                                    {modals.itemCardModal.description
                                         .split(";")
                                         .map((item: string, index: number) => (
                                             <li key={index}>{item}</li>

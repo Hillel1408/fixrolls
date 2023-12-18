@@ -13,6 +13,7 @@ import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";
 import { getCards, setActiveModal } from "store";
 import { ThreeDots } from "react-loader-spinner";
+import data from "data/data.json";
 
 const Main = () => {
     const activeModal = useAppSelector((state) => state.modals.activeModal);
@@ -44,6 +45,9 @@ const Main = () => {
             }, 300);
         });
     }, []);
+
+    const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)
+        ?.free_delivery[0].delivery_price;
 
     return (
         <>
@@ -80,7 +84,25 @@ const Main = () => {
                     </div>
 
                     {!(activeModal === "cart") && orders.cards.length > 0 && (
-                        <div className="hidden xl:flex py-3 px-7 bg-white items-center fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[14px] lg:left-0 lg:right-0">
+                        <div className="hidden z-10 xl:flex py-3 px-7 bg-white items-center fixed bottom-0 left-[10px] right-[10px] shadow-[0px_-3px_70px_-20px_rgba(34,60,80,0.2)] rounded-t-[16px] justify-center gap-[14px] lg:left-0 lg:right-0 sm:px-3">
+                            <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center flex items-center gap-4 justify-between max-w-[290px] sm:text-[12px]">
+                                {minSumOrder > 0 ? (
+                                    <span>{minSumOrder}₽ до минимальной суммы заказа</span>
+                                ) : delivery === 0 ? (
+                                    <span>Бесплатная доставка</span>
+                                ) : (
+                                    <span>Доставка {delivery}₽</span>
+                                )}
+                                <img
+                                    className="cursor-pointer w-4"
+                                    src="/images/img-5.png"
+                                    alt=""
+                                    onClick={() => {
+                                        dispatch(setActiveModal("delivery"));
+                                    }}
+                                />
+                            </p>
+
                             <button
                                 className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14"
                                 onClick={() => {

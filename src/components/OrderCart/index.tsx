@@ -85,13 +85,15 @@ const OrderCart = () => {
                 </div>
             ))}
 
-            <input
-                type="text"
-                className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
-                placeholder="Комментарий повару"
-                value={orders.delivery.staffComment}
-                onChange={(e) => dispatch(addDelivery({ staffComment: e.target.value }))}
-            />
+            {false && (
+                <input
+                    type="text"
+                    className="h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full"
+                    placeholder="Комментарий повару"
+                    value={orders.delivery.staffComment}
+                    onChange={(e) => dispatch(addDelivery({ staffComment: e.target.value }))}
+                />
+            )}
         </div>
     );
 };
