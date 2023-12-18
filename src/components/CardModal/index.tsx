@@ -52,7 +52,7 @@ const CardModal = () => {
                             </p>
                         </div>
 
-                        {modals.itemCardModal.description && (
+                        {modals.itemCardModal.mobileDescription && (
                             <div>
                                 <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
                                     Состав:
@@ -67,7 +67,7 @@ const CardModal = () => {
                             </div>
                         )}
 
-                        {modals.itemCardModal.mobileDescription && (
+                        {modals.itemCardModal.description && (
                             <div>
                                 <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
                                     Описание состава:
@@ -82,44 +82,44 @@ const CardModal = () => {
                             </div>
                         )}
 
-                        <div>
-                            <p className="text-[#6C6C6C] text-[12px] font-medium mb-[6px]">
-                                Пищевая ценность на {modals.itemCardModal.weight} г.
-                            </p>
-                            <div className="grid grid-cols-[1fr_1fr_1fr_1fr]">
-                                {Number(modals.itemCardModal.protein) !== 0 && (
-                                    <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
-                                        <span>Белки</span>
-                                        <span>{modals.itemCardModal.protein.split(".")[0]} г.</span>
-                                    </div>
-                                )}
+                        {Number(modals.itemCardModal.protein) !== 0 &&
+                            Number(modals.itemCardModal.fat) !== 0 &&
+                            Number(modals.itemCardModal.carbohydrates) !== 0 &&
+                            Number(modals.itemCardModal.calories) !== 0 && (
+                                <div>
+                                    <p className="text-[#6C6C6C] text-[12px] font-medium mb-[6px]">
+                                        Пищевая ценность на {modals.itemCardModal.weight} г.
+                                    </p>
+                                    <div className="grid grid-cols-[1fr_1fr_1fr_1fr]">
+                                        <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
+                                            <span>Белки</span>
+                                            <span>
+                                                {modals.itemCardModal.protein.split(".")[0]} г.
+                                            </span>
+                                        </div>
 
-                                {Number(modals.itemCardModal.fat) !== 0 && (
-                                    <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
-                                        <span>Жиры</span>
-                                        <span>{modals.itemCardModal.fat.split(".")[0]} г.</span>
-                                    </div>
-                                )}
+                                        <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
+                                            <span>Жиры</span>
+                                            <span>{modals.itemCardModal.fat.split(".")[0]} г.</span>
+                                        </div>
 
-                                {Number(modals.itemCardModal.carbohydrates) !== 0 && (
-                                    <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
-                                        <span>Углеводы</span>
-                                        <span>
-                                            {modals.itemCardModal.carbohydrates.split(".")[0]} г.
-                                        </span>
-                                    </div>
-                                )}
+                                        <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
+                                            <span>Углеводы</span>
+                                            <span>
+                                                {modals.itemCardModal.carbohydrates.split(".")[0]}{" "}
+                                                г.
+                                            </span>
+                                        </div>
 
-                                {Number(modals.itemCardModal.calories) !== 0 && (
-                                    <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
-                                        <span>Энерг. ценн</span>
-                                        <span>
-                                            {modals.itemCardModal.calories.split(".")[0]} ккал.
-                                        </span>
+                                        <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
+                                            <span>Энерг. ценн</span>
+                                            <span>
+                                                {modals.itemCardModal.calories.split(".")[0]} ккал.
+                                            </span>
+                                        </div>
                                     </div>
-                                )}
-                            </div>
-                        </div>
+                                </div>
+                            )}
                     </div>
 
                     <div className="sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:bg-white sm:p-5 sm:pt-0">
