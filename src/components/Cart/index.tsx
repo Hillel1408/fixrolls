@@ -145,23 +145,25 @@ const Cart = () => {
                             </span>
                         </div>
 
-                        <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center flex items-center gap-4 justify-between">
-                            {minSumOrder > 0 ? (
-                                <span>{minSumOrder}₽ до минимальной суммы заказа</span>
-                            ) : delivery === 0 ? (
-                                <span>Бесплатная доставка</span>
-                            ) : (
-                                <span>Доставка {delivery}₽</span>
-                            )}
-                            <img
-                                className="cursor-pointer w-4"
-                                src="/images/img-5.png"
-                                alt=""
-                                onClick={() => {
-                                    dispatch(setActiveModal("delivery"));
-                                }}
-                            />
-                        </p>
+                        {(isTablet || isDesktop) && (
+                            <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center flex items-center gap-4 justify-between">
+                                {minSumOrder > 0 ? (
+                                    <span>{minSumOrder}₽ до минимальной суммы заказа</span>
+                                ) : delivery === 0 ? (
+                                    <span>Бесплатная доставка</span>
+                                ) : (
+                                    <span>Доставка {delivery}₽</span>
+                                )}
+                                <img
+                                    className="cursor-pointer w-4"
+                                    src="/images/img-5.png"
+                                    alt=""
+                                    onClick={() => {
+                                        dispatch(setActiveModal("delivery"));
+                                    }}
+                                />
+                            </p>
+                        )}
 
                         <Button
                             text="Продолжить"
