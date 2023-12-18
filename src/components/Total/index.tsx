@@ -125,7 +125,7 @@ const Total = () => {
                                 orders.delivery.paymentMethod !== undefined
                             ) {
                                 dispatch(sentOrder(orders));
-                                status === "resolved" && dispatch(setActiveModal("success"));
+                                dispatch(setActiveModal("success"));
                             } else dispatch(setFlag(true));
                         }}
                     />

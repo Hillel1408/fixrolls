@@ -126,14 +126,13 @@ const Cart = () => {
                     <div
                         className={classNames(
                             "flex flex-col gap-2 items-center absolute bottom-6 left-6 right-6",
-                            !(minSumOrder > 0) &&
-                                "sm:flex-row sm:bg-[#F9F7F7] sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:px-5 sm:py-3 sm:gap-[30px] sm:rounded-t-2xl",
+                            "sm:flex-row sm:bg-[#F9F7F7] sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:px-5 sm:py-3 sm:gap-[30px] sm:rounded-t-2xl",
                         )}
                     >
                         <div
                             className={classNames(
                                 "flex gap-[10px] items-center",
-                                !(minSumOrder > 0) && "sm:flex-col sm:items-start sm:gap-1",
+                                "sm:flex-col sm:items-start sm:gap-1",
                             )}
                         >
                             <span className="text-[rgba(0,0,0,0.70)] text-[14px] font-medium">
@@ -145,7 +144,7 @@ const Cart = () => {
                             </span>
                         </div>
 
-                        {(isTablet || isDesktop) && (
+                        {isDesktop && (
                             <p className="py-[10px] px-[14px] rounded-2xl border border-[#6C6C6C] w-full text-center flex items-center gap-4 justify-between">
                                 {minSumOrder > 0 ? (
                                     <span>{minSumOrder}₽ до минимальной суммы заказа</span>

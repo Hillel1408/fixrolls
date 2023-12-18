@@ -20,8 +20,6 @@ const Main = () => {
     const orders = useAppSelector((state) => state.orders);
     const dispatch = useAppDispatch();
 
-    const minSumOrder = 500 - orders.totalCart;
-
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
     const { cards, error } = useAppSelector((state) => state.cards);
@@ -48,6 +46,12 @@ const Main = () => {
 
     const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)
         ?.free_delivery[0].delivery_price;
+
+    const minOrderAmount =
+        data.find((item) => item.restaurantID === orders.city.restaurantID)?.free_delivery[0]
+            .min_order_amount || 0;
+
+    const minSumOrder = minOrderAmount - orders.totalCart;
 
     return (
         <>
@@ -104,7 +108,8 @@ const Main = () => {
                             </p>
 
                             <button
-                                className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14"
+                                className="px-[18px] bg-[#FFCD36] rounded-2xl flex items-center justify-between w-[250px] h-14 disabled:opacity-40"
+                                disabled={minSumOrder > 0}
                                 onClick={() => {
                                     dispatch(setActiveModal("cart"));
                                 }}
