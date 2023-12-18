@@ -5,6 +5,7 @@ import { LayoutModal, Button } from "components";
 import data from "data/data.json";
 import { useState } from "react";
 import classNames from "classnames";
+import { useMatchMedia } from "hooks";
 
 const PromotionalCodeModal = () => {
     const [flag, setFlag] = useState(false);
@@ -15,6 +16,8 @@ const PromotionalCodeModal = () => {
     const activeModal = useAppSelector((state) => state.modals.activeModal);
 
     activeModal === "promotion-code" && document.body.classList.add("lock");
+
+    const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
     return createPortal(
         <LayoutModal
@@ -74,7 +77,9 @@ const PromotionalCodeModal = () => {
                         if (flag) {
                             dispatch(addPromoCode(value));
                             document.body.classList.remove("lock");
-                            dispatch(setActiveModal(""));
+                            isMobile
+                                ? dispatch(setActiveModal("delivery-total"))
+                                : dispatch(setActiveModal(""));
                         } else setFlag(true);
                     }}
                 />
