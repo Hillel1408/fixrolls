@@ -6,11 +6,14 @@ import { useAppSelector, useAppDispatch } from "hook";
 import { addDelivery, addType, setActiveModal } from "store";
 import { GeolocationControl, Map, ZoomControl } from "@pbe/react-yandex-maps";
 import classNames from "classnames";
+import { useMatchMedia } from "hooks";
 
 const DeliveryAddressModal = () => {
     const orders = useAppSelector((state) => state.orders);
     const activeModal = useAppSelector((state) => state.modals.activeModal);
     const dispatch = useAppDispatch();
+
+    const { isMobile } = useMatchMedia();
 
     const listItems = ["Доставка", "Навынос"];
 
@@ -53,7 +56,7 @@ const DeliveryAddressModal = () => {
 
         mapConstructor.geocode(newCoords).then((res) => {
             const nearest = res.geoObjects.get(0);
-            const foundAddress = nearest.properties.get("text");
+            const foundAddress = nearest.properties.get("name");
             const [centerX, centerY] = nearest.geometry.getCoordinates();
             const [initialCenterX, initialCenterY] = initialState.center;
 
@@ -136,7 +139,7 @@ const DeliveryAddressModal = () => {
                         </div>
 
                         <Button
-                            text="Выбрать адрес"
+                            text={isMobile ? "Я здесь" : "OK"}
                             className="h-[56px] w-full"
                             clickHandler={() => {
                                 handleSubmit();
