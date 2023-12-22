@@ -56,7 +56,7 @@ const DeliveryAddressModal = () => {
 
         mapConstructor.geocode(newCoords).then((res) => {
             const nearest = res.geoObjects.get(0);
-            const foundAddress = nearest.properties.get("name");
+            const foundAddress = nearest.properties.get("text");
             const [centerX, centerY] = nearest.geometry.getCoordinates();
             const [initialCenterX, initialCenterY] = initialState.center;
 
