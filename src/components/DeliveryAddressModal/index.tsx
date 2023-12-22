@@ -62,7 +62,7 @@ const DeliveryAddressModal = () => {
 
             if (centerX !== initialCenterX && centerY !== initialCenterY) {
                 setState((prevState) => ({ ...prevState, title: foundAddress }));
-                searchRef.current.value = nearest.properties.get("name");
+                searchRef.current.value = foundAddress;
             }
         });
     };
