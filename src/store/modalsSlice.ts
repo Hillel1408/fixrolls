@@ -45,7 +45,6 @@ const modalsSlice = createSlice({
     },
 });
 
-export const { setItemCardModal, setActiveModal, setItempPomotionModal, setFlag } =
-    modalsSlice.actions;
+export const { setItemCardModal, setActiveModal, setItempPomotionModal, setFlag } = modalsSlice.actions;
 
 export default modalsSlice.reducer;

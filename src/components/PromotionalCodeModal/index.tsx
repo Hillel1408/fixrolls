@@ -23,16 +23,12 @@ const PromotionalCodeModal = () => {
         <LayoutModal
             className="p-[32px] w-[400px] sm:w-full"
             closeModal={() => {
-                isMobile
-                    ? dispatch(setActiveModal("delivery-total"))
-                    : dispatch(setActiveModal(""));
+                isMobile ? dispatch(setActiveModal("delivery-total")) : dispatch(setActiveModal(""));
             }}
             active={activeModal === "promotion-code"}
         >
             <>
-                <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-[22px] max-w-[325px] sm:text-[22px]">
-                    Промокод
-                </h3>
+                <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-[22px] max-w-[325px] sm:text-[22px]">Промокод</h3>
 
                 <div className="mb-4">
                     <input
@@ -49,11 +45,7 @@ const PromotionalCodeModal = () => {
                         }}
                     />
 
-                    {flag && (
-                        <p className="text-[red]">
-                            Неверный промокод или невыполнены условия акции
-                        </p>
-                    )}
+                    {flag && <p className="text-[red]">Неверный промокод или невыполнены условия акции</p>}
                 </div>
 
                 <Button
@@ -79,9 +71,7 @@ const PromotionalCodeModal = () => {
                         if (flag) {
                             dispatch(addPromoCode(value));
                             document.body.classList.remove("lock");
-                            isMobile
-                                ? dispatch(setActiveModal("delivery-total"))
-                                : dispatch(setActiveModal(""));
+                            isMobile ? dispatch(setActiveModal("delivery-total")) : dispatch(setActiveModal(""));
                         } else setFlag(true);
                     }}
                 />

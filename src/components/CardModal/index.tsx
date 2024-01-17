@@ -12,8 +12,7 @@ const CardModal = () => {
     const modals = useAppSelector((state) => state.modals);
     const cards = useAppSelector((state) => state.orders.cards);
 
-    const card =
-        cards[cards.findIndex((card: any) => card.product.id === modals.itemCardModal.id)] || 0;
+    const card = cards[cards.findIndex((card: any) => card.product.id === modals.itemCardModal.id)] || 0;
 
     modals.activeModal === "card" && document.body.classList.add("lock");
 
@@ -33,10 +32,7 @@ const CardModal = () => {
                 <div className="bg-white h-[473px] rounded-[44px] sm:rounded-none sm:h-[350px]">
                     <img
                         className="h-full object-cover w-full rounded-[44px]"
-                        src={modals.itemCardModal.image.replace(
-                            "http://89.248.201.151",
-                            "https://fiksroll.ru",
-                        )}
+                        src={modals.itemCardModal.image.replace("http://89.248.201.151", "https://fiksroll.ru")}
                         alt=""
                     />
                 </div>
@@ -44,40 +40,28 @@ const CardModal = () => {
                 <div className="p-5 relative">
                     <div className="py-[18px] flex flex-col gap-5 sm:py-0 sm:gap-4">
                         <div>
-                            <h2 className="text-[36px] font-medium leading-[111%] sm:text-[32px]">
-                                {modals.itemCardModal.name}
-                            </h2>
-                            <p className="text-[12px] font-medium text-[#6C6C6C]">
-                                {modals.itemCardModal.storageConditions}
-                            </p>
+                            <h2 className="text-[36px] font-medium leading-[111%] sm:text-[32px]">{modals.itemCardModal.name}</h2>
+                            <p className="text-[12px] font-medium text-[#6C6C6C]">{modals.itemCardModal.storageConditions}</p>
                         </div>
 
                         {modals.itemCardModal.mobileDescription && (
                             <div>
-                                <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
-                                    Состав:
-                                </p>
+                                <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">Состав:</p>
                                 <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
-                                    {modals.itemCardModal.mobileDescription
-                                        .split(";")
-                                        .map((item: string, index: number) => (
-                                            <li key={index}>{item}</li>
-                                        ))}
+                                    {modals.itemCardModal.mobileDescription.split(";").map((item: string, index: number) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
                                 </ol>
                             </div>
                         )}
 
                         {modals.itemCardModal.description && (
                             <div>
-                                <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">
-                                    Описание состава:
-                                </p>
+                                <p className="text-[#21201F] text-[16px] font-medium mb-1 sm:text-[14px]">Описание состава:</p>
                                 <ol className="text-[#21201F] text-[15px] sm:text-[14px]">
-                                    {modals.itemCardModal.description
-                                        .split(";")
-                                        .map((item: string, index: number) => (
-                                            <li key={index}>{item}</li>
-                                        ))}
+                                    {modals.itemCardModal.description.split(";").map((item: string, index: number) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
                                 </ol>
                             </div>
                         )}
@@ -93,9 +77,7 @@ const CardModal = () => {
                                     <div className="grid grid-cols-[1fr_1fr_1fr_1fr]">
                                         <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
                                             <span>Белки</span>
-                                            <span>
-                                                {modals.itemCardModal.protein.split(".")[0]} г.
-                                            </span>
+                                            <span>{modals.itemCardModal.protein.split(".")[0]} г.</span>
                                         </div>
 
                                         <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
@@ -105,17 +87,12 @@ const CardModal = () => {
 
                                         <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
                                             <span>Углеводы</span>
-                                            <span>
-                                                {modals.itemCardModal.carbohydrates.split(".")[0]}{" "}
-                                                г.
-                                            </span>
+                                            <span>{modals.itemCardModal.carbohydrates.split(".")[0]} г.</span>
                                         </div>
 
                                         <div className="text-[#21201F] flex flex-col gap-1 text-[12px] font-medium">
                                             <span>Энерг. ценн</span>
-                                            <span>
-                                                {modals.itemCardModal.calories.split(".")[0]} ккал.
-                                            </span>
+                                            <span>{modals.itemCardModal.calories.split(".")[0]} ккал.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -126,21 +103,11 @@ const CardModal = () => {
                         <div className="mt-4 py-[13px] border-t border-[#f2f2f2] flex justify-between text-[#21201F] items-center gap-4 sm:mt-0">
                             <p className="text-[15px]">{modals.itemCardModal.name}</p>
                             <span className="text-[22px] font-medium">
-                                {card.count > 0
-                                    ? card.total
-                                    : modals.itemCardModal.floatprice.split(".")[0]}
-                                ₽
+                                {card.count > 0 ? card.total : modals.itemCardModal.floatprice.split(".")[0]}₽
                             </span>
                         </div>
 
-                        <div
-                            className={classNames(
-                                "gap-[5px]",
-                                card.count > 0
-                                    ? "grid grid-cols-[121px_1fr]"
-                                    : "grid grid-cols-[1fr]",
-                            )}
-                        >
+                        <div className={classNames("gap-[5px]", card.count > 0 ? "grid grid-cols-[121px_1fr]" : "grid grid-cols-[1fr]")}>
                             {card.count > 0 && (
                                 <div className="flex items-center gap-[17px] px-[13px] h-[47px] border border-[#E6E6E6] rounded-[24px]">
                                     <button
@@ -149,17 +116,12 @@ const CardModal = () => {
                                             dispatch(deleteCard(modals.itemCardModal));
                                         }}
                                     >
-                                        <svg
-                                            className="h-[22px] w-[22px] fill-none"
-                                            aria-hidden="true"
-                                        >
+                                        <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
                                             <use xlinkHref="/sprites/sprite.svg#-"></use>
                                         </svg>
                                     </button>
 
-                                    <span className="text-[#21201F] text-[18px] font-medium">
-                                        {card.count}
-                                    </span>
+                                    <span className="text-[#21201F] text-[18px] font-medium">{card.count}</span>
 
                                     <button
                                         onClick={(e) => {
@@ -167,10 +129,7 @@ const CardModal = () => {
                                             dispatch(addCard(modals.itemCardModal));
                                         }}
                                     >
-                                        <svg
-                                            className="h-[22px] w-[22px] fill-none"
-                                            aria-hidden="true"
-                                        >
+                                        <svg className="h-[22px] w-[22px] fill-none" aria-hidden="true">
                                             <use xlinkHref="/sprites/sprite.svg#+"></use>
                                         </svg>
                                     </button>

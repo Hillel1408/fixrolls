@@ -29,10 +29,7 @@ const LayoutModal = ({
                 )}
             >
                 <div
-                    className={classNames(
-                        "bg-white rounded-[44px] relative sm:rounded-b-none overflow-hidden",
-                        className,
-                    )}
+                    className={classNames("bg-white rounded-[44px] relative sm:rounded-b-none overflow-hidden", className)}
                     onClick={(e) => e.stopPropagation()}
                 >
                     {children}

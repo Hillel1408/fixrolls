@@ -21,13 +21,9 @@ const PromotionModal = () => {
                 <img className="w-full" src={modals.itemPomotionModal.image_link} alt="" />
 
                 <div className="pt-7 px-5 max-h-[535px] overflow-y-auto pb-[100px]">
-                    <h2 className="text-[#000] text-[32px] font-medium mb-7">
-                        {modals.itemPomotionModal.offer_name}
-                    </h2>
+                    <h2 className="text-[#000] text-[32px] font-medium mb-7">{modals.itemPomotionModal.offer_name}</h2>
 
-                    <div className="flex flex-col gap-3 whitespace-pre-wrap">
-                        {modals.itemPomotionModal.description}
-                    </div>
+                    <div className="flex flex-col gap-3 whitespace-pre-wrap">{modals.itemPomotionModal.description}</div>
                 </div>
 
                 <div className="px-5 py-3 bg-[#F9F7F7] rounded-t-2xl absolute bottom-0 left-0 right-0">

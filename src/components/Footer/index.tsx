@@ -39,9 +39,7 @@ const Footer = () => {
             <div
                 className={classNames(
                     "container grid grid-cols-[232px_1fr_334px] gap-[26px]",
-                    location.pathname === "/order"
-                        ? "xl:grid-cols-[1fr]"
-                        : "xl:grid-cols-[232px_1fr] lg:grid-cols-[1fr]",
+                    location.pathname === "/order" ? "xl:grid-cols-[1fr]" : "xl:grid-cols-[232px_1fr] lg:grid-cols-[1fr]",
                 )}
             >
                 <div className="sm:hidden"></div>
@@ -82,14 +80,11 @@ const Footer = () => {
 
                         <div className="sm:hidden">
                             <p className="text-[#21201F] text-[16px] font-medium mb-14">
-                                FixRolls - это ресторан доставки роллов и суши с нестандартным
-                                подходом к своему делу. Мы предлагаем нереальные скидки и любим
-                                дарить подарки.
+                                FixRolls - это ресторан доставки роллов и суши с нестандартным подходом к своему делу. Мы предлагаем нереальные скидки
+                                и любим дарить подарки.
                             </p>
 
-                            <p className="text-[#21201F] text-[16px] font-medium">
-                                © 2023 Все права защищены
-                            </p>
+                            <p className="text-[#21201F] text-[16px] font-medium">© 2023 Все права защищены</p>
                         </div>
                     </div>
 
@@ -105,25 +100,15 @@ const Footer = () => {
 
                         <div className="flex flex-col gap-6 mb-[82px] sm:mb-[54px]">
                             <div className="flex flex-col">
-                                <span className="text-[#969696] text-[24px] font-medium">
-                                    Заказать
-                                </span>
-                                <Link
-                                    className="text-[#21201F] text-[26px] font-semibold"
-                                    to="tel:+7(800)777-98-65"
-                                >
+                                <span className="text-[#969696] text-[24px] font-medium">Заказать</span>
+                                <Link className="text-[#21201F] text-[26px] font-semibold" to="tel:+7(800)777-98-65">
                                     +7 (800) 777-98-65
                                 </Link>
                             </div>
 
                             <div className="flex flex-col">
-                                <span className="text-[#969696] text-[24px] font-medium">
-                                    Для отзывов
-                                </span>
-                                <Link
-                                    className="text-[#21201F] text-[26px] font-semibold"
-                                    to="mailto:reviews@rollsfix.ru"
-                                >
+                                <span className="text-[#969696] text-[24px] font-medium">Для отзывов</span>
+                                <Link className="text-[#21201F] text-[26px] font-semibold" to="mailto:reviews@rollsfix.ru">
                                     reviews@rollsfix.ru
                                 </Link>
                             </div>
@@ -132,14 +117,9 @@ const Footer = () => {
                         <ul className="flex gap-2">
                             {socialItems.map((item, index) => (
                                 <li key={index}>
-                                    <Link
-                                        to={item.href}
-                                        className="w-[66px] h-[66px] bg-white flex justify-center items-center rounded-[20px]"
-                                    >
+                                    <Link to={item.href} className="w-[66px] h-[66px] bg-white flex justify-center items-center rounded-[20px]">
                                         <svg className="w-5 h-5" aria-hidden="true">
-                                            <use
-                                                xlinkHref={`/sprites/sprite.svg#${item.icon}`}
-                                            ></use>
+                                            <use xlinkHref={`/sprites/sprite.svg#${item.icon}`}></use>
                                         </svg>
                                     </Link>
                                 </li>
@@ -149,13 +129,11 @@ const Footer = () => {
 
                     <div className="hidden sm:block">
                         <p className="text-[#21201F] text-[16px] font-medium mb-14">
-                            FixRolls - это ресторан доставки роллов и суши с нестандартным подходом
-                            к своему делу. Мы предлагаем нереальные скидки и любим дарить подарки.
+                            FixRolls - это ресторан доставки роллов и суши с нестандартным подходом к своему делу. Мы предлагаем нереальные скидки и
+                            любим дарить подарки.
                         </p>
 
-                        <p className="text-[#21201F] text-[16px] font-medium">
-                            © 2023 Все права защищены
-                        </p>
+                        <p className="text-[#21201F] text-[16px] font-medium">© 2023 Все права защищены</p>
                     </div>
                 </div>
 

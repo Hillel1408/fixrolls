@@ -9,8 +9,7 @@ const Total = () => {
     const orders = useAppSelector((state) => state.orders);
     const modals = useAppSelector((state) => state.modals);
 
-    const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)
-        ?.free_delivery[0].delivery_price;
+    const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)?.free_delivery[0].delivery_price;
 
     const { status } = useAppSelector((state) => state.orders);
 
@@ -24,36 +23,28 @@ const Total = () => {
                         <button
                             className={classNames(
                                 "text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border items-start",
-                                modals.flag && orders.delivery.paymentMethod === undefined
-                                    ? "border-[red]"
-                                    : "border-[#FFCD36]",
+                                modals.flag && orders.delivery.paymentMethod === undefined ? "border-[red]" : "border-[#FFCD36]",
                             )}
                             onClick={() => {
                                 dispatch(addDelivery({ paymentMethod: 1 }));
                             }}
                         >
                             <span className="w-4 h-4 rounded-[4px] border border-[#231F20] flex items-center justify-center">
-                                {orders.delivery.paymentMethod === 1 && (
-                                    <span className="bg-[#231F20] w-2 h-2 rounded-[4px]"></span>
-                                )}
+                                {orders.delivery.paymentMethod === 1 && <span className="bg-[#231F20] w-2 h-2 rounded-[4px]"></span>}
                             </span>
                             Картой при получении
                         </button>
                         <button
                             className={classNames(
                                 "text-[#000] text-left text-[14px] leading-[85%] flex flex-col gap-[9px] px-[10px] pt-[10px] pb-[35px] w-[130px] rounded-2xl border items-start",
-                                modals.flag && orders.delivery.paymentMethod === undefined
-                                    ? "border-[red]"
-                                    : "border-[#FFCD36]",
+                                modals.flag && orders.delivery.paymentMethod === undefined ? "border-[red]" : "border-[#FFCD36]",
                             )}
                             onClick={() => {
                                 dispatch(addDelivery({ paymentMethod: 0 }));
                             }}
                         >
                             <span className="w-4 h-4 rounded-[4px] border border-[#231F20] flex items-center justify-center">
-                                {orders.delivery.paymentMethod === 0 && (
-                                    <span className="bg-[#231F20] w-2 h-2 rounded-[4px]"></span>
-                                )}
+                                {orders.delivery.paymentMethod === 0 && <span className="bg-[#231F20] w-2 h-2 rounded-[4px]"></span>}
                             </span>
                             Наличными при получении
                         </button>
@@ -79,9 +70,7 @@ const Total = () => {
                 <div className="flex flex-col gap-2">
                     {orders.promoCode ? (
                         <div className="flex items-center gap-2">
-                            <p className="text-[#21201F] text-[20px] font-medium ">
-                                Промокод: {orders.promoCode}
-                            </p>
+                            <p className="text-[#21201F] text-[20px] font-medium ">Промокод: {orders.promoCode}</p>
 
                             <button
                                 onClick={() => {
@@ -130,9 +119,7 @@ const Total = () => {
                         }}
                     />
                     <div className="sm:flex sm:flex-col sm:items-start sm:gap-1">
-                        <span className="hidden sm:block text-[rgba(0,0,0,0.70)] text-[14px] font-medium">
-                            Итого:
-                        </span>
+                        <span className="hidden sm:block text-[rgba(0,0,0,0.70)] text-[14px] font-medium">Итого:</span>
 
                         <span className="text-[#000] text-[26px] font-medium whitespace-nowrap sm:text-[24px]">
                             {orders.totalCart + Number(delivery)}₽

@@ -42,10 +42,7 @@ const OrderCart = () => {
                         <div className="min-w-[94px]">
                             <img
                                 className="h-[94px] object-cover w-full"
-                                src={item.product.image.replace(
-                                    "http://89.248.201.151",
-                                    "https://fiksroll.ru",
-                                )}
+                                src={item.product.image.replace("http://89.248.201.151", "https://fiksroll.ru")}
                                 alt=""
                             />
                         </div>

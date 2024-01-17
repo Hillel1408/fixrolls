@@ -21,9 +21,7 @@ const SuccessModal = () => {
             active={activeModal === "success"}
         >
             <>
-                <h2 className="text-[#21201F] text-[32px] font-medium mb-[14px]">
-                    Ваш заказ принят
-                </h2>
+                <h2 className="text-[#21201F] text-[32px] font-medium mb-[14px]">Ваш заказ принят</h2>
 
                 <p className="text-[#21201F] text-[14px]">
                     Информация и статус о заказе: <br /> {response?.split(" ")[1]}

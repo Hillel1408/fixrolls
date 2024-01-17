@@ -42,9 +42,7 @@ const DeliveryAddressModal = () => {
     const searchRef = useRef(null);
 
     const handleSubmit = () => {
-        dispatch(
-            addDelivery({ street: { title: state.title, center: mapRef.current.getCenter() } }),
-        );
+        dispatch(addDelivery({ street: { title: state.title, center: mapRef.current.getCenter() } }));
     };
 
     const handleReset = () => {
@@ -91,9 +89,7 @@ const DeliveryAddressModal = () => {
             <>
                 <div className="flex items-center pr-[110px] justify-between mb-[78px] sm:pr-0 sm:mb-0 sm:absolute sm:top-[78px] sm:left-1/2 sm:-translate-x-1/2">
                     <div className="sm:hidden">
-                        <h3 className="text-[36px] font-medium leading-[111%] text-[#000] mb-[5px]">
-                            Адрес доставки
-                        </h3>
+                        <h3 className="text-[36px] font-medium leading-[111%] text-[#000] mb-[5px]">Адрес доставки</h3>
                         <p className="text-[15px] text-[#000]">Чтобы курьер смог вас найти</p>
                     </div>
 
@@ -102,10 +98,7 @@ const DeliveryAddressModal = () => {
                             {listItems.map((item, index) => (
                                 <li
                                     key={index}
-                                    className={classNames(
-                                        "py-[10px] px-[27px] rounded-[13px] cursor-pointer",
-                                        orders.type === item && "bg-white",
-                                    )}
+                                    className={classNames("py-[10px] px-[27px] rounded-[13px] cursor-pointer", orders.type === item && "bg-white")}
                                     onClick={() => {
                                         dispatch(addType(item));
                                     }}
@@ -158,11 +151,7 @@ const DeliveryAddressModal = () => {
                             instanceRef={mapRef}
                             className="w-full h-[350px] sm:h-[550px] relative"
                         >
-                            <img
-                                className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
-                                src="/images/map-icon.svg"
-                                alt=""
-                            />
+                            <img className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2" src="/images/map-icon.svg" alt="" />
 
                             <GeolocationControl {...geolocationOptions} />
 

@@ -24,9 +24,7 @@ const CityModal = () => {
             active={activeModal === "city"}
         >
             <>
-                <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-8 max-w-[325px] sm:text-[22px]">
-                    Города в которых мы работаем
-                </h3>
+                <h3 className="text-[#000] text-[36px] leading-[111%] font-medium mb-8 max-w-[325px] sm:text-[22px]">Города в которых мы работаем</h3>
 
                 <ul className="flex flex-col gap-2">
                     {data.map(
@@ -36,9 +34,7 @@ const CityModal = () => {
                                     key={index}
                                     className={classNames(
                                         "py-[17px] pl-[29px] pr-[19px]  rounded-[13px] text-[16px] text-[#000] flex justify-between cursor-pointer",
-                                        item.region === activeCity.region
-                                            ? "bg-[#FFCD36]"
-                                            : "bg-[#F9F7F7]",
+                                        item.region === activeCity.region ? "bg-[#FFCD36]" : "bg-[#F9F7F7]",
                                     )}
                                     onClick={() => {
                                         if (activeCity.region !== item.region) {
@@ -50,10 +46,7 @@ const CityModal = () => {
                                     }}
                                 >
                                     {item.region}
-                                    <svg
-                                        className="h-[21px] w-[21px] fill-none -rotate-90"
-                                        aria-hidden="true"
-                                    >
+                                    <svg className="h-[21px] w-[21px] fill-none -rotate-90" aria-hidden="true">
                                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                                     </svg>
                                 </li>

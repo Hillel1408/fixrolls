@@ -14,9 +14,7 @@ const Order = () => {
 
                 <div>
                     <div className="mb-8 flex items-center justify-between text-[#21201F] text-[16px] font-medium sm:flex-col sm:items-start sm:gap-4">
-                        <h1 className="text-[#21201F] text-[30px] font-medium">
-                            Оформление заказа
-                        </h1>
+                        <h1 className="text-[#21201F] text-[30px] font-medium">Оформление заказа</h1>
 
                         <button
                             className="py-[13px] px-[21px] rounded-2xl border border-[#000] flex gap-[5px] items-center"

@@ -26,20 +26,12 @@ const Card = ({ item }: { item: any }) => {
             <div className="px-2 sm:px-[6px] mb-[10px] flex flex-col flex-auto">
                 <h3 className="text-[#21201F] text-[18px] font-medium lg:text-[14px]">{name}</h3>
 
-                <p className="text-[#797979] text-[12px] font-medium mb-6 lg:mb-4">
-                    {storageConditions}
-                </p>
+                <p className="text-[#797979] text-[12px] font-medium mb-6 lg:mb-4">{storageConditions}</p>
 
                 <div className="flex gap-2 items-center sm:mt-4 sm:gap-1 mt-auto">
-                    <span className="text-[#21201F] text-[22px] font-medium sm:text-[16px]">
-                        {floatprice.split(".")[0]}₽
-                    </span>
+                    <span className="text-[#21201F] text-[22px] font-medium sm:text-[16px]">{floatprice.split(".")[0]}₽</span>
 
-                    {Number(volume) > 0 && (
-                        <span className="text-[#A5A5A5] text-[15px] line-through sm:text-[12px]">
-                            {volume.split(".")[0]}₽
-                        </span>
-                    )}
+                    {Number(volume) > 0 && <span className="text-[#A5A5A5] text-[15px] line-through sm:text-[12px]">{volume.split(".")[0]}₽</span>}
                 </div>
             </div>
 
@@ -57,9 +49,7 @@ const Card = ({ item }: { item: any }) => {
                         </svg>
                     </button>
 
-                    <span className="text-[#21201F] text-[22px] lg:text-[18px] font-medium">
-                        {count}
-                    </span>
+                    <span className="text-[#21201F] text-[22px] lg:text-[18px] font-medium">{count}</span>
 
                     <button
                         className="w-10 h-10 lg:h-[30px] lg:w-[30px] rounded-[13px] bg-[#FFCD36] flex justify-center items-center"

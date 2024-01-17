@@ -1,14 +1,5 @@
 import { useEffect, createRef, useState, useLayoutEffect } from "react";
-import {
-    Sidebar,
-    Cart,
-    Slider,
-    CartModal,
-    Layout,
-    CardsBlock,
-    CardModal,
-    DeliveryTotalModal,
-} from "components";
+import { Sidebar, Cart, Slider, CartModal, Layout, CardsBlock, CardModal, DeliveryTotalModal } from "components";
 import { useMatchMedia } from "hooks";
 import { useAppSelector, useAppDispatch } from "hook";
 import { getCards, setActiveModal } from "store";
@@ -44,12 +35,9 @@ const Main = () => {
         });
     }, []);
 
-    const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)
-        ?.free_delivery[0].delivery_price;
+    const delivery = data.find((item) => item.restaurantID === orders.city.restaurantID)?.free_delivery[0].delivery_price;
 
-    const minOrderAmount =
-        data.find((item) => item.restaurantID === orders.city.restaurantID)?.free_delivery[0]
-            .min_order_amount || 0;
+    const minOrderAmount = data.find((item) => item.restaurantID === orders.city.restaurantID)?.free_delivery[0].min_order_amount || 0;
 
     const minSumOrder = minOrderAmount - orders.totalCart;
 
@@ -76,13 +64,7 @@ const Main = () => {
 
                                 <div className="flex flex-col [&>*]:pt-[100px] [&>*]:-mt-[50px] [&>*:first-child]:-mt-[100px] lg:[&>*]:pt-[160px] lg:[&>*]:-mt-[110px] lg:[&>*:first-child]:-mt-[160px] md:[&>*]:pt-[130px] md:[&>*]:-mt-[90px] md:[&>*:first-child]:-mt-[130px] sm:[&>*]:pt-[120px] sm:px-[10px] lg:mt-6">
                                     {cards.map((item: any, index) => (
-                                        <CardsBlock
-                                            key={item.description.id}
-                                            item={item}
-                                            refs={refs}
-                                            pageHeight={pageHeight}
-                                            index={index}
-                                        />
+                                        <CardsBlock key={item.description.id} item={item} refs={refs} pageHeight={pageHeight} index={index} />
                                     ))}
                                 </div>
                             </div>
@@ -127,22 +109,16 @@ const Main = () => {
                                         <use xlinkHref="/sprites/sprite.svg#cart"></use>
                                     </svg>
 
-                                    <span className="text-[#21201F] text-[12px] ml-4">
-                                        {orders.cards.length} товар
-                                    </span>
+                                    <span className="text-[#21201F] text-[12px] ml-4">{orders.cards.length} товар</span>
                                 </span>
 
-                                <span className="text-[#21201F] text-[24px] font-medium">
-                                    {orders.totalCart}₽
-                                </span>
+                                <span className="text-[#21201F] text-[24px] font-medium">{orders.totalCart}₽</span>
                             </button>
                         </div>
                     )}
                 </Layout>
             ) : error ? (
-                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                    {error}
-                </p>
+                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">{error}</p>
             ) : (
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
                     <ThreeDots height="50" width="50" radius="9" color="#000000" />

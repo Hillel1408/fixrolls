@@ -1,10 +1,4 @@
-import {
-    CityModal,
-    DeliveryAddressModal,
-    MobileMenuModal,
-    Modal404,
-    DeliveryModal,
-} from "components";
+import { CityModal, DeliveryAddressModal, MobileMenuModal, Modal404, DeliveryModal } from "components";
 import { useAppDispatch, useAppSelector } from "hook";
 import { setActiveModal } from "store";
 import { useNavigate } from "react-router-dom";
@@ -46,9 +40,7 @@ const Header = () => {
                                         dispatch(setActiveModal("city"));
                                     }}
                                 >
-                                    <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">
-                                        {orders.city.region}
-                                    </span>
+                                    <span className="text-[#21201F] text-[15px] font-medium max-w-[90px]">{orders.city.region}</span>
                                     <svg className="w-5 h-5" aria-hidden="true">
                                         <use xlinkHref="/sprites/sprite.svg#arrow"></use>
                                     </svg>
@@ -73,10 +65,7 @@ const Header = () => {
                                 </button>
                             </div>
 
-                            <a
-                                href="tel:+7(800)777-98-65"
-                                className="text-[#21201F] text-[20px] font-medium whitespace-nowrap"
-                            >
+                            <a href="tel:+7(800)777-98-65" className="text-[#21201F] text-[20px] font-medium whitespace-nowrap">
                                 +7 (800) 777-98-65
                             </a>
                         </div>

@@ -22,39 +22,32 @@ interface InitialStateType {
     response: string;
 }
 
-export const sentOrder = createAsyncThunk(
-    "cards/sentOrder",
-    async function (order: InitialStateType) {
-        try {
-            const params = `user=mobidel&password=723123![]&wid=11445&line=${order.city.id}`;
-            const products = order.cards
-                .map(
-                    (item: { product: { oneCID: string }; count: string }, index: number) =>
-                        `articles[${index}]=${item.product.oneCID}&quantities[${index}]=${item.count}`,
-                )
+export const sentOrder = createAsyncThunk("cards/sentOrder", async function (order: InitialStateType) {
+    try {
+        const params = `user=mobidel&password=723123![]&wid=11445&line=${order.city.id}`;
+        const products = order.cards
+            .map(
+                (item: { product: { oneCID: string }; count: string }, index: number) =>
+                    `articles[${index}]=${item.product.oneCID}&quantities[${index}]=${item.count}`,
+            )
+            .join("&");
+        const delivery =
+            order.type === "Доставка" &&
+            Object.keys(order.delivery)
+                .map((key) => {
+                    if (key === "street") {
+                        return `${key}=${order.delivery[key].title}`;
+                    } else return `${key}=${order.delivery[key]}`;
+                })
                 .join("&");
-            const delivery =
-                order.type === "Доставка" &&
-                Object.keys(order.delivery)
-                    .map((key) => {
-                        if (key === "street") {
-                            return `${key}=${order.delivery[key].title}`;
-                        } else return `${key}=${order.delivery[key]}`;
-                    })
-                    .join("&");
 
-            const { data } = await axios.get(
-                `/makeOrder.php?${params}&${products}&${delivery || `independently=1`}&promoCode=${
-                    order.promoCode
-                }`,
-            );
+        const { data } = await axios.get(`/makeOrder.php?${params}&${products}&${delivery || `independently=1`}&promoCode=${order.promoCode}`);
 
-            return data;
-        } catch (error: any) {
-            console.log(error);
-        }
-    },
-);
+        return data;
+    } catch (error: any) {
+        console.log(error);
+    }
+});
 
 const initialState: InitialStateType = {
     cards: [],
@@ -82,9 +75,7 @@ const orderSlice = createSlice({
     initialState,
     reducers: {
         addCard(state, action) {
-            const index = state.cards.findIndex(
-                (item: any) => item.product.id === action.payload.id,
-            );
+            const index = state.cards.findIndex((item: any) => item.product.id === action.payload.id);
             if (index === -1) {
                 state.cards.push({
                     product: action.payload,
@@ -99,9 +90,7 @@ const orderSlice = createSlice({
         },
 
         deleteCard(state, action) {
-            const index = state.cards.findIndex(
-                (item: any) => item.product.id === action.payload.id,
-            );
+            const index = state.cards.findIndex((item: any) => item.product.id === action.payload.id);
             if (state.cards[index].count === 1) state.cards.splice(index, 1);
             else {
                 state.cards[index].count -= 1;
@@ -159,17 +148,7 @@ const orderSlice = createSlice({
     },
 });
 
-export const {
-    addCard,
-    deleteCard,
-    resetCart,
-    addCity,
-    addDelivery,
-    resetStore,
-    setActiveCharacter,
-    addType,
-    addPromoCode,
-} = orderSlice.actions;
+export const { addCard, deleteCard, resetCart, addCity, addDelivery, resetStore, setActiveCharacter, addType, addPromoCode } = orderSlice.actions;
 
 export default orderSlice.reducer;
 

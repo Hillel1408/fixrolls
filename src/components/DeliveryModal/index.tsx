@@ -25,9 +25,7 @@ const DeliveryModal = () => {
                 <img className="object-cover w-full" src={item?.delivery_area?.area_img} alt="" />
 
                 <div className="pt-7 px-5 max-h-[535px] overflow-y-auto pb-[100px]">
-                    <div className="flex flex-col gap-3 whitespace-pre-wrap">
-                        {item?.delivery_area?.description}
-                    </div>
+                    <div className="flex flex-col gap-3 whitespace-pre-wrap">{item?.delivery_area?.description}</div>
                 </div>
 
                 <div className="px-5 py-3 bg-[#F9F7F7] rounded-t-2xl absolute bottom-0 left-0 right-0">

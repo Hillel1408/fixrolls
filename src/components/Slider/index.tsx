@@ -18,9 +18,7 @@ const Slider = () => {
 
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
 
-    const items = data.find(
-        (item) => item.restaurantID === orders.city.restaurantID,
-    )?.special_offers;
+    const items = data.find((item) => item.restaurantID === orders.city.restaurantID)?.special_offers;
 
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
         loop: true,
@@ -41,10 +39,7 @@ const Slider = () => {
             {items && items.length > 0 && (
                 <div>
                     <div className="px-[10px] py-2 bg-white relative rounded-[30px] mb-[50px] lg:rounded-b-none lg:-mx-[10px] md:rounded-t-none lg:mb-0 sm:mx-0">
-                        <div
-                            ref={sliderRef}
-                            className="keen-slider max-w-[1126px] rounded-[30px] sm:rounded-[20px]"
-                        >
+                        <div ref={sliderRef} className="keen-slider max-w-[1126px] rounded-[30px] sm:rounded-[20px]">
                             {items.map((item, index) => (
                                 <div
                                     key={index}
@@ -54,32 +49,24 @@ const Slider = () => {
                                         dispatch(setActiveModal("promotion"));
                                     }}
                                 >
-                                    <img
-                                        className="h-[285px] object-cover w-full rounded-[20px] lg:h-[207px]"
-                                        src={item.image_link}
-                                        alt=""
-                                    />
+                                    <img className="h-[285px] object-cover w-full rounded-[20px] lg:h-[207px]" src={item.image_link} alt="" />
                                 </div>
                             ))}
                         </div>
                         <div className="px-[7px] py-[19px] bg-white rounded-[5px] flex flex-col gap-5 absolute right-[7px] top-1/2 -translate-y-1/2">
                             {loaded &&
-                                new Array(instanceRef.current?.slides?.length)
-                                    .fill("")
-                                    .map((item, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => {
-                                                instanceRef.current?.moveToIdx(index);
-                                            }}
-                                            className={classNames(
-                                                "w-[5px] h-[5px] rounded-full",
-                                                currentSlide === index
-                                                    ? "bg-[#21201F]"
-                                                    : "bg-[#C3C3C5]",
-                                            )}
-                                        ></button>
-                                    ))}
+                                new Array(instanceRef.current?.slides?.length).fill("").map((item, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => {
+                                            instanceRef.current?.moveToIdx(index);
+                                        }}
+                                        className={classNames(
+                                            "w-[5px] h-[5px] rounded-full",
+                                            currentSlide === index ? "bg-[#21201F]" : "bg-[#C3C3C5]",
+                                        )}
+                                    ></button>
+                                ))}
                         </div>
                     </div>
 

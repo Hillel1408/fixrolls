@@ -25,18 +25,12 @@ const Delivery = () => {
                                 dispatch(addType(item));
                             }}
                         >
-                            <span className="text-[#21201F] text-[20px] font-medium sm:text-[16px]">
-                                {item}
-                            </span>
+                            <span className="text-[#21201F] text-[20px] font-medium sm:text-[16px]">{item}</span>
 
                             {item === "Доставка" ? (
-                                <span className="text-[#767676] text-[16px] sm:hidden">
-                                    ≈ 60 мин
-                                </span>
+                                <span className="text-[#767676] text-[16px] sm:hidden">≈ 60 мин</span>
                             ) : (
-                                <span className="px-1 py-[10px] rounded-[11px] bg-[#6f6e6d] text-white sm:text-[14px]">
-                                    15%
-                                </span>
+                                <span className="px-1 py-[10px] rounded-[11px] bg-[#6f6e6d] text-white sm:text-[14px]">15%</span>
                             )}
                         </li>
                     ))}
@@ -47,9 +41,7 @@ const Delivery = () => {
                 <button
                     className={classNames(
                         "text-[20px] font-medium mb-4 flex text-left gap-2 sm:text-[16px] items-center sm:pr-[90px]",
-                        modals.flag && !orders.delivery.street?.title
-                            ? "text-[red]"
-                            : "text-[#000]",
+                        modals.flag && !orders.delivery.street?.title ? "text-[red]" : "text-[#000]",
                     )}
                     onClick={() => {
                         dispatch(setActiveModal("city"));
@@ -71,9 +63,7 @@ const Delivery = () => {
                         type="text"
                         className={classNames(
                             "h-12 px-[17px] rounded-[16px] border border-[#D2D0CC] placeholder:text-[#9E9B98] placeholder:text-[16px] w-full",
-                            modals.flag && !orders.delivery.home
-                                ? "border-[red]"
-                                : "border-[#D2D0CC]",
+                            modals.flag && !orders.delivery.home ? "border-[red]" : "border-[#D2D0CC]",
                         )}
                         placeholder="Дом"
                         value={orders.delivery.home}
@@ -118,9 +108,7 @@ const Delivery = () => {
                         type="text"
                         className={classNames(
                             "h-12 px-[17px] rounded-[16px] border placeholder:text-[#9E9B98] placeholder:text-[16px] w-full",
-                            modals.flag && !orders.delivery.family
-                                ? "border-[red]"
-                                : "border-[#D2D0CC]",
+                            modals.flag && !orders.delivery.family ? "border-[red]" : "border-[#D2D0CC]",
                         )}
                         placeholder="Ваше имя"
                         value={orders.delivery.family}
@@ -131,9 +119,7 @@ const Delivery = () => {
                         type="tel"
                         className={classNames(
                             "h-12 px-[17px] rounded-[16px] border placeholder:text-[#9E9B98] placeholder:text-[16px] w-full",
-                            modals.flag && !orders.delivery.phone
-                                ? "border-[red]"
-                                : "border-[#D2D0CC]",
+                            modals.flag && !orders.delivery.phone ? "border-[red]" : "border-[#D2D0CC]",
                         )}
                         placeholder="Контактный телефон"
                         value={orders.delivery.phone}
@@ -153,9 +139,7 @@ const Delivery = () => {
 
             {false && (
                 <div>
-                    <h3 className="text-[#000] text-[20px] font-medium mb-2 sm:text-[16px]">
-                        Время доставки
-                    </h3>
+                    <h3 className="text-[#000] text-[20px] font-medium mb-2 sm:text-[16px]">Время доставки</h3>
 
                     <button className="flex items-center gap-2 text-[16px] text-[#000] sm:text-[14px]">
                         <svg className="w-5 h-5" aria-hidden="true">

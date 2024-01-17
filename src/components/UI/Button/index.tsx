@@ -1,16 +1,6 @@
 import classNames from "classnames";
 
-const Button = ({
-    text,
-    className,
-    clickHandler,
-    disabled,
-}: {
-    text: string;
-    className?: string;
-    clickHandler?: () => void;
-    disabled?: boolean;
-}) => {
+const Button = ({ text, className, clickHandler, disabled }: { text: string; className?: string; clickHandler?: () => void; disabled?: boolean }) => {
     return (
         <button
             className={classNames(

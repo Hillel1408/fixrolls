@@ -67,9 +67,7 @@ const MobileMenuModal = () => {
                             </span>
                         </div>
 
-                        <p className="text-[#21201F] text-[14px]">
-                            Доставка работает {item?.working_hours}
-                        </p>
+                        <p className="text-[#21201F] text-[14px]">Доставка работает {item?.working_hours}</p>
 
                         <Button text="Войти" className="w-full h-[48px] mt-4" />
                     </div>
@@ -79,9 +77,7 @@ const MobileMenuModal = () => {
                             <li
                                 key={index}
                                 onClick={(e) => {
-                                    item.text !== "Зона доставки"
-                                        ? dispatch(setActiveModal("404"))
-                                        : dispatch(setActiveModal("delivery"));
+                                    item.text !== "Зона доставки" ? dispatch(setActiveModal("404")) : dispatch(setActiveModal("delivery"));
                                 }}
                             >
                                 <Link to={item.href}>{item.text}</Link>
@@ -99,14 +95,9 @@ const MobileMenuModal = () => {
                         <ul className="flex gap-[6px]">
                             {socialItems.map((item, index) => (
                                 <li key={index}>
-                                    <Link
-                                        to={item.href}
-                                        className="w-[47px] h-[47px] bg-[#21201F] flex justify-center items-center rounded-[14px]"
-                                    >
+                                    <Link to={item.href} className="w-[47px] h-[47px] bg-[#21201F] flex justify-center items-center rounded-[14px]">
                                         <svg className="w-5 h-5 fill-white" aria-hidden="true">
-                                            <use
-                                                xlinkHref={`/sprites/sprite.svg#${item.icon}`}
-                                            ></use>
+                                            <use xlinkHref={`/sprites/sprite.svg#${item.icon}`}></use>
                                         </svg>
                                     </Link>
                                 </li>
@@ -124,10 +115,7 @@ const MobileMenuModal = () => {
                         </svg>
 
                         <div className="flex flex-col">
-                            <a
-                                href="tel:+7(800)777-98-65"
-                                className="text-[#21201F] text-[24px] font-medium"
-                            >
+                            <a href="tel:+7(800)777-98-65" className="text-[#21201F] text-[24px] font-medium">
                                 +7 (800) 777-98-65
                             </a>
                             <span className="text-[#21201F] text-[14px]">Звонок бесплатный</span>

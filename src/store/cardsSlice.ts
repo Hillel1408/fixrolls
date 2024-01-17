@@ -1,20 +1,15 @@
 import { createSlice, createAsyncThunk, AnyAction } from "@reduxjs/toolkit";
 import axios from "http/axios";
 
-export const getCards = createAsyncThunk(
-    "cards/getCards",
-    async function (params: { restaurantID: string; wid: string }, { rejectWithValue }) {
-        try {
-            const { data } = await axios.get(
-                `/getMenu.php?restaurantID=${params.restaurantID}&wid=${params.wid}`,
-            );
+export const getCards = createAsyncThunk("cards/getCards", async function (params: { restaurantID: string; wid: string }, { rejectWithValue }) {
+    try {
+        const { data } = await axios.get(`/getMenu.php?restaurantID=${params.restaurantID}&wid=${params.wid}`);
 
-            return data.filter((item: any) => item.description.mobileEnable !== "0");
-        } catch (error: any) {
-            return rejectWithValue(error.message);
-        }
-    },
-);
+        return data.filter((item: any) => item.description.mobileEnable !== "0");
+    } catch (error: any) {
+        return rejectWithValue(error.message);
+    }
+});
 
 const initialState: { cards: []; status: string; error: string } = {
     cards: [],
