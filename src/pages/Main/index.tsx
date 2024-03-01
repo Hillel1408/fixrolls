@@ -31,7 +31,7 @@ const Main = () => {
         window.addEventListener("resize", (e) => {
             setTimeout(() => {
                 setPageHeight(window.innerHeight);
-            }, 300);
+            }, 290);
         });
     }, []);
 
